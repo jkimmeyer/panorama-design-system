@@ -16,7 +16,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "plop": "plop"
   },
   "dependencies": {
     "lit": "^2.6.1"
@@ -29,6 +30,7 @@
     "@storybook/web-components": "^7.4.1",
     "@storybook/web-components-vite": "^7.4.1",
     "lit-html": "^2.7.0",
+    "plop": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.4.1",
