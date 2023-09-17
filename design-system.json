@@ -1,0 +1,8 @@
+{
+  "designSystem": {
+    "prefix": "plop",
+    "button": {
+      "variants": ["primary", "secondary"]
+    }
+  }
+}
