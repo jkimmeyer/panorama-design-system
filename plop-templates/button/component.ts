@@ -1,23 +1,7 @@
 import { LitElement, css, html, literal, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-export enum ButtonAppearance {
-{{#each designSystem.button.appearances}}
-  {{titleCase this}} = "{{this}}",
-{{/each}}
-}
-
-export enum ButtonSize {
-{{#each designSystem.button.sizes}}
-  {{titleCase this}} = "{{this}}",
-{{/each}}
-}
-
-export enum ButtonVariant {
-{{#each designSystem.button.variants}}
-  {{titleCase this}} = "{{this}}",
-{{/each}}
-}
+{{>typesPartial attributes=designSystem.button}}
 
 @customElement("{{designSystem.prefix}}-button")
 export class {{titleCase designSystem.prefix}}Button extends LitElement {
@@ -85,8 +69,8 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
   `;
 
   {{#each designSystem.button }}
-    @property({ type: Button{{singularize(titleCase @key)}} })
-    {{singularize @key}}: Button{{singularize(titleCase @key)}} = Button{{signularize(titleCase @key)}}.{{titleCase this.[0]}};
+    @property({ type: Button{{singularize (titleCase @key)}} })
+    {{singularize @key}}: Button{{ singularize (titleCase @key) }} = Button{{ singularize (titleCase @key) }}.{{titleCase this.[0]}};
 
   {{/each}}
 

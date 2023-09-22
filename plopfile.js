@@ -1,5 +1,6 @@
 import { designSystem } from "./design-system.js";
 import { singularize } from "./plop-helper/index.js";
+import { pascalCase } from "change-case";
 
 export default function (plop) {
   plop.setPartial("dataAttrPartial", (attributes) => {
@@ -10,6 +11,27 @@ export default function (plop) {
         )}}"`;
       })
       .join(" ");
+  });
+
+  plop.setPartial("typesPartial", (meta) => {
+    const attributeTypes = Object.keys(meta.attributes)
+      .map((attribute) => {
+        const singularizedAttribute = singularize(attribute);
+
+        const typeDefinition = `export enum ${pascalCase(
+          meta.component
+        )}${pascalCase(singularizedAttribute)} {`;
+
+        const types = meta.attributes[attribute]
+          .map((value) => `  ${pascalCase(value)} = "${value}"`)
+          .join(",\n");
+
+        const typeClosing = "}";
+        return [typeDefinition, types, typeClosing].join("\n");
+      })
+      .join("\n\n");
+
+    return attributeTypes;
   });
 
   plop.setHelper("singularize", singularize);
