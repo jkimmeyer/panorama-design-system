@@ -1,14 +1,23 @@
 import type { StoryObj, Meta } from "@storybook/web-components";
-import { ButtonVariant } from "./Button";
+
+import {
+  {{#each designSystem.button}}
+  Button{{titleCase @key}},
+  {{/each}}
+} from "./component";
 
 const meta: Meta = {
-  component: "ds-button",
+  component: "{{designSystem.prefix}}-button",
   argTypes: {
-    variant: {
-      options: ButtonVariant,
+    {{#each designSystem.button}}
+    {{@key}}: {
+      options: Button{{titleCase @key}},
       control: { type: "select" },
     },
+    {{/each}}
     label: { type: "string" },
+    disabled: { type: "boolean" },
+    href: { type: "string" },
   },
 };
 
