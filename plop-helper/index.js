@@ -1,2 +1,4 @@
 import { loadJSON } from "./loadJSON.js";
-export { loadJSON };
+import { singularize } from "./singularize.js";
+
+export { loadJSON, singularize };
