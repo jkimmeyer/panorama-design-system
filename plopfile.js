@@ -2,6 +2,10 @@ import { designSystem } from "./design-system.js";
 import { singularize } from "./plop-helper/index.js";
 import { pascalCase } from "change-case";
 
+const mergeToTitleCase = (terms) => {
+  return pascalCase(terms.join(" "));
+};
+
 export default function (plop) {
   plop.setPartial("dataAttrPartial", (attributes) => {
     return Object.keys(attributes)
@@ -11,6 +15,23 @@ export default function (plop) {
         )}}"`;
       })
       .join(" ");
+  });
+
+  plop.setPartial("propertiesPartial", (meta) => {
+    const propertiesString = Object.keys(meta.attributes).map((attribute) => {
+      const singularizedAttribute = singularize(attribute);
+      const attributeType = mergeToTitleCase([
+        meta.component,
+        singularizedAttribute,
+      ]);
+      const propertyDefinition = `@property({ type: String })`;
+      const defaultDefinition = `${singularizedAttribute}: ${attributeType} = ${attributeType}.${pascalCase(
+        meta.attributes[attribute][0]
+      )}`;
+      return [propertyDefinition, defaultDefinition].join("\n");
+    });
+
+    return propertiesString.join("\n\n");
   });
 
   plop.setPartial("typesPartial", (meta) => {
