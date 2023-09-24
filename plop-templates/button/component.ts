@@ -1,4 +1,4 @@
-import { LitElement, css, html, literal, nothing } from "lit";
+import { LitElement, css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 {{>typesPartial attributes=designSystem.button}}
@@ -68,11 +68,8 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
     {{/with}}
   `;
 
-  {{#each designSystem.button }}
-    @property({ type: Button{{singularize (titleCase @key)}} })
-    {{singularize @key}}: Button{{ singularize (titleCase @key) }} = Button{{ singularize (titleCase @key) }}.{{titleCase this.[0]}};
+  {{>propertiesPartial attributes=designSystem.button}}
 
-  {{/each}}
 
   @property({ type: Boolean})
   disabled: boolean = false;
@@ -81,14 +78,14 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
   label: string = "{{titleCase designSystem.prefix}}Button";
 
   @property({ type: String })
-  href: string = undefined;
+  href: string | undefined = undefined;
 
   render() {
     if(this.href) {
       return html`
-        <a class="{{designSystem.prefix}}-button" href="${this.href || nothing}" {{> dataAttrPartial designSystem.button}}>
+        <a class="{{designSystem.prefix}}-button" href="${this.href}" {{> dataAttrPartial designSystem.button}}>
           ${this.label}
-        </button>
+        </a>
       `;
     } else {
       return html`
