@@ -20,7 +20,8 @@
     "plop": "plop"
   },
   "dependencies": {
-    "lit": "^2.6.1"
+    "lit": "^2.6.1",
+    "ts-lit-plugin": "^1.2.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^7.4.1",
