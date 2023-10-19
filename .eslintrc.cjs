@@ -2,14 +2,15 @@ module.exports = {
   root: true,
   extends: [
     "eslint:recommended",
-    "plugin:wc/recommended",
-    "plugin:lit/recommended"
+    "plugin:wc/best-practice",
+    "plugin:lit/recommended",
+    "plugin:lit-a11y/recommended"
   ],
+  "parser": "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     project: ["./tsconfig.json"],
-    parser: "@typescript-eslint/parser",
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "lit-a11y"],
 }
