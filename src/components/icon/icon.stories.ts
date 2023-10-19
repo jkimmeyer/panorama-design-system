@@ -1,4 +1,4 @@
-import { Meta, Story as StoryObj } from "@storybook/web-components";
+import { Meta, StoryObj } from "@storybook/web-components";
 
 import "./icon";
 
@@ -11,9 +11,7 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj;
-
-export const Default: Story = {
+export const Default: StoryObj = {
   args: {
     iconName: "home",
   },
