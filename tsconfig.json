@@ -10,13 +10,15 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
+    "target": "ES6",
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "plugins": [{ "name": "ts-lit-plugin" }]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.stories.ts", "/plop-templates/**/*"],

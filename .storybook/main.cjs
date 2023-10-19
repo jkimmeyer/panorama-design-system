@@ -3,7 +3,6 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-mdx-gfm",
     "@storybook/addon-styling",
   ],
   framework: {
