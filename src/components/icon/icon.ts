@@ -1,4 +1,5 @@
-import { css, html, property, query, customElement, LitElement } from "lit";
+import { css, html, LitElement } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
 @customElement("pfreundt-icon")
 export class PfreundtIcon extends LitElement {
