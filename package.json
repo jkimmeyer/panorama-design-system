@@ -21,6 +21,7 @@
     "plop": "plop"
   },
   "dependencies": {
+    "iconify-icon": "^1.0.8",
     "lit": "^3.0.0"
   },
   "devDependencies": {
