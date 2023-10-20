@@ -1,5 +1,5 @@
 import { designSystem } from "./design-system.js";
-import { singularize } from "./plop-helper/index.js";
+import { singularize, applyColor } from "./plop-helper/index.js";
 import { pascalCase } from "change-case";
 
 const mergeToTitleCase = (terms) => {
@@ -10,9 +10,8 @@ export default function (plop) {
   plop.setPartial("dataAttrPartial", (attributes) => {
     return Object.keys(attributes)
       .map((attribute) => {
-        return `data-${singularize(attribute)}="\${this.${singularize(
-          attribute,
-        )}}"`;
+        const singularizedAttribute = singularize(attribute);
+        return `data-${singularizedAttribute}="\${this.${singularizedAttribute}}"`;
       })
       .join(" ");
   });
@@ -57,17 +56,7 @@ export default function (plop) {
 
   plop.setHelper("singularize", singularize);
 
-  plop.setHelper(
-    "applyColor",
-    (component, variants, currentVariant, useCase) => {
-      const color = variants[currentVariant][useCase];
-
-      if (color === "main") return `var(--${component}-${color}-color)`;
-      if (color === "onMain") return `var(--${component}-${color}-color)`;
-      if (color === "transparent") return `transparent`;
-      if (color === "none") return `none`;
-    },
-  );
+  plop.setHelper("applyColor", applyColor);
 
   plop.setGenerator("component", {
     description:
@@ -95,6 +84,13 @@ export default function (plop) {
         path: `src/components/${data.component}/component.stories.ts`,
         data: { designSystem },
         templateFile: `plop-templates/${data.component}/component.stories.ts`,
+      });
+
+      actions.push({
+        type: "add",
+        path: `src/components/${data.component}/component.test.ts`,
+        data: { designSystem },
+        templateFile: `plop-templates/${data.component}/component.test.ts`,
       });
 
       return actions;
