@@ -15,6 +15,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "eslint": "eslint --max-warnings 0 --ext .js,.ts .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "plop": "plop"
@@ -29,6 +30,12 @@
     "@storybook/addon-styling": "^2.0.2-next.4",
     "@storybook/web-components": "^7.4.1",
     "@storybook/web-components-vite": "^7.4.1",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "eslint": "^8.51.0",
+    "eslint-plugin-lit": "^1.9.1",
+    "eslint-plugin-lit-a11y": "^1.1.0-next.1",
+    "eslint-plugin-wc": "^2.0.4",
     "lit-html": "^3.0.0",
     "plop": "^4.0.0",
     "postcss": "^8.4.31",
