@@ -1,13 +1,24 @@
-import { designSystem } from "./design-system.js";
-import { singularize, applyColor } from "./plop-helper/index.js";
+import { NodePlopAPI } from "@crutchcorn/plop";
+import { designSystem } from "./design-system";
+import { singularize, applyColor } from "./plop-helper/index";
 import { pascalCase } from "change-case";
 
-const mergeToTitleCase = (terms) => {
+const mergeToTitleCase = (terms: String[]) => {
   return pascalCase(terms.join(" "));
 };
 
-export default function (plop) {
-  plop.setPartial("dataAttrPartial", (attributes) => {
+interface Attributes {
+  [key: string]: string[];
+}
+
+interface Meta {
+  component: string;
+  attributes: Attributes;
+}
+
+export default function (plop: NodePlopAPI) {
+  // @ts-ignore
+  plop.setPartial("dataAttrPartial", (attributes: Attributes): string => {
     return Object.keys(attributes)
       .map((attribute) => {
         const singularizedAttribute = singularize(attribute);
@@ -16,7 +27,8 @@ export default function (plop) {
       .join(" ");
   });
 
-  plop.setPartial("propertiesPartial", (meta) => {
+  // @ts-ignore
+  plop.setPartial("propertiesPartial", (meta: Meta) => {
     const propertiesString = Object.keys(meta.attributes).map((attribute) => {
       const singularizedAttribute = singularize(attribute);
       const attributeType = mergeToTitleCase([
@@ -25,7 +37,7 @@ export default function (plop) {
       ]);
       const propertyDefinition = `@property({ type: String })`;
       const defaultDefinition = `${singularizedAttribute}: ${attributeType} = ${attributeType}.${pascalCase(
-        meta.attributes[attribute][0]
+        meta.attributes[attribute][0],
       )}`;
       return [propertyDefinition, defaultDefinition].join("\n");
     });
@@ -33,6 +45,7 @@ export default function (plop) {
     return propertiesString.join("\n\n");
   });
 
+  // @ts-ignore
   plop.setPartial("typesPartial", (meta) => {
     const attributeTypes = Object.keys(meta.attributes)
       .map((attribute) => {
@@ -43,7 +56,7 @@ export default function (plop) {
         )}${pascalCase(singularizedAttribute)} {`;
 
         const types = meta.attributes[attribute]
-          .map((value) => `  ${pascalCase(value)} = "${value}"`)
+          .map((value: string) => `  ${pascalCase(value)} = "${value}"`)
           .join(",\n");
 
         const typeClosing = "}";
@@ -64,12 +77,12 @@ export default function (plop) {
     prompts: [
       {
         type: "list",
-        choices: ["button", "card"],
+        choices: ["button", "card", "material-icon"],
         name: "component",
         message: "Please select the component you want to create",
       },
     ],
-    actions: function (data) {
+    actions: function (data: any) {
       const actions = [];
 
       actions.push({

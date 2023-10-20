@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "iconify-icon": "^1.0.8",
-    "lit": "^3.0.0"
+    "lit": "^3.0.0",
+    "stylelint-config-standard": "^34.0.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^7.4.1",
@@ -38,7 +39,7 @@
     "eslint-plugin-lit-a11y": "^4.0.0",
     "eslint-plugin-wc": "^2.0.4",
     "lit-html": "^3.0.0",
-    "plop": "^4.0.0",
+    "@crutchcorn/plop": "^4.1.0-alpha.1",
     "postcss": "^8.4.31",
     "postcss-lit": "^1.1.0",
     "postcss-nesting": "^12.0.1",

@@ -1,4 +1,6 @@
 module.exports = {
+  extends: "stylelint-config-standard",
+  customSyntax: "postcss-lit",
   plugins: ["stylelint-use-logical-spec", "stylelint-order"],
   rules: {
     "alpha-value-notation": "number",
