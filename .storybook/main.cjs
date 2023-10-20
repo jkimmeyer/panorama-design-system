@@ -4,6 +4,14 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-styling",
+    {
+      name: "@storybook/addon-styling",
+      options: {
+        postCss: {
+          implementation: require("postcss"),
+        },
+      },
+    },
   ],
   framework: {
     name: "@storybook/web-components-vite",
