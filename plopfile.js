@@ -7,7 +7,7 @@ export default function (plop) {
     return Object.keys(attributes)
       .map((attribute) => {
         return `data-${singularize(attribute)}="\${this.${singularize(
-          attribute
+          attribute,
         )}}"`;
       })
       .join(" ");
@@ -19,7 +19,7 @@ export default function (plop) {
         const singularizedAttribute = singularize(attribute);
 
         const typeDefinition = `export enum ${pascalCase(
-          meta.component
+          meta.component,
         )}${pascalCase(singularizedAttribute)} {`;
 
         const types = meta.attributes[attribute]
@@ -45,7 +45,7 @@ export default function (plop) {
       if (color === "onMain") return `var(--${component}-${color}-color)`;
       if (color === "transparent") return `transparent`;
       if (color === "none") return `none`;
-    }
+    },
   );
 
   plop.setGenerator("component", {
