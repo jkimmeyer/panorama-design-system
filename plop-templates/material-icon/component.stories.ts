@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/web-components";
 import "./icon";
 
 const meta: Meta = {
-  component: "pfreundt-icon",
+  component: "material-icon",
   argTypes: {
     iconName: { type: "string" },
   },

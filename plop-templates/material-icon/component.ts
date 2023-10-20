@@ -1,8 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-@customElement("pfreundt-icon")
-export class PfreundtIcon extends LitElement {
+@customElement("material-icon")
+export class MaterialIcon extends LitElement {
   static styles = css`
     :host {
       display: inline-flex;
@@ -10,22 +10,23 @@ export class PfreundtIcon extends LitElement {
     }
 
     .material-symbols-outlined {
-      font-family: "Material Symbols Outlined";
-      font-weight: normal;
-      font-style: normal;
-      font-size: 24px; /* Preferred icon size */
       display: inline-block;
+      font-family: "Material Symbols Outlined";
+      font-size: 24px; /* Preferred icon size */
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: normal;
       line-height: 1;
       text-transform: none;
-      letter-spacing: normal;
-      word-wrap: normal;
       white-space: nowrap;
+      word-wrap: normal;
       direction: ltr;
     }
   `;
 
   @property({ type: String, reflect: true, attribute: "icon-name" })
   iconName!: string;
+
 
   render() {
     const { iconName } = this;
