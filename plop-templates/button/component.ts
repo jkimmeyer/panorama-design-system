@@ -1,4 +1,4 @@
-import { LitElement, css, html, nothing } from "lit";
+import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 {{>typesPartial attributes=designSystem.button}}
@@ -11,20 +11,19 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       --button-border: 1px solid;
       --button-border-radius: calc(var(--ds-border-radius));
       --button-inline-padding: var(--space-medium);
-
       --_button-main-color: var(--button-main-color);
       --_button-contrast-main-color: var(--button-contrast-main-color);
       --_button-interaction-color: var(--button-interaction-color);
 
       display: block;
       min-height: var(--button-height);
-      padding-inline: var(--button-inline-padding);
       border: var(--button-border) var(--button-border-color);
-      cursor: pointer;
       border-radius: var(--button-border-radius);
-      color: var(--button-color);
-      background-color: var(--button-background-color);
+      padding-inline: var(--button-inline-padding);
       text-decoration: none;
+      color: var(--button-color);
+      cursor: pointer;
+      background-color: var(--button-background-color);
     }
 
     /* Link Styles */
@@ -47,9 +46,9 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       --button-main-color: var(--color-{{this}});
       --button-contrast-main-color: var(--color-on-{{this}});
       --button-additional-color: var(--color-neutral-{{this}});
-
       --_button-interaction-color: var(--color-{{this}}-interaction);
     }
+
     {{/each}}
 
     {{#each button.variants}}
@@ -58,12 +57,14 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       --button-border-color: {{applyColor "button" ../variants this "border"}};
       --button-background-color: {{applyColor "button" ../variants this "background"}};
     }
+
     {{/each}}
 
     {{#each button.sizes}}
     .{{../prefix}}-button[data-size="{{this}}"] {
       --button-height: calc(var(--space-{{this}}) * 1.5);
     }
+
     {{/each}}
     {{/with}}
   `;
@@ -89,7 +90,7 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       `;
     } else {
       return html`
-        <button class="{{designSystem.prefix}}-button" disabled="${this.disabled || nothing}" {{> dataAttrPartial designSystem.button}}>
+        <button class="{{designSystem.prefix}}-button" ?disabled="${this.disabled}" {{> dataAttrPartial designSystem.button}}>
           ${this.label}
         </button>
       `;

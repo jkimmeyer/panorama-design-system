@@ -1,0 +1,25 @@
+---
+name: Continuous Integration
+on:
+  push:
+jobs:
+  codestyle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-node
+      - run: npm run build:components
+      - run: npm run codestyle:typescript
+      - run: npm run codestyle:eslint
+        if: success() || failure()
+      - run: npm run codestyle:stylelint
+        if: success() || failure()
+      - run: npm run codestyle:prettier
+        if: success() || failure()
+
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/actions/setup-node
+  #     - run: npm run test

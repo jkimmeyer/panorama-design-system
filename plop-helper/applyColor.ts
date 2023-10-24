@@ -12,7 +12,6 @@ export const applyColor = (
   currentVariant: string,
   useCase: string,
 ) => {
-  console.log({ variants });
   const color = variants[currentVariant][useCase];
 
   if (color === "main") return `var(--${component}-${color}-color)`;
