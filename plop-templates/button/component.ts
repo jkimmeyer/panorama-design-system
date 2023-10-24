@@ -1,4 +1,4 @@
-import { LitElement, css, html, nothing } from "lit";
+import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 {{>typesPartial attributes=designSystem.button}}
@@ -11,20 +11,19 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       --button-border: 1px solid;
       --button-border-radius: calc(var(--ds-border-radius));
       --button-inline-padding: var(--space-medium);
-
       --_button-main-color: var(--button-main-color);
       --_button-contrast-main-color: var(--button-contrast-main-color);
       --_button-interaction-color: var(--button-interaction-color);
 
       display: block;
       min-height: var(--button-height);
-      padding-inline: var(--button-inline-padding);
       border: var(--button-border) var(--button-border-color);
-      cursor: pointer;
+      padding-inline: var(--button-inline-padding);
       border-radius: var(--button-border-radius);
+      cursor: pointer;
       color: var(--button-color);
-      background-color: var(--button-background-color);
       text-decoration: none;
+      background-color: var(--button-background-color);
     }
 
     /* Link Styles */
@@ -47,7 +46,6 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       --button-main-color: var(--color-{{this}});
       --button-contrast-main-color: var(--color-on-{{this}});
       --button-additional-color: var(--color-neutral-{{this}});
-
       --_button-interaction-color: var(--color-{{this}}-interaction);
     }
     {{/each}}
@@ -89,7 +87,7 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       `;
     } else {
       return html`
-        <button class="{{designSystem.prefix}}-button" disabled="${this.disabled || nothing}" {{> dataAttrPartial designSystem.button}}>
+        <button class="{{designSystem.prefix}}-button" ?disabled="${this.disabled}" {{> dataAttrPartial designSystem.button}}>
           ${this.label}
         </button>
       `;
