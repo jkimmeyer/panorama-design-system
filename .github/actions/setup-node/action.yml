@@ -1,0 +1,14 @@
+---
+name: Setup Node
+description: |
+  Setup all dependencies for running Node
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version-file: .tool-versions
+        cache: npm
+    - name: Install NPM Packages
+      shell: bash
+      run: npm ci

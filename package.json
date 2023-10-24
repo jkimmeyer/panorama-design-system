@@ -15,10 +15,19 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "eslint": "eslint --max-warnings 0 --ext .js,.ts .",
+    "codestyle:typescript": "tsc --noEmit --composite false",
+    "codestyle:eslint": "eslint --max-warnings 0 --ext .js,.ts, .",
+    "codestyle:eslint:fix": "eslint --max-warnings 0 --ext .js,.ts, --fix .",
+    "codestyle:prettier": "prettier --check .",
+    "codestyle:prettier:fix": "prettier --write .",
+    "codestyle:stylelint": "stylelint 'src/**/component.(css|ts)'",
+    "codestyle:stylelint:fix": "stylelint --fix '**/component.(css|ts)'",
+    "codestyle": "npm run codestyle:typescript && npm run codestyle:eslint && npm run codestyle:stylelint && npm run codestyle:prettier ",
+    "codestyle:fix": "npm run codestyle:eslint:fix && npm run codestyle:stylelint:fix && npm run codestyle:prettier:fix",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "plop": "plop"
+    "plop": "plop",
+    "build:components": "plop component all"
   },
   "dependencies": {
     "iconify-icon": "^1.0.8",

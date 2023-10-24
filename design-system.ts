@@ -7,7 +7,7 @@ const Colors = {
 };
 
 export const designSystem = {
-  prefix: "pfreundt",
+  prefix: "ex",
   badge: {
     variants: ["text", "outline", "filled"],
     sizes: ["small", "medium", "large"],

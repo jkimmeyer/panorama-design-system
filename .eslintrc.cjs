@@ -3,6 +3,7 @@ module.exports = {
   root: true,
   extends: [
     "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:wc/best-practice",
     "plugin:lit/recommended",
     "plugin:lit-a11y/recommended",

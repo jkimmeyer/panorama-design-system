@@ -1,22 +1,28 @@
-import { NodePlopAPI } from "@crutchcorn/plop";
+import { AddActionConfig, NodePlopAPI } from "@crutchcorn/plop";
 import { designSystem } from "./design-system";
 import { singularize, applyColor } from "./plop-helper/index";
 import { pascalCase } from "change-case";
 
-const mergeToTitleCase = (terms: String[]) => {
+const mergeToTitleCase = (terms: string[]) => {
   return pascalCase(terms.join(" "));
 };
+
+const COMPONENTS = ["button", "card", "material-icon"];
 
 interface Attributes {
   [key: string]: string[];
 }
 
+interface Data {
+  component: string;
+}
 interface Meta {
   component: string;
   attributes: Attributes;
 }
 
 export default function (plop: NodePlopAPI) {
+  // eslint-disable-next-line
   // @ts-ignore
   plop.setPartial("dataAttrPartial", (attributes: Attributes): string => {
     return Object.keys(attributes)
@@ -27,6 +33,7 @@ export default function (plop: NodePlopAPI) {
       .join(" ");
   });
 
+  // eslint-disable-next-line
   // @ts-ignore
   plop.setPartial("propertiesPartial", (meta: Meta) => {
     const propertiesString = Object.keys(meta.attributes).map((attribute) => {
@@ -45,6 +52,7 @@ export default function (plop: NodePlopAPI) {
     return propertiesString.join("\n\n");
   });
 
+  // eslint-disable-next-line
   // @ts-ignore
   plop.setPartial("typesPartial", (meta) => {
     const attributeTypes = Object.keys(meta.attributes)
@@ -77,33 +85,41 @@ export default function (plop: NodePlopAPI) {
     prompts: [
       {
         type: "list",
-        choices: ["button", "card", "material-icon"],
+        choices: ["all", ...COMPONENTS],
         name: "component",
         message: "Please select the component you want to create",
       },
     ],
-    actions: function (data: any) {
-      const actions = [];
+    // eslint-disable-next-line
+    // @ts-ignore
+    actions: (data: Data) => {
+      const actions: AddActionConfig[] = [];
+      let components;
 
-      actions.push({
-        type: "add",
-        path: `src/components/${data.component}/component.ts`,
-        data: { designSystem },
-        templateFile: `plop-templates/${data.component}/component.ts`,
-      });
+      if (data.component === "all") components = [...COMPONENTS];
+      else components = [data?.component];
 
-      actions.push({
-        type: "add",
-        path: `src/components/${data.component}/component.stories.ts`,
-        data: { designSystem },
-        templateFile: `plop-templates/${data.component}/component.stories.ts`,
-      });
+      components.forEach((component: string) => {
+        actions.push({
+          type: "add",
+          path: `src/components/${component}/component.ts`,
+          data: { designSystem },
+          templateFile: `plop-templates/${component}/component.ts`,
+        });
 
-      actions.push({
-        type: "add",
-        path: `src/components/${data.component}/component.test.ts`,
-        data: { designSystem },
-        templateFile: `plop-templates/${data.component}/component.test.ts`,
+        actions.push({
+          type: "add",
+          path: `src/components/${component}/component.stories.ts`,
+          data: { designSystem },
+          templateFile: `plop-templates/${component}/component.stories.ts`,
+        });
+
+        actions.push({
+          type: "add",
+          path: `src/components/${component}/component.test.ts`,
+          data: { designSystem },
+          templateFile: `plop-templates/${component}/component.test.ts`,
+        });
       });
 
       return actions;
