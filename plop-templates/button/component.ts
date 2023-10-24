@@ -18,11 +18,11 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       display: block;
       min-height: var(--button-height);
       border: var(--button-border) var(--button-border-color);
-      padding-inline: var(--button-inline-padding);
       border-radius: var(--button-border-radius);
-      cursor: pointer;
-      color: var(--button-color);
+      padding-inline: var(--button-inline-padding);
       text-decoration: none;
+      color: var(--button-color);
+      cursor: pointer;
       background-color: var(--button-background-color);
     }
 
@@ -48,6 +48,7 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       --button-additional-color: var(--color-neutral-{{this}});
       --_button-interaction-color: var(--color-{{this}}-interaction);
     }
+
     {{/each}}
 
     {{#each button.variants}}
@@ -56,12 +57,14 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
       --button-border-color: {{applyColor "button" ../variants this "border"}};
       --button-background-color: {{applyColor "button" ../variants this "background"}};
     }
+
     {{/each}}
 
     {{#each button.sizes}}
     .{{../prefix}}-button[data-size="{{this}}"] {
       --button-height: calc(var(--space-{{this}}) * 1.5);
     }
+
     {{/each}}
     {{/with}}
   `;

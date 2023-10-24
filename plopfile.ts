@@ -18,6 +18,7 @@ interface Data {
 }
 interface Meta {
   component: string;
+  componentName: string;
   attributes: Attributes;
 }
 
@@ -39,7 +40,7 @@ export default function (plop: NodePlopAPI) {
     const propertiesString = Object.keys(meta.attributes).map((attribute) => {
       const singularizedAttribute = singularize(attribute);
       const attributeType = mergeToTitleCase([
-        meta.component,
+        meta.componentName,
         singularizedAttribute,
       ]);
       const propertyDefinition = `@property({ type: String })`;
@@ -60,7 +61,7 @@ export default function (plop: NodePlopAPI) {
         const singularizedAttribute = singularize(attribute);
 
         const typeDefinition = `export enum ${pascalCase(
-          meta.component,
+          meta.componentName,
         )}${pascalCase(singularizedAttribute)} {`;
 
         const types = meta.attributes[attribute]
@@ -103,21 +104,21 @@ export default function (plop: NodePlopAPI) {
         actions.push({
           type: "add",
           path: `src/components/${component}/component.ts`,
-          data: { designSystem },
+          data: { designSystem, componentName: component },
           templateFile: `plop-templates/${component}/component.ts`,
         });
 
         actions.push({
           type: "add",
           path: `src/components/${component}/component.stories.ts`,
-          data: { designSystem },
+          data: { designSystem, componentName: component },
           templateFile: `plop-templates/${component}/component.stories.ts`,
         });
 
         actions.push({
           type: "add",
           path: `src/components/${component}/component.test.ts`,
-          data: { designSystem },
+          data: { designSystem, componentName: component },
           templateFile: `plop-templates/${component}/component.test.ts`,
         });
       });

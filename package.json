@@ -27,7 +27,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "plop": "plop",
-    "build:components": "plop component all"
+    "build:components": "plop component all && npm run codestyle:fix"
   },
   "dependencies": {
     "iconify-icon": "^1.0.8",
