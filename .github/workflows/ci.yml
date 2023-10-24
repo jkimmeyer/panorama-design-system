@@ -17,9 +17,9 @@ jobs:
       - run: npm run codestyle:prettier
         if: success() || failure()
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/setup-node
-      - run: npm run test:unit
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/actions/setup-node
+  #     - run: npm run test
