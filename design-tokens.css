@@ -16,4 +16,6 @@
   --color-secondary-interaction: #009900;
 
   --ds-border-radius: 0.25rem;
+
+  --ds-default-font: "PT Sans Pro", sans-serif;
 }
