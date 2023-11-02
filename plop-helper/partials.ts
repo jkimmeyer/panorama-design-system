@@ -51,7 +51,7 @@ export const propertiesPartial = (meta: Meta) => {
   return propertiesString.join("\n\n");
 };
 
-export const dataAttrPartial = (attributes: Attributes): string => {
+export const dataAttributes = (attributes: Attributes): string => {
   return Object.keys(attributes)
     .map((attribute) => {
       const singularizedAttribute = singularize(attribute);

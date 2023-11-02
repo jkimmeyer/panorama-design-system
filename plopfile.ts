@@ -5,7 +5,7 @@ import {
   applyColor,
   typesPartial,
   propertiesPartial,
-  dataAttrPartial,
+  dataAttributes,
 } from "./plop-helper";
 
 // Setup
@@ -21,7 +21,7 @@ export default function (plop: NodePlopAPI) {
   // Plop does not allow callback function for partials.
   /* eslint-disable @typescript-eslint/ban-ts-comment */
   // @ts-ignore
-  plop.setPartial("dataAttrPartial", dataAttrPartial);
+  plop.setPartial("dataAttributes", dataAttributes);
   // @ts-ignore
   plop.setPartial("propertiesPartial", propertiesPartial);
   // @ts-ignore
