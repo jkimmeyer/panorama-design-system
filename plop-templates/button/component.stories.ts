@@ -18,9 +18,23 @@ const meta: Meta = {
     label: { type: "string" },
     disabled: { type: "boolean" },
     href: { type: "string" },
+    buttonType: { type: "string" },
+    iconBefore: { type: "string" },
+    iconAfter: { type: "string" },
+    iconOnly: { type: "boolean" },
   },
 };
 
-export default meta;
+  export default meta;
 
-export const Primary: StoryObj = {};
+export const Default: StoryObj = {
+  args: {
+  {{#each designSystem.button}}
+    {{singularize @key }}: "{{lookup this 0}}",
+  {{/each}}
+    label: "Button",
+    disabled: false,
+    href: undefined,
+    buttonType: "button"
+  }
+};

@@ -27,7 +27,8 @@
     "vite.config.ts",
     "stylelint.config.cjs",
     "plopfile.ts",
-    "design-system.ts"
+    "design-system.ts",
+    "postcss.config.cjs"
   ],
   "exclude": ["plop-templates/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
