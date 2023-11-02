@@ -40,11 +40,6 @@ jobs:
         run: npm ci
       - name: Build Files
         run: npm run build
-        # The .npmrc contains a read-only auth token for the github registry,
-        # but we need to use the GITHUB_TOKEN for publishing.
-        # Since the token from the .npmrc is used by default, we need to remove this file and re-setup our environment.
-      - name: Remove .npmrc
-        run: rm -f .npmrc
       - name: Setup environment for publishing
         uses: actions/setup-node@v4
         with:
