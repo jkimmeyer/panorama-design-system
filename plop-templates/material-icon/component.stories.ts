@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/web-components";
 
-import "./icon";
+import "./component";
 
 const meta: Meta = {
   component: "material-icon",

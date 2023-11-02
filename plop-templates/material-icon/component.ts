@@ -11,8 +11,8 @@ export class MaterialIcon extends LitElement {
 
     .material-symbols-outlined {
       display: inline-block;
-      font-family: "Material Symbols Outlined", sans-serif
-      font-size: 24px; /* Preferred icon size */
+      font-family: "Material Symbols Outlined", sans-serif;
+      font-size: inherit; /* Preferred icon size */
       font-style: normal;
       font-weight: 400;
       letter-spacing: normal;

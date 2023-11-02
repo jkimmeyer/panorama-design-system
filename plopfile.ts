@@ -1,83 +1,34 @@
 import { AddActionConfig, NodePlopAPI } from "@crutchcorn/plop";
 import { designSystem } from "./design-system";
-import { singularize, applyColor } from "./plop-helper/index";
-import { pascalCase } from "change-case";
+import {
+  singularize,
+  applyColor,
+  typesPartial,
+  propertiesPartial,
+  dataAttrPartial,
+} from "./plop-helper";
 
-const mergeToTitleCase = (terms: string[]) => {
-  return pascalCase(terms.join(" "));
-};
-
-const COMPONENTS = ["button", "card", "material-icon"];
-
-interface Attributes {
-  [key: string]: string[];
-}
+// Setup
+// const PREFIX = designSystem.prefix;
+const COMPONENTS = Object.keys(designSystem.components);
 
 interface Data {
   component: string;
 }
-interface Meta {
-  component: string;
-  componentName: string;
-  attributes: Attributes;
-}
 
+// Generator
 export default function (plop: NodePlopAPI) {
-  // eslint-disable-next-line
+  // Plop does not allow callback function for partials.
+  /* eslint-disable @typescript-eslint/ban-ts-comment */
   // @ts-ignore
-  plop.setPartial("dataAttrPartial", (attributes: Attributes): string => {
-    return Object.keys(attributes)
-      .map((attribute) => {
-        const singularizedAttribute = singularize(attribute);
-        return `data-${singularizedAttribute}="\${this.${singularizedAttribute}}"`;
-      })
-      .join(" ");
-  });
-
-  // eslint-disable-next-line
+  plop.setPartial("dataAttrPartial", dataAttrPartial);
   // @ts-ignore
-  plop.setPartial("propertiesPartial", (meta: Meta) => {
-    const propertiesString = Object.keys(meta.attributes).map((attribute) => {
-      const singularizedAttribute = singularize(attribute);
-      const attributeType = mergeToTitleCase([
-        meta.componentName,
-        singularizedAttribute,
-      ]);
-      const propertyDefinition = `@property({ type: String })`;
-      const defaultDefinition = `${singularizedAttribute}: ${attributeType} = ${attributeType}.${pascalCase(
-        meta.attributes[attribute][0],
-      )}`;
-      return [propertyDefinition, defaultDefinition].join("\n");
-    });
-
-    return propertiesString.join("\n\n");
-  });
-
-  // eslint-disable-next-line
+  plop.setPartial("propertiesPartial", propertiesPartial);
   // @ts-ignore
-  plop.setPartial("typesPartial", (meta) => {
-    const attributeTypes = Object.keys(meta.attributes)
-      .map((attribute) => {
-        const singularizedAttribute = singularize(attribute);
-
-        const typeDefinition = `export enum ${pascalCase(
-          meta.componentName,
-        )}${pascalCase(singularizedAttribute)} {`;
-
-        const types = meta.attributes[attribute]
-          .map((value: string) => `  ${pascalCase(value)} = "${value}"`)
-          .join(",\n");
-
-        const typeClosing = "}";
-        return [typeDefinition, types, typeClosing].join("\n");
-      })
-      .join("\n\n");
-
-    return attributeTypes;
-  });
+  plop.setPartial("typesPartial", typesPartial);
+  /* eslint-enable @typescript-eslint/ban-ts-comment */
 
   plop.setHelper("singularize", singularize);
-
   plop.setHelper("applyColor", applyColor);
 
   plop.setGenerator("component", {
@@ -102,6 +53,7 @@ export default function (plop: NodePlopAPI) {
 
       components.forEach((component: string) => {
         actions.push({
+          force: true,
           type: "add",
           path: `src/components/${component}/component.ts`,
           data: { designSystem, componentName: component },
@@ -109,6 +61,15 @@ export default function (plop: NodePlopAPI) {
         });
 
         actions.push({
+          force: true,
+          type: "add",
+          path: `src/components/${component}/component.styles.ts`,
+          data: { designSystem, componentName: component },
+          templateFile: `plop-templates/${component}/component.styles.ts`,
+        });
+
+        actions.push({
+          force: true,
           type: "add",
           path: `src/components/${component}/component.stories.ts`,
           data: { designSystem, componentName: component },
@@ -116,13 +77,13 @@ export default function (plop: NodePlopAPI) {
         });
 
         actions.push({
+          force: true,
           type: "add",
           path: `src/components/${component}/component.test.ts`,
           data: { designSystem, componentName: component },
           templateFile: `plop-templates/${component}/component.test.ts`,
         });
       });
-
       return actions;
     },
   });
