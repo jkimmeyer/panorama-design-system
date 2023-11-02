@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.4...0.0.5) (2023-11-02)
+
+
+### Miscellaneous
+
+* Fix package ([#73](https://github.com/jkimmeyer/panorama-design-system/issues/73)) ([5cec4d2](https://github.com/jkimmeyer/panorama-design-system/commit/5cec4d2c368885a4ef3ad9acfb9b47e454a53ac2))
+
 ## [0.0.4](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.3...0.0.4) (2023-11-02)
 
 
