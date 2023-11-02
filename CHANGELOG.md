@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.3...0.0.4) (2023-11-02)
+
+
+### Miscellaneous
+
+* Rename system ([#71](https://github.com/jkimmeyer/panorama-design-system/issues/71)) ([c7fc451](https://github.com/jkimmeyer/panorama-design-system/commit/c7fc4514e6249d4fd38ebb4902b75c7180ae2bd8))
+
 ## [0.0.3](https://github.com/jkimmeyer/Masterarbeit/compare/0.0.2...0.0.3) (2023-11-02)
 
 
