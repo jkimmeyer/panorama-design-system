@@ -3,18 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/my-element.es.js",
+  "main": "dist/main.js",
+  "module": "./dist/main.js",
+  "types": "./dist/main.d.ts",
   "exports": {
-    ".": "./dist/my-element.es.js"
+    ".": "./dist/main.js"
   },
-  "types": "types/my-element.d.ts",
   "files": [
     "dist",
-    "types"
+    "tokens"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npm run build:components && npm run build:types",
+    "build:components": "tsc && vite build",
+    "build:types": "tsc --project tsconfig.build.json --emitDeclarationOnly --declaration",
     "codestyle:typescript": "tsc --noEmit --composite false",
     "codestyle:eslint": "eslint --max-warnings 0 --ext .js,.ts, .",
     "codestyle:eslint:fix": "eslint --max-warnings 0 --ext .js,.ts, --fix .",
@@ -27,7 +30,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "plop": "plop",
-    "build:components": "plop component all && npm run codestyle:fix"
+    "generate:components": "plop component all && npm run codestyle:fix"
   },
   "dependencies": {
     "iconify-icon": "^1.0.8",
