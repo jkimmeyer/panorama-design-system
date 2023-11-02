@@ -4,4 +4,4 @@
 
 ### Features
 
-- Initial setup
+- Initial commit
