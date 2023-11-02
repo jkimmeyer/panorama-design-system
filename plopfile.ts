@@ -1,4 +1,9 @@
-import { AddActionConfig, NodePlopAPI } from "@crutchcorn/plop";
+import {
+  AddActionConfig,
+  ModifyActionConfig,
+  NodePlopAPI,
+} from "@crutchcorn/plop";
+import { paramCase } from "change-case";
 import { designSystem } from "./design-system";
 import {
   singularize,
@@ -15,6 +20,23 @@ const COMPONENTS = Object.keys(designSystem.components);
 interface Data {
   component: string;
 }
+
+interface AnyCaseName {
+  name: string;
+}
+
+const appendImports = (
+  fileContents: string,
+  { name: anyCaseName }: AnyCaseName,
+) => {
+  const lines = fileContents.split("\n").filter(Boolean);
+  const componentImport = `import "@/components/${paramCase(
+    anyCaseName,
+  )}/component";`;
+  lines.push(componentImport);
+  lines.sort();
+  return [...new Set(lines)].join("\n");
+};
 
 // Generator
 export default function (plop: NodePlopAPI) {
@@ -45,14 +67,15 @@ export default function (plop: NodePlopAPI) {
     // eslint-disable-next-line
     // @ts-ignore
     actions: (data: Data) => {
-      const actions: AddActionConfig[] = [];
+      const addActions: AddActionConfig[] = [];
+      const modifyActions: ModifyActionConfig[] = [];
       let components;
 
       if (data.component === "all") components = [...COMPONENTS];
       else components = [data?.component];
 
       components.forEach((component: string) => {
-        actions.push({
+        addActions.push({
           force: true,
           type: "add",
           path: `src/components/${component}/component.ts`,
@@ -60,7 +83,7 @@ export default function (plop: NodePlopAPI) {
           templateFile: `plop-templates/${component}/component.ts`,
         });
 
-        actions.push({
+        addActions.push({
           force: true,
           type: "add",
           path: `src/components/${component}/component.styles.ts`,
@@ -68,7 +91,7 @@ export default function (plop: NodePlopAPI) {
           templateFile: `plop-templates/${component}/component.styles.ts`,
         });
 
-        actions.push({
+        addActions.push({
           force: true,
           type: "add",
           path: `src/components/${component}/component.stories.ts`,
@@ -76,7 +99,7 @@ export default function (plop: NodePlopAPI) {
           templateFile: `plop-templates/${component}/component.stories.ts`,
         });
 
-        actions.push({
+        addActions.push({
           force: true,
           type: "add",
           path: `src/components/${component}/component.test.ts`,
@@ -84,7 +107,20 @@ export default function (plop: NodePlopAPI) {
           templateFile: `plop-templates/${component}/component.test.ts`,
         });
       });
-      return actions;
+
+      components.forEach((component: string) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        modifyActions.push({
+          force: true,
+          type: "modify",
+          path: "src/main.ts",
+          data: { name: component },
+          transform: appendImports,
+        });
+      });
+
+      return [...addActions, ...modifyActions];
     },
   });
 }
