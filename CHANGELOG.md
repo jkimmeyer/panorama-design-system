@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.3](https://github.com/jkimmeyer/Masterarbeit/compare/0.0.2...0.0.3) (2023-11-02)
+
+
+### Miscellaneous
+
+* Use default scope for publishing ([#69](https://github.com/jkimmeyer/Masterarbeit/issues/69)) ([44cbe89](https://github.com/jkimmeyer/Masterarbeit/commit/44cbe89637e3759eecd9e61c3907f894fe19c00a))
+
 ## [0.0.2](https://github.com/jkimmeyer/Masterarbeit/compare/0.0.1...0.0.2) (2023-11-02)
 
 
