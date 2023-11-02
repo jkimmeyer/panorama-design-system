@@ -9,10 +9,6 @@ const Colors = {
 export const designSystem = {
   prefix: "ex",
   components: {
-    badge: {
-      appearances: ["text", "outline", "filled"],
-      sizes: ["small", "medium", "large"],
-    },
     button: {
       colors: ["primary", "secondary"],
       appearances: ["text", "outline", "filled"],

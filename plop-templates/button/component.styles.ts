@@ -57,7 +57,7 @@ export const buttonStyles = css`
 }
 
 {{#with designSystem}}
-{{#each button.colors}}
+{{#each components.button.colors}}
 
 .button:where([data-color="{{this}}"]) {
   --button-main-color: var(--color-{{this}});
@@ -68,7 +68,7 @@ export const buttonStyles = css`
 
 {{/each}}
 
-{{#each button.appearances}}
+{{#each components.button.appearances}}
 .button:where([data-appearance="{{this}}"]) {
   --button-color: {{applyColor "button" ../appearances this "text"}};
   --button-border-color: {{applyColor "button" ../appearances this "border"}};
@@ -77,7 +77,7 @@ export const buttonStyles = css`
 
 {{/each}}
 
-{{#each button.sizes}}
+{{#each components.button.sizes}}
 .button:where([data-size="{{this}}"]) {
   --button-height: calc(var(--space-{{this}}) * 1.5);
 }

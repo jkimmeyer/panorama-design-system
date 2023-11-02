@@ -9,7 +9,7 @@ import {
 } from "./plop-helper";
 
 // Setup
-const PREFIX = designSystem.prefix;
+// const PREFIX = designSystem.prefix;
 const COMPONENTS = Object.keys(designSystem.components);
 
 interface Data {
@@ -51,7 +51,7 @@ export default function (plop: NodePlopAPI) {
       if (data.component === "all") components = [...COMPONENTS];
       else components = [data?.component];
 
-      return components.flatMap((component: string) => {
+      components.forEach((component: string) => {
         actions.push({
           force: true,
           type: "add",
@@ -84,6 +84,7 @@ export default function (plop: NodePlopAPI) {
           templateFile: `plop-templates/${component}/component.test.ts`,
         });
       });
+      return actions;
     },
   });
 }

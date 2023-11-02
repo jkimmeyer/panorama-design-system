@@ -2,9 +2,9 @@ import { LitElement, css, html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { customElement, property } from "lit/decorators.js";
 import "../material-icon/component";
-import {buttonStyles} from "./component.styles";
+import { buttonStyles } from "./component.styles";
 
-{{> typesPartial attributes=designSystem.button }}
+{{> typesPartial attributes=designSystem.components.button }}
 
 
 export type ButtonType = "button" | "submit" | "reset";
@@ -28,7 +28,7 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
     buttonStyles,
   ];
 
-  {{> propertiesPartial attributes=designSystem.button }}
+  {{> propertiesPartial attributes=designSystem.components.button }}
 
 
   @property({ type: Boolean, reflect: true})
@@ -77,13 +77,13 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
 
     if(href) {
       return html`
-        <a class="button" href="${href}" ?icon-only="${iconOnly}" {{> dataAttrPartial designSystem.button}}>
+        <a class="button" href="${href}" ?icon-only="${iconOnly}" {{> dataAttrPartial designSystem.components.button}}>
           ${innerHtml}
         </a>
       `;
     } else {
       return html`
-        <button class="button" ?disabled="${disabled}" ?icon-only="${iconOnly}" {{> dataAttrPartial designSystem.button}}>
+        <button class="button" ?disabled="${disabled}" ?icon-only="${iconOnly}" {{> dataAttrPartial designSystem.components.button}}>
           ${innerHtml}
         </button>
       `;

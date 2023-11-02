@@ -1,7 +1,7 @@
 import type { StoryObj, Meta } from "@storybook/web-components";
 
 import {
-  {{#each designSystem.button}}
+  {{#each designSystem.components.button}}
   Button{{ singularize (titleCase @key) }},
   {{/each}}
 } from "./component";
@@ -9,7 +9,7 @@ import {
 const meta: Meta = {
   component: "{{designSystem.prefix}}-button",
   argTypes: {
-    {{#each designSystem.button}}
+    {{#each designSystem.components.button}}
     {{singularize @key}}: {
       options: Button{{ singularize (titleCase @key) }},
       control: { type: "select" },
@@ -29,7 +29,7 @@ const meta: Meta = {
 
 export const Default: StoryObj = {
   args: {
-  {{#each designSystem.button}}
+  {{#each designSystem.components.button}}
     {{singularize @key }}: "{{lookup this 0}}",
   {{/each}}
     label: "Button",
