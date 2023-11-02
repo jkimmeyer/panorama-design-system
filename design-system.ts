@@ -8,16 +8,18 @@ const Colors = {
 
 export const designSystem = {
   prefix: "ex",
-  badge: {
-    variants: ["text", "outline", "filled"],
-    sizes: ["small", "medium", "large"],
+  components: {
+    badge: {
+      appearances: ["text", "outline", "filled"],
+      sizes: ["small", "medium", "large"],
+    },
+    button: {
+      colors: ["primary", "secondary"],
+      appearances: ["text", "outline", "filled"],
+      sizes: ["small", "medium", "large"],
+    },
   },
-  button: {
-    appearances: ["primary", "secondary"],
-    variants: ["text", "outline", "filled"],
-    sizes: ["small", "medium", "large"],
-  },
-  variants: {
+  appearances: {
     filled: {
       text: Colors.OnMain,
       border: Colors.OnMain,
