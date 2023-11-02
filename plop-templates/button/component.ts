@@ -82,13 +82,13 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
 
     if(href) {
       return html`
-        <a class="button" href="${href}" ?icon-only="${iconOnly}" {{> dataAttrPartial designSystem.components.button}}>
+        <a class="button" href="${href}" ?icon-only="${iconOnly}" {{> dataAttributes designSystem.components.button}}>
           ${innerHtml}
         </a>
       `;
     } else {
       return html`
-        <button class="button" ?disabled="${disabled}" ?icon-only="${iconOnly}" {{> dataAttrPartial designSystem.components.button}}>
+        <button class="button" ?disabled="${disabled}" ?icon-only="${iconOnly}" {{> dataAttributes designSystem.components.button}}>
           ${innerHtml}
         </button>
       `;
