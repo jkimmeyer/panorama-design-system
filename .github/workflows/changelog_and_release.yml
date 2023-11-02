@@ -13,7 +13,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
-          token: ${{ secrets.PACKAGE_TOKEN }}}
+          token: ${{ secrets.PACKAGE_TOKEN }}
           release-type: node
           package-name: release-please-action
           include-v-in-tag: false
