@@ -7,7 +7,7 @@ const Colors = {
 };
 
 export const designSystem = {
-  prefix: "ex",
+  prefix: "pano",
   components: {
     button: {
       colors: ["primary", "secondary"],
