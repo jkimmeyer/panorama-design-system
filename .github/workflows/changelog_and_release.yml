@@ -35,7 +35,6 @@ jobs:
           node-version-file: .tool-versions
           registry-url: https://npm.pkg.github.com
           cache: npm
-          scope: "@jkimmeyer"
       - name: Install Node dependencies
         run: npm ci
       - name: Build Files
