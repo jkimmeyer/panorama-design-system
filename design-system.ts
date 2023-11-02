@@ -14,6 +14,7 @@ export const designSystem = {
       appearances: ["text", "outline", "filled"],
       sizes: ["small", "medium", "large"],
     },
+    "material-icon": {},
   },
   appearances: {
     filled: {

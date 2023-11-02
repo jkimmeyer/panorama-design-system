@@ -6,6 +6,11 @@ import { buttonStyles } from "./component.styles";
 
 {{> typesPartial attributes=designSystem.components.button }}
 
+declare global {
+  interface HTMLElementTagNameMap {
+    "{{kebabCase designSystem.prefix}}-button": {{titleCase designSystem.prefix}}Button;
+  }
+}
 
 export type ButtonType = "button" | "submit" | "reset";
 
