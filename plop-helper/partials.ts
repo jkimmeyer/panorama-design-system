@@ -27,8 +27,6 @@ const isAppearanceArray = (array: unknown): array is Appearance[] => {
 };
 
 export const types = ({ variants, name }: Props) => {
-  console.log({ variants });
-
   const attributeTypes = Object.keys(variants)
     .map((variant: string) => {
       const singularizedAttribute = singularize(variant);
