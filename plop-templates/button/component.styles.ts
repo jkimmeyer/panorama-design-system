@@ -6,9 +6,6 @@ export const buttonStyles = css`
   --button-border: 1px solid;
   --button-border-radius: calc(var(--ds-border-radius));
   --button-inline-padding: var(--space-medium);
-  --_button-main-color: var(--button-main-color);
-  --_button-contrast-main-color: var(--button-contrast-main-color);
-  --_button-interaction-color: var(--button-interaction-color);
 
   display: flex;
   justify-content: center;
@@ -32,7 +29,7 @@ export const buttonStyles = css`
 }
 
 .button:disabled {
-  --button-main-color: var(--color-neutral-300);
+  --button-main-color: var(--color-gray-1);
   --button-contrast-main-color: var(--color-neutral-300);
   --button-additional-color: var(--color-neutral-300);
 
@@ -41,47 +38,46 @@ export const buttonStyles = css`
 }
 
 .button:not(:disabled):where(:focus) {
-  --button-main-color: var(--_button-interaction-color);
+  filter: brightness(1.1);
 }
 
 .button:not(:disabled):where(:hover) {
-  --button-main-color: var(--_button-interaction-color);
+  filter: brightness(1.2);
 }
 
 .button:not(:disabled):where(:active) {
-  --button-main-color: var(--_button-interaction-color);
+  filter: brightness(1.3);
 }
 
 .button[icon-only] {
   aspect-ratio: 1;
 }
 
-{{#with designSystem}}
-{{#each components.button.colors}}
+{{#each variants.themes}}
 
-.button:where([data-color="{{this}}"]) {
+.button:where([data-theme="{{this}}"]) {
   --button-main-color: var(--color-{{this}});
-  --button-contrast-main-color: var(--color-on-{{this}});
-  --button-additional-color: var(--color-neutral-{{this}});
-  --_button-interaction-color: var(--color-{{this}}-interaction);
+  --button-on-main-color: var(--color-on-{{this}});
+  --button-container-color: var(--color-{{this}}-container);
+  --button-on-container-color: var(--color-{{this}}-on-container);
 }
 
 {{/each}}
 
-{{#each components.button.appearances}}
-.button:where([data-appearance="{{this}}"]) {
-  --button-color: {{applyColor "button" ../appearances this "text"}};
-  --button-border-color: {{applyColor "button" ../appearances this "border"}};
-  --button-background-color: {{applyColor "button" ../appearances this "background"}};
+{{#each variants.appearances}}
+.button:where([data-appearance="{{kebabCase this.name}}"]) {
+  /* Make this to appearancePartial */
+  --button-color: {{applyColor "button" this "color"}};
+  --button-border-color: {{applyColor "button" this "border-color"}};
+  --button-background-color: {{applyColor "button" this "background-color"}};
 }
 
 {{/each}}
 
-{{#each components.button.sizes}}
+{{#each variants.sizes}}
 .button:where([data-size="{{this}}"]) {
   --button-height: calc(var(--space-{{this}}) * 1.5);
 }
 
 {{/each}}
-{{/with}}
 `

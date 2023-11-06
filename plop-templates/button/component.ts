@@ -4,18 +4,18 @@ import { customElement, property } from "lit/decorators.js";
 import "../material-icon/component";
 import { buttonStyles } from "./component.styles";
 
-{{> typesPartial attributes=designSystem.components.button }}
+{{> types }}
 
 declare global {
   interface HTMLElementTagNameMap {
-    "{{kebabCase designSystem.prefix}}-button": {{titleCase designSystem.prefix}}Button;
+    "{{kebabCase meta.prefix}}-button": {{titleCase meta.prefix}}Button;
   }
 }
 
 export type ButtonType = "button" | "submit" | "reset";
 
-@customElement("{{designSystem.prefix}}-button")
-export class {{titleCase designSystem.prefix}}Button extends LitElement {
+@customElement("{{meta.prefix}}-button")
+export class {{titleCase meta.prefix}}Button extends LitElement {
   static styles = [
     css`
     .sr-only {
@@ -33,8 +33,7 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
     buttonStyles,
   ];
 
-  {{> propertiesPartial attributes=designSystem.components.button }}
-
+  {{> properties}}
 
   @property({ type: Boolean, reflect: true})
   disabled: boolean = false;
@@ -82,13 +81,13 @@ export class {{titleCase designSystem.prefix}}Button extends LitElement {
 
     if(href) {
       return html`
-        <a class="button" href="${href}" ?icon-only="${iconOnly}" {{> dataAttributes designSystem.components.button}}>
+        <a class="button" href="${href}" ?icon-only="${iconOnly}" {{> dataAttributes}}>
           ${innerHtml}
         </a>
       `;
     } else {
       return html`
-        <button class="button" ?disabled="${disabled}" ?icon-only="${iconOnly}" {{> dataAttributes designSystem.components.button}}>
+        <button class="button" ?disabled="${disabled}" ?icon-only="${iconOnly}" {{> dataAttributes}}>
           ${innerHtml}
         </button>
       `;

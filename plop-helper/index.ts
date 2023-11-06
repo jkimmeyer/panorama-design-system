@@ -1,13 +1,15 @@
 import { loadJSON } from "./loadJSON";
 import { singularize } from "./singularize";
 import { applyColor } from "./applyColor";
-import { typesPartial, propertiesPartial, dataAttributes } from "./partials";
+import { appendImports } from "./appendImports";
+import { types, properties, dataAttributes } from "./partials";
 
 export {
+  appendImports,
   applyColor,
   loadJSON,
   singularize,
-  typesPartial,
-  propertiesPartial,
+  types,
+  properties,
   dataAttributes,
 };

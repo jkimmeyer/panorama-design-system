@@ -3,40 +3,21 @@ import {
   ModifyActionConfig,
   NodePlopAPI,
 } from "@crutchcorn/plop";
-import { paramCase } from "change-case";
 import { designSystem } from "./design-system";
 import {
+  appendImports,
   singularize,
   applyColor,
-  typesPartial,
-  propertiesPartial,
+  types,
+  properties,
   dataAttributes,
 } from "./plop-helper";
 
-// Setup
-// const PREFIX = designSystem.prefix;
 const COMPONENTS = Object.keys(designSystem.components);
 
 interface Data {
   component: string;
 }
-
-interface AnyCaseName {
-  name: string;
-}
-
-const appendImports = (
-  fileContents: string,
-  { name: anyCaseName }: AnyCaseName,
-) => {
-  const lines = fileContents.split("\n").filter(Boolean);
-  const componentImport = `import "@/components/${paramCase(
-    anyCaseName,
-  )}/component";`;
-  lines.push(componentImport);
-  lines.sort();
-  return [...new Set(lines)].join("\n");
-};
 
 // Generator
 export default function (plop: NodePlopAPI) {
@@ -45,9 +26,9 @@ export default function (plop: NodePlopAPI) {
   // @ts-ignore
   plop.setPartial("dataAttributes", dataAttributes);
   // @ts-ignore
-  plop.setPartial("propertiesPartial", propertiesPartial);
+  plop.setPartial("properties", properties);
   // @ts-ignore
-  plop.setPartial("typesPartial", typesPartial);
+  plop.setPartial("types", types);
   /* eslint-enable @typescript-eslint/ban-ts-comment */
 
   plop.setHelper("singularize", singularize);
@@ -74,37 +55,40 @@ export default function (plop: NodePlopAPI) {
       if (data.component === "all") components = [...COMPONENTS];
       else components = [data?.component];
 
-      components.forEach((component: string) => {
+      components.forEach((name: string) => {
+        const { variants, properties } = designSystem.components[name];
+        const meta = designSystem.meta;
+
         addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${component}/component.ts`,
-          data: { designSystem, componentName: component },
-          templateFile: `plop-templates/${component}/component.ts`,
+          path: `src/components/${name}/component.styles.ts`,
+          data: { variants, name, meta },
+          templateFile: `plop-templates/${name}/component.styles.ts`,
         });
 
         addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${component}/component.styles.ts`,
-          data: { designSystem, componentName: component },
-          templateFile: `plop-templates/${component}/component.styles.ts`,
+          path: `src/components/${name}/component.ts`,
+          data: { variants, properties, name, meta },
+          templateFile: `plop-templates/${name}/component.ts`,
         });
 
         addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${component}/component.stories.ts`,
-          data: { designSystem, componentName: component },
-          templateFile: `plop-templates/${component}/component.stories.ts`,
+          path: `src/components/${name}/component.stories.ts`,
+          data: { variants, properties, name, meta },
+          templateFile: `plop-templates/${name}/component.stories.ts`,
         });
 
         addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${component}/component.test.ts`,
-          data: { designSystem, componentName: component },
-          templateFile: `plop-templates/${component}/component.test.ts`,
+          path: `src/components/${name}/component.test.ts`,
+          data: { variants, name, meta },
+          templateFile: `plop-templates/${name}/component.test.ts`,
         });
       });
 

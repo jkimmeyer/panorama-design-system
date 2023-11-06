@@ -1,10 +1,11 @@
 import { singularize } from ".";
-import { pascalCase } from "change-case";
+import { pascalCase, paramCase } from "change-case";
+import { Appearance } from "../design-system";
 
-interface Meta {
-  component: string;
-  componentName: string;
-  attributes: Attributes;
+interface Props {
+  variants: Attributes;
+  name: string;
+  meta: string;
 }
 
 interface Attributes {
@@ -15,17 +16,36 @@ const mergeToTitleCase = (terms: string[]) => {
   return pascalCase(terms.join(" "));
 };
 
-export const typesPartial = (meta: Meta) => {
-  const attributeTypes = Object.keys(meta.attributes)
-    .map((attribute) => {
-      const singularizedAttribute = singularize(attribute);
+// Type-Guard
+const isAppearanceArray = (array: unknown): array is Appearance[] => {
+  return Array.isArray(array) && array[0].name !== undefined;
+};
 
-      const typeDefinition = `export enum ${pascalCase(
-        meta.componentName,
-      )}${pascalCase(singularizedAttribute)} {`;
+export const types = ({ variants, name }: Props) => {
+  console.log({ variants });
 
-      const types = meta.attributes[attribute]
-        .map((value: string) => `  ${pascalCase(value)} = "${value}"`)
+  const attributeTypes = Object.keys(variants)
+    .map((variant: string) => {
+      const singularizedAttribute = singularize(variant);
+
+      const typeDefinition = `export enum ${pascalCase(name)}${pascalCase(
+        singularizedAttribute,
+      )} {`;
+
+      let typeData;
+
+      if (isAppearanceArray(variants[variant])) {
+        typeData = variants[variant];
+      } else {
+        typeData = variants[variant];
+      }
+
+      console.log({ typeData });
+
+      const types = typeData
+        .map(
+          (value: string) => `  ${pascalCase(value)} = "${paramCase(value)}"`,
+        )
         .join(",\n");
 
       const typeClosing = "}";
@@ -36,13 +56,11 @@ export const typesPartial = (meta: Meta) => {
   return attributeTypes;
 };
 
-export const propertiesPartial = (meta: Meta) => {
-  const propertiesString = Object.keys(meta.attributes).map((attribute) => {
+export const properties = ({ variants, name }: Props) => {
+  const propertiesString = Object.keys(variants).map((attribute) => {
     const singularizedAttribute = singularize(attribute);
-    const attributeType = mergeToTitleCase([
-      meta.componentName,
-      singularizedAttribute,
-    ]);
+    const attributeType = mergeToTitleCase([name, singularizedAttribute]);
+
     const propertyDefinition = `@property({ type: String, reflect: true })`;
     const defaultDefinition = `${singularizedAttribute}!: ${attributeType}`;
     return [propertyDefinition, defaultDefinition].join("\n");
@@ -51,10 +69,10 @@ export const propertiesPartial = (meta: Meta) => {
   return propertiesString.join("\n\n");
 };
 
-export const dataAttributes = (attributes: Attributes): string => {
-  return Object.keys(attributes)
-    .map((attribute) => {
-      const singularizedAttribute = singularize(attribute);
+export const dataAttributes = ({ variants }: Props) => {
+  return Object.keys(variants)
+    .map((variant) => {
+      const singularizedAttribute = singularize(variant);
       return `data-${singularizedAttribute}="\${this.${singularizedAttribute}}"`;
     })
     .join(" ");
