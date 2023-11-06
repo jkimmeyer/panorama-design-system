@@ -1,34 +1,53 @@
 import { singularize } from ".";
-import { pascalCase } from "change-case";
+import { pascalCase, paramCase } from "change-case";
+import { Appearance } from "../design-system";
 
-interface Meta {
-  component: string;
-  componentName: string;
-  attributes: Attributes;
+interface Property {
+  type: string;
+  required?: boolean;
+  default?: boolean | string | object | null;
 }
-
-interface Attributes {
-  [key: string]: string[];
+interface Variant {
+  [key: string]: string[] | Appearance[];
+}
+interface Props {
+  variants: Variant;
+  properties: Property[];
+  name: string;
+  meta: string;
 }
 
 const mergeToTitleCase = (terms: string[]) => {
   return pascalCase(terms.join(" "));
 };
 
-export const typesPartial = (meta: Meta) => {
-  const attributeTypes = Object.keys(meta.attributes)
-    .map((attribute) => {
-      const singularizedAttribute = singularize(attribute);
+// Type-Guard
+const isAppearanceArray = (array: unknown): array is Appearance[] => {
+  return Array.isArray(array) && array[0].name !== undefined;
+};
 
-      const typeDefinition = `export enum ${pascalCase(
-        meta.componentName,
-      )}${pascalCase(singularizedAttribute)} {`;
+export const types = ({ variants, name }: Props) => {
+  const attributeTypes = Object.keys(variants)
+    .map((variant: string) => {
+      const singularizedAttribute = singularize(variant);
 
-      const types = meta.attributes[attribute]
-        .map((value: string) => `  ${pascalCase(value)} = "${value}"`)
+      const typeDefinition = `export enum ${pascalCase(name)}${pascalCase(
+        singularizedAttribute,
+      )} {`;
+      const typeClosing = "}";
+
+      let typeData = variants[variant];
+
+      if (isAppearanceArray(typeData)) {
+        typeData = typeData.map((value: Appearance) => value.name);
+      }
+
+      const types = typeData
+        .map(
+          (value: string) => `  ${pascalCase(value)} = "${paramCase(value)}"`,
+        )
         .join(",\n");
 
-      const typeClosing = "}";
       return [typeDefinition, types, typeClosing].join("\n");
     })
     .join("\n\n");
@@ -36,26 +55,117 @@ export const typesPartial = (meta: Meta) => {
   return attributeTypes;
 };
 
-export const propertiesPartial = (meta: Meta) => {
-  const propertiesString = Object.keys(meta.attributes).map((attribute) => {
+export const properties = ({ variants, properties, name }: Props) => {
+  const variantsPropArray = Object.keys(variants).map((attribute) => {
     const singularizedAttribute = singularize(attribute);
-    const attributeType = mergeToTitleCase([
-      meta.componentName,
-      singularizedAttribute,
-    ]);
+    const attributeType = mergeToTitleCase([name, singularizedAttribute]);
+
     const propertyDefinition = `@property({ type: String, reflect: true })`;
     const defaultDefinition = `${singularizedAttribute}!: ${attributeType}`;
     return [propertyDefinition, defaultDefinition].join("\n");
   });
 
-  return propertiesString.join("\n\n");
+  const propsArray: string[] = [];
+
+  Object.entries(properties).forEach(([key, value]) => {
+    const { type, default: defaultValue, required } = value;
+
+    const propertyDefinition = `@property({ type: ${pascalCase(
+      type,
+    )}, reflect: true })`;
+
+    const defaultDeclaration =
+      typeof defaultValue === "string"
+        ? ` = "${defaultValue}"`
+        : `: ${type} = ${defaultValue}`;
+
+    const defaultOrTypeWithDefault = value.required
+      ? `: ${type}`
+      : defaultDeclaration;
+
+    const defaultDefinition = `${key}${
+      required ? "!" : ""
+    }${defaultOrTypeWithDefault};`;
+
+    propsArray.push([propertyDefinition, defaultDefinition].join("\n"));
+  });
+
+  return [...variantsPropArray, ...propsArray, ""].join("\n\n");
 };
 
-export const dataAttributes = (attributes: Attributes): string => {
-  return Object.keys(attributes)
-    .map((attribute) => {
-      const singularizedAttribute = singularize(attribute);
+export const dataAttributes = ({ variants }: Props) => {
+  return Object.keys(variants)
+    .map((variant) => {
+      const singularizedAttribute = singularize(variant);
       return `data-${singularizedAttribute}="\${this.${singularizedAttribute}}"`;
     })
     .join(" ");
+};
+
+export const storybookArgs = ({ variants, properties }: Props) => {
+  const variantArgs = Object.keys(variants).map((variant: string) => {
+    let typeData = variants[variant];
+
+    const singularizedAttribute = singularize(variant);
+
+    if (isAppearanceArray(typeData)) {
+      typeData = typeData.map((value: Appearance) => value.name);
+    }
+
+    return `${singularizedAttribute}: "${typeData[0]}",`;
+  });
+
+  const propertyArgs: string[] = [];
+
+  Object.entries(properties).forEach(([key, value]) => {
+    const { default: defaultValue, required } = value;
+
+    const defaultDeclaration =
+      typeof defaultValue === "string"
+        ? `"${defaultValue}"`
+        : `${defaultValue}`;
+
+    const defaultOrTypeWithDefault = required
+      ? `: undefined`
+      : `: ${defaultDeclaration}`;
+
+    propertyArgs.push(`${key}${defaultOrTypeWithDefault},`);
+  });
+
+  return [...variantArgs, ...propertyArgs, ""].join("\n");
+};
+
+export const storybookArgTypes = ({ name, variants, properties }: Props) => {
+  const variantArgs = Object.keys(variants).map((variant: string) => {
+    let typeData = variants[variant];
+
+    if (isAppearanceArray(typeData)) {
+      typeData = typeData.map((value: Appearance) => value.name);
+    }
+    const singularizedAttribute = singularize(variant);
+
+    const prepend = `${singularizedAttribute}: {`;
+    const options = `  options: ${mergeToTitleCase([
+      name,
+      singularizedAttribute,
+    ])},`;
+    const control = `  control: { type: "select" }`;
+    const append = "},";
+
+    return [prepend, options, control, append].join("\n");
+  });
+
+  const propertyArgs: string[] = [];
+
+  Object.entries(properties).forEach(([key, value]) => {
+    const { type } = value;
+
+    const prepend = `${key}: {`;
+    const options = `  type: "${type}"`;
+    const append = "},";
+
+    propertyArgs.push([prepend, options, append].join("\n"));
+  });
+
+  return [...variantArgs, ...propertyArgs, ""].join("\n");
 };

@@ -1,15 +1,20 @@
-import { AddActionConfig, NodePlopAPI } from "@crutchcorn/plop";
+import {
+  AddActionConfig,
+  ModifyActionConfig,
+  NodePlopAPI,
+} from "@crutchcorn/plop";
 import { designSystem } from "./design-system";
 import {
+  appendImports,
   singularize,
   applyColor,
-  typesPartial,
-  propertiesPartial,
+  types,
+  properties,
   dataAttributes,
+  storybookArgTypes,
+  storybookArgs,
 } from "./plop-helper";
 
-// Setup
-// const PREFIX = designSystem.prefix;
 const COMPONENTS = Object.keys(designSystem.components);
 
 interface Data {
@@ -23,9 +28,13 @@ export default function (plop: NodePlopAPI) {
   // @ts-ignore
   plop.setPartial("dataAttributes", dataAttributes);
   // @ts-ignore
-  plop.setPartial("propertiesPartial", propertiesPartial);
+  plop.setPartial("properties", properties);
   // @ts-ignore
-  plop.setPartial("typesPartial", typesPartial);
+  plop.setPartial("types", types);
+  // @ts-ignore
+  plop.setPartial("storybookArgTypes", storybookArgTypes);
+  // @ts-ignore
+  plop.setPartial("storybookArgs", storybookArgs);
   /* eslint-enable @typescript-eslint/ban-ts-comment */
 
   plop.setHelper("singularize", singularize);
@@ -45,46 +54,63 @@ export default function (plop: NodePlopAPI) {
     // eslint-disable-next-line
     // @ts-ignore
     actions: (data: Data) => {
-      const actions: AddActionConfig[] = [];
+      const addActions: AddActionConfig[] = [];
+      const modifyActions: ModifyActionConfig[] = [];
       let components;
 
       if (data.component === "all") components = [...COMPONENTS];
       else components = [data?.component];
 
-      components.forEach((component: string) => {
-        actions.push({
+      components.forEach((name: string) => {
+        const { variants, properties } = designSystem.components[name];
+        const meta = designSystem.meta;
+
+        addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${component}/component.ts`,
-          data: { designSystem, componentName: component },
-          templateFile: `plop-templates/${component}/component.ts`,
+          path: `src/components/${name}/component.styles.ts`,
+          data: { variants, name, meta },
+          templateFile: `plop-templates/${name}/component.styles.ts`,
         });
 
-        actions.push({
+        addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${component}/component.styles.ts`,
-          data: { designSystem, componentName: component },
-          templateFile: `plop-templates/${component}/component.styles.ts`,
+          path: `src/components/${name}/component.ts`,
+          data: { variants, properties, name, meta },
+          templateFile: `plop-templates/${name}/component.ts`,
         });
 
-        actions.push({
+        addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${component}/component.stories.ts`,
-          data: { designSystem, componentName: component },
-          templateFile: `plop-templates/${component}/component.stories.ts`,
+          path: `src/components/${name}/component.stories.ts`,
+          data: { variants, properties, name, meta },
+          templateFile: `plop-templates/${name}/component.stories.ts`,
         });
 
-        actions.push({
+        addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${component}/component.test.ts`,
-          data: { designSystem, componentName: component },
-          templateFile: `plop-templates/${component}/component.test.ts`,
+          path: `src/components/${name}/component.test.ts`,
+          data: { variants, name, meta },
+          templateFile: `plop-templates/${name}/component.test.ts`,
         });
       });
-      return actions;
+
+      components.forEach((component: string) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        modifyActions.push({
+          force: true,
+          type: "modify",
+          path: "src/main.ts",
+          data: { name: component },
+          transform: appendImports,
+        });
+      });
+
+      return [...addActions, ...modifyActions];
     },
   });
 }

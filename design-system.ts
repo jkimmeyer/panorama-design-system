@@ -1,36 +1,86 @@
-const Colors = {
-  Main: "main",
-  OnMain: "contrast-main",
-  Additional: "additional",
-  None: "none",
-  Transparent: "transparent",
-};
+import buttonConfig from "./plop-templates/button/component.json";
 
-export const designSystem = {
-  prefix: "pano",
+export enum ColorTheme {
+  Primary = "primary",
+  Secondary = "secondary",
+}
+
+export enum ColorPurpose {
+  Main = "main",
+  OnMain = "onMain",
+  Container = "container",
+  OnContainer = "onContainer",
+  Transparent = "transparent",
+}
+
+export const ButtonAppearances = [
+  {
+    name: "filled",
+    color: ColorPurpose.OnMain,
+    "border-color": ColorPurpose.Transparent,
+    "background-color": ColorPurpose.Main,
+  },
+  {
+    name: "outline",
+    color: ColorPurpose.Main,
+    "border-color": ColorPurpose.Main,
+    "background-color": ColorPurpose.Transparent,
+  },
+];
+
+export interface Appearance {
+  name: string;
+  color: ColorPurpose;
+  "border-color": ColorPurpose;
+  "background-color": ColorPurpose;
+}
+interface Variants {
+  appearances: Appearance[];
+  themes: ColorTheme[];
+  sizes: string[];
+}
+
+interface IProperties {
+  [key: string]: Property;
+}
+interface Property {
+  type: string;
+  required?: boolean;
+  default?: boolean | string | object | null;
+}
+
+interface DesignSystemComponent {
+  variants?: Variants;
+  properties?: IProperties;
+}
+interface IDesignSystemComponents {
+  [key: string]: DesignSystemComponent;
+}
+
+interface Meta {
+  prefix: string;
+}
+
+interface DesignSystem {
+  meta: Meta;
+  components: IDesignSystemComponents;
+}
+
+export const designSystem: DesignSystem = {
+  meta: {
+    prefix: "pano",
+  },
   components: {
     button: {
-      colors: ["primary", "secondary"],
-      appearances: ["text", "outline", "filled"],
-      sizes: ["small", "medium", "large"],
+      variants: {
+        appearances: ButtonAppearances,
+        sizes: ["small", "medium", "large"],
+        themes: [ColorTheme.Primary, ColorTheme.Secondary],
+      },
+      properties: {
+        ...buttonConfig.properties,
+      },
     },
     "material-icon": {},
-  },
-  appearances: {
-    filled: {
-      text: Colors.OnMain,
-      border: Colors.OnMain,
-      background: Colors.Main,
-    },
-    outline: {
-      text: Colors.Main,
-      border: Colors.Main,
-      background: Colors.None,
-    },
-    text: {
-      text: Colors.Main,
-      border: Colors.Transparent,
-      background: Colors.None,
-    },
   },
 };

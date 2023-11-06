@@ -1,21 +1,42 @@
 :root,
 ::before,
 ::after {
+  /* Sizes */
   --space-small: 0.5rem;
   --space-medium: 1rem;
   --space-large: 1.5rem;
 
-  --color-primary: #ff0000;
-  --color-on-primary: #ffffff;
-  --color-neutral-primary: #000000;
-  --color-primary-interaction: #7a0707;
+  /* Color Palette */
+  --pano-nature-1: hsla(177, 72%, 20%, 1);
+  --pano-nature-2: hsla(177, 72%, 40%, 1);
+  --pano-nature-3: hsla(177, 72%, 60%, 1);
+  --pano-nature-4: hsla(177, 72%, 80%, 1);
 
-  --color-secondary: #00ff00;
-  --color-on-secondary: #000000;
-  --color-neutral-secondary: #cccccc;
-  --color-secondary-interaction: #009900;
+  --pano-aqua-1: hsla(217, 60%, 20%, 1);
+  --pano-aqua-2: hsla(217, 60%, 40%, 1);
+  --pano-aqua-3: hsla(217, 60%, 60%, 1);
+  --pano-aqua-4: hsla(217, 60%, 80%, 1);
 
+  --pano-black: hsla(0, 0%, 4%, 1);
+  --pano-gray-1: hsla(0, 0%, 20%, 1);
+  --pano-gray-2: hsla(0, 0%, 80%, 1);
+  --pano-white: hsla(0, 0%, 96%, 1);
+
+  /* Color */
+  --color-primary: var(--pano-aqua-4);
+  --color-on-primary: var(--pano-black);
+  --color-primary-container: var(--pano-aqua-3);
+  --color-primary-on-container: var(--pano-aqua-2);
+
+  --color-secondary: var(--pano-nature-1);
+  --color-on-secondary: var(--pano-nature-4);
+  --color-secondary-container: var(--pano-nature-2);
+  --color-secondary-on-container: var(--pano-white);
+
+  /* Other */
   --ds-border-radius: 0.25rem;
 
   --ds-default-font: "PT Sans Pro", sans-serif;
+  --ds-default-font-size: 1rem;
+  --ds-default-line-height: 1.5rem;
 }
