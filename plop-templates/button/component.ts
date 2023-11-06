@@ -6,6 +6,7 @@ import { buttonStyles } from "./component.styles";
 
 {{> types }}
 
+
 declare global {
   interface HTMLElementTagNameMap {
     "{{kebabCase meta.prefix}}-button": {{titleCase meta.prefix}}Button;
@@ -18,43 +19,34 @@ export type ButtonType = "button" | "submit" | "reset";
 export class {{titleCase meta.prefix}}Button extends LitElement {
   static styles = [
     css`
-    .sr-only {
-      clip: rect(0, 0, 0, 0);
-      overflow: hidden;
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      border-width: 0;
-      padding: 0;
-      white-space: nowrap;
-    }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      a, button {
+        margin: 0;
+        padding: 0;
+        font: inherit;
+      }
+
+      .sr-only {
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border-width: 0;
+        padding: 0;
+        white-space: nowrap;
+      }
     `,
     buttonStyles,
   ];
 
   {{> properties}}
-
-  @property({ type: Boolean, reflect: true})
-  disabled: boolean = false;
-
-  @property({ type: String, reflect: true })
-  label!: string;
-
-  @property({ type: String, reflect: true })
-  href: string | undefined = undefined;
-
-  @property({ type: String, reflect: true })
-  buttonType: ButtonType = "button";
-
-  @property({ type: String, reflect: true })
-  iconBefore: string = "";
-
-  @property({ type: String, reflect: true })
-  iconAfter: string = "";
-
-  @property({ type: Boolean, reflect: true })
-  iconOnly: boolean = false;
 
   render() {
     const {

@@ -1,0 +1,33 @@
+{
+  "component": "button",
+  "properties": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "buttonType": {
+      "type": "string",
+      "default": "button"
+    },
+    "iconOnly": {
+      "type": "boolean",
+      "default": false
+    },
+    "iconBefore": {
+      "type": "string",
+      "default": ""
+    },
+    "iconAfter": {
+      "type": "string",
+      "default": ""
+    },
+    "href": {
+      "type": "string",
+      "default": ""
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -11,6 +11,8 @@ import {
   types,
   properties,
   dataAttributes,
+  storybookArgTypes,
+  storybookArgs,
 } from "./plop-helper";
 
 const COMPONENTS = Object.keys(designSystem.components);
@@ -29,6 +31,10 @@ export default function (plop: NodePlopAPI) {
   plop.setPartial("properties", properties);
   // @ts-ignore
   plop.setPartial("types", types);
+  // @ts-ignore
+  plop.setPartial("storybookArgTypes", storybookArgTypes);
+  // @ts-ignore
+  plop.setPartial("storybookArgs", storybookArgs);
   /* eslint-enable @typescript-eslint/ban-ts-comment */
 
   plop.setHelper("singularize", singularize);

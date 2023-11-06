@@ -2,7 +2,13 @@ import { loadJSON } from "./loadJSON";
 import { singularize } from "./singularize";
 import { applyColor } from "./applyColor";
 import { appendImports } from "./appendImports";
-import { types, properties, dataAttributes } from "./partials";
+import {
+  types,
+  properties,
+  dataAttributes,
+  storybookArgTypes,
+  storybookArgs,
+} from "./partials";
 
 export {
   appendImports,
@@ -12,4 +18,6 @@ export {
   types,
   properties,
   dataAttributes,
+  storybookArgTypes,
+  storybookArgs,
 };

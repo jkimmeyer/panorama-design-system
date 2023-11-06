@@ -7,7 +7,7 @@ export const buttonStyles = css`
   --button-border-radius: calc(var(--ds-border-radius));
   --button-inline-padding: var(--space-medium);
 
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: var(--space-medium);
@@ -19,6 +19,9 @@ export const buttonStyles = css`
   color: var(--button-color);
   background-color: var(--button-background-color);
   cursor: pointer;
+  font-family: var(--ds-default-font);
+  font-size: var(--ds-default-font-size);
+  line-height: var(--ds-default-line-height);
 }
 
 /* Link Styles */
@@ -66,7 +69,6 @@ export const buttonStyles = css`
 
 {{#each variants.appearances}}
 .button:where([data-appearance="{{kebabCase this.name}}"]) {
-  /* Make this to appearancePartial */
   --button-color: {{applyColor "button" this "color"}};
   --button-border-color: {{applyColor "button" this "border-color"}};
   --button-background-color: {{applyColor "button" this "background-color"}};
