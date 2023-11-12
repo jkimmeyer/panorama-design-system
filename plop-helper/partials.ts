@@ -3,6 +3,7 @@ import { pascalCase, paramCase } from "change-case";
 import { Appearance } from "../design-system";
 
 interface Property {
+  attribute?: string;
   type: string;
   required?: boolean;
   default?: boolean | string | object | null;
@@ -61,18 +62,21 @@ export const properties = ({ variants, properties, name }: Props) => {
     const attributeType = mergeToTitleCase([name, singularizedAttribute]);
 
     const propertyDefinition = `@property({ type: String, reflect: true })`;
-    const defaultDefinition = `${singularizedAttribute}!: ${attributeType}`;
+    const defaultDefinition = `${singularizedAttribute}!: ${attributeType};`;
     return [propertyDefinition, defaultDefinition].join("\n");
   });
 
   const propsArray: string[] = [];
 
   Object.entries(properties).forEach(([key, value]) => {
-    const { type, default: defaultValue, required } = value;
+    const { attribute, type, default: defaultValue, required } = value;
+
+    const attributeString = attribute ? `, attribute: "${attribute}"` : "";
+    ``;
 
     const propertyDefinition = `@property({ type: ${pascalCase(
       type,
-    )}, reflect: true })`;
+    )}, reflect: true${attributeString} })`;
 
     const defaultDeclaration =
       typeof defaultValue === "string"
@@ -136,7 +140,25 @@ export const storybookArgs = ({ variants, properties }: Props) => {
 };
 
 export const storybookArgTypes = ({ name, variants, properties }: Props) => {
-  const variantArgs = Object.keys(variants).map((variant: string) => {
+  const variantArgs =
+
+  const propertyArgs: string[] = [];
+
+  Object.entries(properties).forEach(([key, value]) => {
+    const { type } = value;
+
+    const prepend = `${key}: {`;
+    const options = `  type: "${type}"`;
+    const append = "},";
+
+    propertyArgs.push([prepend, options, append].join("\n"));
+  });
+
+  return [...variantArgs, ...propertyArgs, ""].join("\n");
+};
+
+const storybookArgTypesForVariants = ({ name, variants, properties }: Props) => {
+  Object.keys(variants).map((variant: string) => {
     let typeData = variants[variant];
 
     if (isAppearanceArray(typeData)) {
@@ -153,19 +175,5 @@ export const storybookArgTypes = ({ name, variants, properties }: Props) => {
     const append = "},";
 
     return [prepend, options, control, append].join("\n");
-  });
-
-  const propertyArgs: string[] = [];
-
-  Object.entries(properties).forEach(([key, value]) => {
-    const { type } = value;
-
-    const prepend = `${key}: {`;
-    const options = `  type: "${type}"`;
-    const append = "},";
-
-    propertyArgs.push([prepend, options, append].join("\n"));
-  });
-
-  return [...variantArgs, ...propertyArgs, ""].join("\n");
+  })
 };

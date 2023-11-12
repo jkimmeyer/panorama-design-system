@@ -1,4 +1,5 @@
 import buttonConfig from "./plop-templates/button/component.json";
+import inputConfig from "./plop-templates/input/component.json";
 
 export enum ColorTheme {
   Primary = "primary",
@@ -79,6 +80,11 @@ export const designSystem: DesignSystem = {
       },
       properties: {
         ...buttonConfig.properties,
+      },
+    },
+    input: {
+      properties: {
+        ...inputConfig.properties,
       },
     },
     "material-icon": {},

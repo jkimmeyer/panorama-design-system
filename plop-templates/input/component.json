@@ -1,0 +1,56 @@
+{
+  "component": "input",
+  "properties": {
+    "autocomplete": {
+      "type": "boolean",
+      "default": false
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "hiddenLabel": {
+      "type": "boolean",
+      "default": false
+    },
+    "inputType": {
+      "type": "string",
+      "default": "text"
+    },
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "readOnly": {
+      "type": "boolean",
+      "default": false,
+      "attribute": "read-only"
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "pattern": {
+      "type": "string",
+      "default": ""
+    },
+    "placeholder": {
+      "type": "string",
+      "default": ""
+    },
+    "value": {
+      "type": "string",
+      "default": ""
+    },
+    "iconBefore": {
+      "type": "string",
+      "default": "",
+      "attribute": "icon-before"
+    },
+    "iconAfter": {
+      "type": "string",
+      "default": "",
+      "attribute": "icon-after"
+    }
+  }
+}
