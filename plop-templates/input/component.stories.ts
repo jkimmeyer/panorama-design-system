@@ -9,7 +9,8 @@ import {
 const meta: Meta = {
   component: "{{meta.prefix}}-input",
   argTypes: {
-    {{> storybookArgTypes}}
+    {{> storybookVariantControls }}
+    {{> storybookControls}}
   },
 };
 

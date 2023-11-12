@@ -36,9 +36,9 @@ export interface Appearance {
   "background-color": ColorPurpose;
 }
 interface Variants {
-  appearances: Appearance[];
-  themes: ColorTheme[];
-  sizes: string[];
+  appearances?: Appearance[];
+  themes?: ColorTheme[];
+  sizes?: string[];
 }
 
 interface IProperties {
@@ -83,6 +83,9 @@ export const designSystem: DesignSystem = {
       },
     },
     input: {
+      variants: {
+        sizes: ["small", "medium"],
+      },
       properties: {
         ...inputConfig.properties,
       },

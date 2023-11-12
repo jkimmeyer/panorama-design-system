@@ -6,7 +6,7 @@ import {
   types,
   properties,
   dataAttributes,
-  storybookArgTypes,
+  storybookControls,
   storybookArgs,
 } from "./partials";
 
@@ -18,6 +18,6 @@ export {
   types,
   properties,
   dataAttributes,
-  storybookArgTypes,
+  storybookControls,
   storybookArgs,
 };

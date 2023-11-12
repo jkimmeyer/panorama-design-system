@@ -1,5 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { customElement, property, query } from "lit/decorators.js";
 import "../material-icon/component";
 import { inputStyles } from "./component.styles";
@@ -59,7 +60,6 @@ export class {{titleCase meta.prefix }}Input extends LitElement {
 
   render() {
     const {
-      autocomplete,
       disabled,
       hiddenLabel,
       inputType,
@@ -68,6 +68,8 @@ export class {{titleCase meta.prefix }}Input extends LitElement {
       value,
       iconBefore,
       iconAfter,
+      pattern,
+      placeholder,
       _handleInput: handleInput,
     } = this;
 
@@ -91,15 +93,17 @@ export class {{titleCase meta.prefix }}Input extends LitElement {
             ></material-icon>`
           : null}
         <input
-          .autocomplete="${autocomplete}"
           class="input--field"
           .disabled="${disabled}"
           id="input"
           ?disabled="${disabled}"
           ?read-only="${readOnly}"
-          value="${value}"
+          pattern="${ifDefined(pattern)}"
+          placeholder="${ifDefined(placeholder)}"
+          value="${ifDefined(value)}"
           type="${inputType}"
           @input="${handleInput}"
+          {{> dataAttributes}}
         />
         ${iconAfter
           ? html`<material-icon

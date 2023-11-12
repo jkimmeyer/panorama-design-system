@@ -7,6 +7,8 @@ interface Property {
   type: string;
   required?: boolean;
   default?: boolean | string | object | null;
+  storyDefault?: boolean | string | object | null;
+  customType?: string;
 }
 interface Variant {
   [key: string]: string[] | Appearance[];
@@ -27,7 +29,7 @@ const isAppearanceArray = (array: unknown): array is Appearance[] => {
   return Array.isArray(array) && array[0].name !== undefined;
 };
 
-export const types = ({ variants, name }: Props) => {
+export const types = ({ variants = {}, name }: Props) => {
   const attributeTypes = Object.keys(variants)
     .map((variant: string) => {
       const singularizedAttribute = singularize(variant);
@@ -56,7 +58,7 @@ export const types = ({ variants, name }: Props) => {
   return attributeTypes;
 };
 
-export const properties = ({ variants, properties, name }: Props) => {
+export const properties = ({ variants = {}, properties, name }: Props) => {
   const variantsPropArray = Object.keys(variants).map((attribute) => {
     const singularizedAttribute = singularize(attribute);
     const attributeType = mergeToTitleCase([name, singularizedAttribute]);
@@ -69,7 +71,13 @@ export const properties = ({ variants, properties, name }: Props) => {
   const propsArray: string[] = [];
 
   Object.entries(properties).forEach(([key, value]) => {
-    const { attribute, type, default: defaultValue, required } = value;
+    const {
+      attribute,
+      type,
+      default: defaultValue,
+      required,
+      customType,
+    } = value;
 
     const attributeString = attribute ? `, attribute: "${attribute}"` : "";
     ``;
@@ -79,12 +87,14 @@ export const properties = ({ variants, properties, name }: Props) => {
     )}, reflect: true${attributeString} })`;
 
     const defaultDeclaration =
-      typeof defaultValue === "string"
-        ? ` = "${defaultValue}"`
-        : `: ${type} = ${defaultValue}`;
+      typeof defaultValue === "string" && defaultValue !== "undefined"
+        ? `${customType ? `: ${customType ?? type}` : ""} = "${defaultValue}"`
+        : `: ${customType ?? type} ${
+            defaultValue === "undefined" ? "| undefined" : ""
+          } = ${defaultValue}`;
 
     const defaultOrTypeWithDefault = value.required
-      ? `: ${type}`
+      ? `: ${customType ?? type}`
       : defaultDeclaration;
 
     const defaultDefinition = `${key}${
@@ -97,7 +107,9 @@ export const properties = ({ variants, properties, name }: Props) => {
   return [...variantsPropArray, ...propsArray, ""].join("\n\n");
 };
 
-export const dataAttributes = ({ variants }: Props) => {
+export const dataAttributes = ({ variants = {} }: Props) => {
+  if (variants === undefined) return "";
+
   return Object.keys(variants)
     .map((variant) => {
       const singularizedAttribute = singularize(variant);
@@ -106,7 +118,7 @@ export const dataAttributes = ({ variants }: Props) => {
     .join(" ");
 };
 
-export const storybookArgs = ({ variants, properties }: Props) => {
+export const storybookArgs = ({ variants = {}, properties }: Props) => {
   const variantArgs = Object.keys(variants).map((variant: string) => {
     let typeData = variants[variant];
 
@@ -122,7 +134,16 @@ export const storybookArgs = ({ variants, properties }: Props) => {
   const propertyArgs: string[] = [];
 
   Object.entries(properties).forEach(([key, value]) => {
-    const { default: defaultValue, required } = value;
+    const { default: defaultValue, required, storyDefault } = value;
+
+    if (storyDefault) {
+      typeof storyDefault === "string"
+        ? propertyArgs.push(`${key}: "${storyDefault}",`)
+        : propertyArgs.push(`${key}: ${storyDefault},`);
+      return;
+    }
+
+    if (defaultValue === "undefined") return;
 
     const defaultDeclaration =
       typeof defaultValue === "string"
@@ -139,41 +160,42 @@ export const storybookArgs = ({ variants, properties }: Props) => {
   return [...variantArgs, ...propertyArgs, ""].join("\n");
 };
 
-export const storybookArgTypes = ({ name, variants, properties }: Props) => {
-  const variantArgs =
-
+export const storybookControls = ({ properties }: Props) => {
   const propertyArgs: string[] = [];
 
   Object.entries(properties).forEach(([key, value]) => {
-    const { type } = value;
+    const { type, customType } = value;
 
     const prepend = `${key}: {`;
-    const options = `  type: "${type}"`;
+    const options = `  type: "${type ?? customType}"`;
     const append = "},";
 
     propertyArgs.push([prepend, options, append].join("\n"));
   });
-
-  return [...variantArgs, ...propertyArgs, ""].join("\n");
+  return [...propertyArgs, ""].join("\n");
 };
 
-const storybookArgTypesForVariants = ({ name, variants, properties }: Props) => {
-  Object.keys(variants).map((variant: string) => {
-    let typeData = variants[variant];
+export const storybookVariantControls = ({ name, variants }: Props) => {
+  if (variants === undefined) return "";
 
-    if (isAppearanceArray(typeData)) {
-      typeData = typeData.map((value: Appearance) => value.name);
-    }
-    const singularizedAttribute = singularize(variant);
+  return Object.keys(variants)
+    .map((variant: string) => {
+      let typeData = variants[variant];
 
-    const prepend = `${singularizedAttribute}: {`;
-    const options = `  options: ${mergeToTitleCase([
-      name,
-      singularizedAttribute,
-    ])},`;
-    const control = `  control: { type: "select" }`;
-    const append = "},";
+      if (isAppearanceArray(typeData)) {
+        typeData = typeData.map((value: Appearance) => value.name);
+      }
+      const singularizedAttribute = singularize(variant);
 
-    return [prepend, options, control, append].join("\n");
-  })
+      const prepend = `${singularizedAttribute}: {`;
+      const options = `  options: ${mergeToTitleCase([
+        name,
+        singularizedAttribute,
+      ])},`;
+      const control = `  control: { type: "select" }`;
+      const append = "},";
+
+      return [prepend, options, control, append].join("\n");
+    })
+    .join("\n");
 };

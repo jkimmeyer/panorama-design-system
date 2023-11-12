@@ -32,9 +32,8 @@ export const buttonStyles = css`
 }
 
 .button:disabled {
-  --button-main-color: var(--color-gray-1);
-  --button-contrast-main-color: var(--color-neutral-300);
-  --button-additional-color: var(--color-neutral-300);
+  --button-main-color: var(--color-disabled);
+  --button-on-main-color: var(--color-on-disabled);
 
   cursor: default;
   pointer-events: none;
