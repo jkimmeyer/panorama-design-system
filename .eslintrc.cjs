@@ -7,6 +7,7 @@ module.exports = {
     "plugin:wc/best-practice",
     "plugin:lit/recommended",
     "plugin:lit-a11y/recommended",
+    "plugin:storybook/recommended"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
