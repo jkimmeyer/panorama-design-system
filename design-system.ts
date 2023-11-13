@@ -1,6 +1,8 @@
 import buttonConfig from "./plop-templates/button/component.json";
-import inputConfig from "./plop-templates/input/component.json";
+import cardConfig from "./plop-templates/card/component.json";
 import checkboxConfig from "./plop-templates/checkbox/component.json";
+import inputConfig from "./plop-templates/input/component.json";
+import radioConfig from "./plop-templates/radio-group/component.json";
 
 export enum ColorTheme {
   Primary = "primary",
@@ -15,7 +17,7 @@ export enum ColorPurpose {
   Transparent = "transparent",
 }
 
-export const ButtonAppearances = [
+export const Appearances = [
   {
     name: "filled",
     color: ColorPurpose.OnMain,
@@ -75,12 +77,21 @@ export const designSystem: DesignSystem = {
   components: {
     button: {
       variants: {
-        appearances: ButtonAppearances,
+        appearances: Appearances,
         sizes: ["small", "medium", "large"],
         themes: [ColorTheme.Primary, ColorTheme.Secondary],
       },
       properties: {
         ...buttonConfig.properties,
+      },
+    },
+    card: {
+      variants: {
+        appearances: Appearances,
+        themes: [ColorTheme.Primary, ColorTheme.Secondary],
+      },
+      properties: {
+        ...cardConfig.properties,
       },
     },
     checkbox: {
@@ -90,6 +101,7 @@ export const designSystem: DesignSystem = {
     },
     input: {
       variants: {
+        appearances: Appearances,
         sizes: ["small", "medium"],
       },
       properties: {
@@ -97,5 +109,10 @@ export const designSystem: DesignSystem = {
       },
     },
     "material-icon": {},
+    "radio-group": {
+      properties: {
+        ...radioConfig.properties,
+      },
+    },
   },
 };
