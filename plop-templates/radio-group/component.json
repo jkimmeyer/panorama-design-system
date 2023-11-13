@@ -1,0 +1,32 @@
+{
+  "component": "radio-group",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "storyDefault": "radio-group-1"
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "storyDefault": "Radio Group Label"
+    },
+    "options": {
+      "customType": "RadioGroupOptions",
+      "type": "Object",
+      "required": true,
+      "storyDefault": {
+        "option 1": "Option 1",
+        "option 2": "Option 2"
+      }
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "hiddenLabel": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
