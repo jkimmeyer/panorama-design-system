@@ -21,6 +21,6 @@ module.exports = {
     storyStoreV7: true,
   },
   docs: {
-    autodocs: true,
+    autodocs: false,
   },
 };

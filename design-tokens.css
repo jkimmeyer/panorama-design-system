@@ -33,6 +33,11 @@
   --color-secondary-container: var(--pano-nature-2);
   --color-secondary-on-container: var(--pano-white);
 
+  --color-disabled: var(--pano-gray-2);
+  --color-on-disabled: var(--pano-gray-1);
+  --color-disabled-container: var(--pano-gray-1);
+  --color-disabled-on-container: var(--pano-gray-2);
+
   /* Other */
   --ds-border-radius: 0.25rem;
 

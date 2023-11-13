@@ -1,4 +1,5 @@
 import buttonConfig from "./plop-templates/button/component.json";
+import inputConfig from "./plop-templates/input/component.json";
 
 export enum ColorTheme {
   Primary = "primary",
@@ -35,9 +36,9 @@ export interface Appearance {
   "background-color": ColorPurpose;
 }
 interface Variants {
-  appearances: Appearance[];
-  themes: ColorTheme[];
-  sizes: string[];
+  appearances?: Appearance[];
+  themes?: ColorTheme[];
+  sizes?: string[];
 }
 
 interface IProperties {
@@ -79,6 +80,14 @@ export const designSystem: DesignSystem = {
       },
       properties: {
         ...buttonConfig.properties,
+      },
+    },
+    input: {
+      variants: {
+        sizes: ["small", "medium"],
+      },
+      properties: {
+        ...inputConfig.properties,
       },
     },
     "material-icon": {},

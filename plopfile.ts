@@ -11,9 +11,10 @@ import {
   types,
   properties,
   dataAttributes,
-  storybookArgTypes,
+  storybookControls,
   storybookArgs,
 } from "./plop-helper";
+import { storybookVariantControls } from "./plop-helper/partials";
 
 const COMPONENTS = Object.keys(designSystem.components);
 
@@ -32,7 +33,9 @@ export default function (plop: NodePlopAPI) {
   // @ts-ignore
   plop.setPartial("types", types);
   // @ts-ignore
-  plop.setPartial("storybookArgTypes", storybookArgTypes);
+  plop.setPartial("storybookControls", storybookControls);
+  // @ts-ignore
+  plop.setPartial("storybookVariantControls", storybookVariantControls);
   // @ts-ignore
   plop.setPartial("storybookArgs", storybookArgs);
   /* eslint-enable @typescript-eslint/ban-ts-comment */

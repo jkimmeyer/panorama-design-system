@@ -2,14 +2,14 @@ import type { StoryObj, Meta } from "@storybook/web-components";
 
 import {
   {{#each variants}}
-  Button{{ singularize (titleCase @key) }},
+  Input{{ singularize (titleCase @key) }},
   {{/each}}
 } from "./component";
 
 const meta: Meta = {
-  component: "{{meta.prefix}}-button",
+  component: "{{meta.prefix}}-input",
   argTypes: {
-    {{> storybookVariantControls}}
+    {{> storybookVariantControls }}
     {{> storybookControls}}
   },
 };
