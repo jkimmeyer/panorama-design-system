@@ -1,26 +1,24 @@
 import type { StoryObj, Meta } from "@storybook/web-components";
 
 import {
-  {{#each designSystem.card}}
+  {{#each variants}}
   Card{{ singularize (titleCase @key) }},
   {{/each}}
 } from "./component";
+import "./component";
 
 const meta: Meta = {
-  component: "{{designSystem.prefix}}-card",
+  component: "{{meta.prefix}}-card",
   argTypes: {
-    {{#each designSystem.card}}
-    {{singularize @key}}: {
-      options: Button{{ singularize (titleCase @key) }},
-      control: { type: "select" },
-    },
-    {{/each}}
-    href: { type: "string" },
+    {{> storybookVariantControls}}
+    {{> storybookControls}}
   },
 };
 
 export default meta;
 
-type Story = StoryObj;
-
-export const Primary: Story = {};
+export const Default: StoryObj = {
+  args: {
+    {{> storybookArgs }}
+  }
+};
