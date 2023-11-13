@@ -5,6 +5,7 @@ import {
   Input{{ singularize (titleCase @key) }},
   {{/each}}
 } from "./component";
+import "./component";
 
 const meta: Meta = {
   component: "{{meta.prefix}}-input",
