@@ -1,0 +1,35 @@
+{
+  "component": "checkbox",
+  "properties": {
+    "checked": {
+      "type": "boolean",
+      "default": false
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "hiddenLabel": {
+      "type": "boolean",
+      "attribute": "hidden-label",
+      "default": false
+    },
+    "indeterminate": {
+      "type": "boolean",
+      "default": false
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "storyDefault": "Checkbox Label"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

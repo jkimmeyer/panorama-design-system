@@ -1,5 +1,6 @@
 import buttonConfig from "./plop-templates/button/component.json";
 import inputConfig from "./plop-templates/input/component.json";
+import checkboxConfig from "./plop-templates/checkbox/component.json";
 
 export enum ColorTheme {
   Primary = "primary",
@@ -80,6 +81,11 @@ export const designSystem: DesignSystem = {
       },
       properties: {
         ...buttonConfig.properties,
+      },
+    },
+    checkbox: {
+      properties: {
+        ...checkboxConfig.properties,
       },
     },
     input: {
