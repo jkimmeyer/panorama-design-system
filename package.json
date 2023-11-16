@@ -31,7 +31,7 @@
     "codestyle": "npm run codestyle:typescript && npm run codestyle:eslint && npm run codestyle:stylelint && npm run codestyle:prettier ",
     "codestyle:fix": "npm run codestyle:eslint:fix && npm run codestyle:stylelint:fix && npm run codestyle:prettier:fix",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build  -o docs-build",
     "plop": "plop",
     "generate:components": "plop component all && npm run codestyle:fix"
   },
