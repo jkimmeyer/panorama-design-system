@@ -24,7 +24,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
-          branch: main
           folder: docs-build
           clean: true
           target-folder: docs
