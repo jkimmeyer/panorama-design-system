@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.0.8](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.7...0.0.8) (2023-11-17)
+
+
+### Features
+
+* Adapt design tokens ([#96](https://github.com/jkimmeyer/panorama-design-system/issues/96)) ([093f95a](https://github.com/jkimmeyer/panorama-design-system/commit/093f95a210baebe71a261aba8f53b1497707683a))
+
+
+### Miscellaneous
+
+* Add changelog to prettier ignore ([#99](https://github.com/jkimmeyer/panorama-design-system/issues/99)) ([1d5ae65](https://github.com/jkimmeyer/panorama-design-system/commit/1d5ae6566b5eb3dcac37ccd8b2081355e6d2b0c7))
+* Fix codestyle ([#97](https://github.com/jkimmeyer/panorama-design-system/issues/97)) ([4aee63e](https://github.com/jkimmeyer/panorama-design-system/commit/4aee63e7a28ab28436cd40a21ee999880f210731))
+
 ## [0.0.7](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.6...0.0.7) (2023-11-16)
 
 ### Features
