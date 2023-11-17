@@ -3,17 +3,17 @@
 ::after {
   /* Sizes */
 
-  --space-1: 2px;
-  --space-2: 4px;
-  --space-4: 8px;
-  --space-6: 12px;
-  --space-8: 16px;
-  --space-10: 20px;
-  --space-12: 24px;
-  --space-16: 32px;
-  --space-20: 40px;
-  --space-24: 48px;
-  --space-32: 64px;
+  --space-1: 0.125rem;
+  --space-2: 0.25rem;
+  --space-4: 0.5rem;
+  --space-6: 0.75rem;
+  --space-8: 1rem;
+  --space-10: 0.625rem;
+  --space-12: 1.5rem;
+  --space-16: 2rem;
+  --space-20: 2.5rem;
+  --space-24: 3rem;
+  --space-32: 4rem;
 
   --space-small: 0.5rem;
   --space-medium: 1rem;
@@ -36,20 +36,20 @@
   --pano-white: hsla(0, 0%, 96%, 1);
 
   /* Color */
-  --color-brand-primary: var(--pano-aqua-4);
-  --color-brand-on-primary: var(--pano-black);
-  --color-brand-primary-container: var(--pano-aqua-3);
-  --color-brand-primary-on-container: var(--pano-aqua-2);
+  --color-primary: var(--pano-aqua-4);
+  --color-on-primary: var(--pano-black);
+  --color-primary-container: var(--pano-aqua-3);
+  --color-primary-on-container: var(--pano-aqua-2);
 
-  --color-brand-secondary: var(--pano-nature-1);
-  --color-brand-on-secondary: var(--pano-nature-4);
-  --color-brand-secondary-container: var(--pano-nature-2);
-  --color-brand-secondary-on-container: var(--pano-white);
+  --color-secondary: var(--pano-nature-1);
+  --color-on-secondary: var(--pano-nature-4);
+  --color-secondary-container: var(--pano-nature-2);
+  --color-secondary-on-container: var(--pano-white);
 
-  --color-semantic-disabled: var(--pano-gray-2);
-  --color-semantic-on-disabled: var(--pano-gray-1);
-  --color-semantic-disabled-container: var(--pano-gray-1);
-  --color-semantic-disabled-on-container: var(--pano-gray-2);
+  --color-disabled: var(--pano-gray-2);
+  --color-on-disabled: var(--pano-gray-1);
+  --color-disabled-container: var(--pano-gray-1);
+  --color-disabled-on-container: var(--pano-gray-2);
 
   /* Other */
   --ds-border-radius: 0.25rem;
