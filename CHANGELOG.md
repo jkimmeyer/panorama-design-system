@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.9...0.0.10) (2023-11-17)
+
+
+### Miscellaneous
+
+* Fix alias ([#102](https://github.com/jkimmeyer/panorama-design-system/issues/102)) ([d1a4bcd](https://github.com/jkimmeyer/panorama-design-system/commit/d1a4bcda46ca612a1f3df1a401a6fe87bf9f4b0d))
+
 ## [0.0.9](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.8...0.0.9) (2023-11-17)
 
 
