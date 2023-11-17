@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.8...0.0.9) (2023-11-17)
+
+
+### Miscellaneous
+
+* Use relative import since there currently exists no alias ([#100](https://github.com/jkimmeyer/panorama-design-system/issues/100)) ([44a90d7](https://github.com/jkimmeyer/panorama-design-system/commit/44a90d7a2a625179f212b441b30c510704504313))
+
 ## [0.0.8](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.7...0.0.8) (2023-11-17)
 
 
