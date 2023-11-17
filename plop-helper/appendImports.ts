@@ -9,7 +9,7 @@ export const appendImports = (
   { name: anyCaseName }: AnyCaseName,
 ) => {
   const lines = fileContents.split("\n").filter(Boolean);
-  const componentImport = `import "@/components/${paramCase(
+  const componentImport = `import "./components/${paramCase(
     anyCaseName,
   )}/component";`;
   lines.push(componentImport);
