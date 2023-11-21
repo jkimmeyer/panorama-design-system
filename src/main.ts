@@ -1,3 +1,5 @@
+// Styles
+import "../design-tokens.css";
 // Components
 import "./components/button/component";
 import "./components/checkbox/component";
