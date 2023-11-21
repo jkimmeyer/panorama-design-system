@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.12](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.11...0.0.12) (2023-11-21)
+
+
+### Miscellaneous
+
+* Export styles from package ([#109](https://github.com/jkimmeyer/panorama-design-system/issues/109)) ([a4836a2](https://github.com/jkimmeyer/panorama-design-system/commit/a4836a24f312997a3584c863b465cbe48cbd61db))
+
 ## [0.0.11](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.10...0.0.11) (2023-11-21)
 
 
