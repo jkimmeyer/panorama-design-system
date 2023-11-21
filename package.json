@@ -10,7 +10,8 @@
     "url": "git+https://github.com/jkimmeyer/panorama-design-system.git"
   },
   "exports": {
-    ".": "./dist/main.js"
+    ".": "./dist/main.js",
+    "./styles": "./dist/style.js"
   },
   "files": [
     "dist",
