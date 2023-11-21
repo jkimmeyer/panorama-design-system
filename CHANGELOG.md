@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.13](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.12...0.0.13) (2023-11-21)
+
+
+### Miscellaneous
+
+* Adapt exports ([#111](https://github.com/jkimmeyer/panorama-design-system/issues/111)) ([90cd32f](https://github.com/jkimmeyer/panorama-design-system/commit/90cd32f75925baa453c8abec818ba7e525cff4cb))
+
 ## [0.0.12](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.11...0.0.12) (2023-11-21)
 
 
