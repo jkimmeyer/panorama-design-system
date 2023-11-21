@@ -11,7 +11,7 @@
   },
   "exports": {
     ".": "./dist/main.js",
-    "./styles": "./dist/style.js"
+    "./styles": "./dist/style.css"
   },
   "files": [
     "dist",
