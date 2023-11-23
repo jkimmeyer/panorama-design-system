@@ -1,0 +1,45 @@
+[data-theme-a] {
+  /* Sizes */
+
+  --space-1: 0.125rem;
+  --space-2: 0.25rem;
+  --space-4: 0.5rem;
+  --space-6: 0.75rem;
+  --space-8: 1rem;
+  --space-10: 1.25rem;
+  --space-12: 1.5rem;
+  --space-16: 2rem;
+  --space-20: 2.5rem;
+  --space-24: 3rem;
+  --space-32: 4rem;
+
+  /* Color Palette */
+  --pano-purple-1: hsla(248, 67%, 95%, 1);
+  --pano-purple-2: hsla(248, 67%, 80%, 1);
+  --pano-purple-3: hsla(248, 67%, 60%, 1);
+  --pano-purple-4: hsla(248, 67%, 20%, 1);
+  --pano-purple-5: hsla(248, 67%, 0%, 1);
+
+  --pano-black: hsla(0, 0%, 4%, 1);
+  --pano-gray-1: hsla(0, 0%, 20%, 1);
+  --pano-gray-2: hsla(0, 0%, 80%, 1);
+  --pano-white: hsla(0, 0%, 96%, 1);
+
+  /* Color */
+  --color-primary: var(--pano-purple-3);
+  --color-on-primary: var(--pano-white);
+  --color-primary-container: var(--pano-purple-1);
+  --color-primary-on-container: var(--pano-black);
+
+  --color-disabled: var(--pano-gray-2);
+  --color-on-disabled: var(--pano-gray-1);
+  --color-disabled-container: var(--pano-gray-1);
+  --color-disabled-on-container: var(--pano-gray-2);
+
+  /* Other */
+  --ds-border-radius: var(--space-2);
+
+  --ds-default-font: "PT Sans Pro", sans-serif;
+  --ds-default-font-size: 1rem;
+  --ds-default-line-height: 1.5rem;
+}

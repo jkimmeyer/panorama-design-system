@@ -96,6 +96,6 @@ export const designSystem: DesignSystem = {
         ...inputConfig.properties,
       },
     },
-    "material-icon": {},
+    icon: {},
   },
 };

@@ -1,7 +1,4 @@
 // Styles
-import "../design-tokens.css";
+import "../design-tokens-a.css";
+import "../design-tokens-b.css";
 // Components
-import "./components/button/component";
-import "./components/checkbox/component";
-import "./components/input/component";
-import "./components/material-icon/component";

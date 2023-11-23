@@ -3,7 +3,9 @@ import {
   ModifyActionConfig,
   NodePlopAPI,
 } from "@crutchcorn/plop";
-import { designSystem } from "./design-system";
+import { designSystemA } from "./design-system-a";
+import { designSystemB } from "./design-system-b";
+
 import {
   appendImports,
   singularize,
@@ -16,10 +18,12 @@ import {
 } from "./plop-helper";
 import { storybookVariantControls } from "./plop-helper/partials";
 
-const COMPONENTS = Object.keys(designSystem.components);
+const COMPONENTS_A = Object.keys(designSystemA.components);
+const COMPONENTS_B = Object.keys(designSystemB.components);
 
 interface Data {
   component: string;
+  designSystem: string;
 }
 
 // Generator
@@ -49,7 +53,13 @@ export default function (plop: NodePlopAPI) {
     prompts: [
       {
         type: "list",
-        choices: ["all", ...COMPONENTS],
+        choices: ["A", "B"],
+        message: "Choose a design system",
+        name: "designSystem",
+      },
+      {
+        type: "list",
+        choices: ["all", ...COMPONENTS_A, ...COMPONENTS_B],
         name: "component",
         message: "Please select the component you want to create",
       },
@@ -57,21 +67,25 @@ export default function (plop: NodePlopAPI) {
     // eslint-disable-next-line
     // @ts-ignore
     actions: (data: Data) => {
+      const COMPONENTS =
+        data.designSystem === "A" ? COMPONENTS_A : COMPONENTS_B;
       const addActions: AddActionConfig[] = [];
       const modifyActions: ModifyActionConfig[] = [];
       let components;
+      const DESIGN_SYSTEM =
+        data.designSystem === "A" ? designSystemA : designSystemB;
 
       if (data.component === "all") components = [...COMPONENTS];
       else components = [data?.component];
 
       components.forEach((name: string) => {
-        const { variants, properties } = designSystem.components[name];
-        const meta = designSystem.meta;
+        const { variants, properties } = DESIGN_SYSTEM.components[name];
+        const meta = DESIGN_SYSTEM.meta;
 
         addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${name}/component.styles.ts`,
+          path: `src/components/${data.designSystem}/${name}/component.styles.ts`,
           data: { variants, name, meta },
           templateFile: `plop-templates/${name}/component.styles.ts`,
         });
@@ -79,7 +93,7 @@ export default function (plop: NodePlopAPI) {
         addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${name}/component.ts`,
+          path: `src/components/${data.designSystem}/${name}/component.ts`,
           data: { variants, properties, name, meta },
           templateFile: `plop-templates/${name}/component.ts`,
         });
@@ -87,15 +101,15 @@ export default function (plop: NodePlopAPI) {
         addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${name}/component.stories.ts`,
+          path: `src/components/${data.designSystem}/${name}/component.stories.ts`,
           data: { variants, properties, name, meta },
-          templateFile: `plop-templates/${name}/component.stories.ts`,
+          templateFile: `plop-templates/component.stories.ts`,
         });
 
         addActions.push({
           force: true,
           type: "add",
-          path: `src/components/${name}/component.test.ts`,
+          path: `src/components/${data.designSystem}/${name}/component.test.ts`,
           data: { variants, name, meta },
           templateFile: `plop-templates/${name}/component.test.ts`,
         });
@@ -108,7 +122,7 @@ export default function (plop: NodePlopAPI) {
           force: true,
           type: "modify",
           path: "src/main.ts",
-          data: { name: component },
+          data: { name: component, designSystem: data.designSystem },
           transform: appendImports,
         });
       });
