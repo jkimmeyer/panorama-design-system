@@ -46,7 +46,6 @@ export class {{properCase meta.prefix}}RadioGroup extends LitElement {
       label,
       options,
       name,
-      value,
       _handleChange: handleChange,
     } = this;
 
