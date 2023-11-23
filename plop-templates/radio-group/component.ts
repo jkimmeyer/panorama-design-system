@@ -2,7 +2,7 @@ import { css } from "lit";
 import { html, LitElement } from "lit";
 import { customElement, query, property } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
-import "../material-icon/component";
+import "../icon/component";
 import { radioGroupStyles } from "./component.styles";
 
 type RadioGroupOptions = {
@@ -10,7 +10,7 @@ type RadioGroupOptions = {
 };
 
 @customElement("{{meta.prefix}}-radio-group")
-export class {{titleCase meta.prefix}}RadioGroup extends LitElement {
+export class {{properCase meta.prefix}}RadioGroup extends LitElement {
   @query("input")
   protected _radioGroupNode!: HTMLInputElement;
 
@@ -71,7 +71,7 @@ export class {{titleCase meta.prefix}}RadioGroup extends LitElement {
             @change="${handleChange}"
           />
           <label class="${labelClasses}" for="radio-${index}">
-            <material-icon class="radio--icon" icon-name="check"></material-icon>
+            <{{meta.prefix}}-icon class="radio--icon" icon-name="check"></{{meta.prefix}}-icon>
             <div>${optionsValue}</div>
           </label>
         </div>

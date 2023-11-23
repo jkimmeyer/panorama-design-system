@@ -1,6 +1,5 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import "../material-icon/component";
 import { cardStyles } from "./component.styles";
 
 {{> types }}
@@ -8,12 +7,12 @@ import { cardStyles } from "./component.styles";
 
 declare global {
   interface HTMLElementTagNameMap {
-    "{{kebabCase meta.prefix}}-card": {{titleCase meta.prefix}}Button;
+    "{{kebabCase meta.prefix}}-card": {{properCase meta.prefix}}Button;
   }
 }
 
 @customElement("{{meta.prefix}}-card")
-export class {{titleCase meta.prefix}}Button extends LitElement {
+export class {{properCase meta.prefix}}Button extends LitElement {
   static styles = [
     css`
       *,

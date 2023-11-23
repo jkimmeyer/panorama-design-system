@@ -2,11 +2,13 @@ import { css } from "lit";
 import { html, LitElement } from "lit";
 import { customElement, query, property } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
-import "../material-icon/component";
+import "../icon/component";
 import { checkboxStyles } from "./component.styles";
 
+{{> types }}
+
 @customElement("{{meta.prefix}}-checkbox")
-export class {{titleCase meta.prefix}}Checkbox extends LitElement {
+export class {{properCase meta.prefix}}Checkbox extends LitElement {
   @query("input")
   protected _checkboxNode!: HTMLInputElement;
 
@@ -71,7 +73,7 @@ export class {{titleCase meta.prefix}}Checkbox extends LitElement {
         @change="${handleChange}"
       />
       <label class="${labelClasses}" for="checkbox">
-        <material-icon class="checkbox--icon" icon-name="check"></material-icon>
+        <{{meta.prefix}}-icon class="checkbox--icon" icon-name="check"></{{meta.prefix}}-icon>
         <div>${label}</div>
       </label>
     `;

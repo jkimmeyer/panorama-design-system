@@ -139,7 +139,7 @@ export const storybookArgs = ({ variants = {}, properties }: Props) => {
     if (storyDefault) {
       typeof storyDefault === "string"
         ? propertyArgs.push(`${key}: "${storyDefault}",`)
-        : propertyArgs.push(`${key}: ${storyDefault},`);
+        : propertyArgs.push(`${key}: ${JSON.stringify(storyDefault)},`);
       return;
     }
 
