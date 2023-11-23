@@ -2,21 +2,21 @@ import { css } from "lit";
 
 export const inputStyles = css`
   :host {
-    --icon-padding: calc(var(--space-medium) * 2);
-    --input-padding-block: calc(var(--space-medium) * 0.5);
+    --icon-padding: calc(var(--space-8) * 2);
+    --input-padding-block: calc(var(--space-8) * 0.5);
 
     display: flex;
     flex-direction: column;
-    gap: var(--space-small);
+    gap: var(--space-4);
     font: normal 400 16px/1.5 var(--ds-default-font);
   }
 
   .input--field {
     width: 100%;
     border: 1px solid var(--color-primary);
-    border-radius: var(--space-small);
+    border-radius: var(--space-4);
     padding-block: var(--input-padding-block);
-    padding-inline: calc(var(--space-medium) * 0.5);
+    padding-inline: calc(var(--space-8) * 0.5);
     font: normal 400 16px/1.5 var(--ds-default-font);
 
     .input[data-icon-before] & {
@@ -46,11 +46,11 @@ export const inputStyles = css`
     position: absolute;
 
     &[data-icon-before] {
-      left: var(--space-small);
+      left: var(--space-4);
     }
 
     &[data-icon-after] {
-      right: var(--space-small);
+      right: var(--space-4);
     }
   }
 `;

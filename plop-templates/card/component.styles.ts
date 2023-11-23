@@ -2,10 +2,10 @@ import { css } from 'lit';
 export const cardStyles = css`
 .card {
   max-width: 100%;
-  padding: var(--space-small);
+  padding: var(--space-4);
   color: var(--card-color);
   border: 1px solid var(--card-border);
-  border-radius: var(--space-small);
+  border-radius: var(--space-4);
   background-color: var(--card-background-color);
 }
 
