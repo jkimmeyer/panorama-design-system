@@ -9,9 +9,9 @@ export const checkboxStyles = css`
     display: inline-flex;
     align-items: center;
     position: relative;
-    padding-inline-start: calc(var(--space-medium) * 2);
+    padding-inline-start: calc(var(--space-8) * 2);
     color: var(--color-primary-700);
-    gap: var(--space-small);
+    gap: var(--space-4);
     cursor: pointer;
   }
 
@@ -35,7 +35,7 @@ export const checkboxStyles = css`
     inline-size: 20px;
     block-size: 20px;
     border: 2px solid var(--color-primary);
-    border-radius: var(--space-small);
+    border-radius: var(--space-4);
     background-color: var(--color-white);
   }
 

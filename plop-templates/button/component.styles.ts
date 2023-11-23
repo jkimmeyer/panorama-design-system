@@ -5,12 +5,12 @@ export const buttonStyles = css`
   --button-height: 48px;
   --button-border: 1px solid;
   --button-border-radius: calc(var(--ds-border-radius));
-  --button-inline-padding: var(--space-medium);
+  --button-inline-padding: var(--space-8);
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: var(--space-medium);
+  gap: var(--space-8);
   min-height: var(--button-height);
   border: var(--button-border) var(--button-border-color);
   border-radius: var(--button-border-radius);

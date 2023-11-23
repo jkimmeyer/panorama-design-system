@@ -34,7 +34,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build  -o docs-build",
     "plop": "plop",
-    "generate:components": "plop component all && npm run codestyle:fix"
+    "generate:components": "plop component a all && plop component b all && npm run codestyle:fix"
   },
   "dependencies": {
     "iconify-icon": "^1.0.8",

@@ -4,7 +4,7 @@ export const radioGroupStyles = css`
   .radio-group {
     display: flex;
     flex-direction: column;
-    gap: var(--space-small);
+    gap: var(--space-4);
   }
 
   .radio-group--heading {
@@ -19,9 +19,9 @@ export const radioGroupStyles = css`
   .radio--label {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-small);
+    gap: var(--space-4);
     position: relative;
-    padding-inline-start: calc(var(--space-medium) * 2);
+    padding-inline-start: calc(var(--space-8) * 2);
     color: var(--color-primary-700);
     cursor: pointer;
   }
