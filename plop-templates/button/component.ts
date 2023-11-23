@@ -1,7 +1,7 @@
 import { LitElement, css, html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { customElement, property } from "lit/decorators.js";
-import "../material-icon/component";
+import "../icon/component";
 import { buttonStyles } from "./component.styles";
 
 {{> types }}
@@ -9,14 +9,14 @@ import { buttonStyles } from "./component.styles";
 
 declare global {
   interface HTMLElementTagNameMap {
-    "{{kebabCase meta.prefix}}-button": {{titleCase meta.prefix}}Button;
+    "{{kebabCase meta.prefix}}-button": {{properCase meta.prefix}}Button;
   }
 }
 
 export type ButtonType = "button" | "submit" | "reset";
 
 @customElement("{{meta.prefix}}-button")
-export class {{titleCase meta.prefix}}Button extends LitElement {
+export class {{properCase meta.prefix}}Button extends LitElement {
   static styles = [
     css`
       *,
@@ -64,11 +64,11 @@ export class {{titleCase meta.prefix}}Button extends LitElement {
     })
 
     const innerHtml = html`
-      <material-icon icon-name="${iconBefore}"></material-icon>
+      <{{meta.prefix}}-icon icon-name="${iconBefore}"></{{meta.prefix}}-icon>
       <span class="${labelClasses}">
         ${label}
       </span>
-      ${ iconOnly ? null : html`<material-icon icon-name="${iconAfter}"></material-icon>`}
+      ${ iconOnly ? null : html`<{{meta.prefix}}-icon icon-name="${iconAfter}"></{{meta.prefix}}-icon>`}
     `
 
     if(href) {

@@ -1,8 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-@customElement("material-icon")
-export class MaterialIcon extends LitElement {
+@customElement("{{meta.prefix}}-icon")
+export class {{properCase meta.prefix }}Icon extends LitElement {
   static styles = css`
     :host {
       display: inline-flex;
@@ -24,9 +24,7 @@ export class MaterialIcon extends LitElement {
     }
   `;
 
-  @property({ type: String, reflect: true, attribute: "icon-name" })
-  iconName!: string;
-
+  {{> properties}}
 
   render() {
     const { iconName } = this;

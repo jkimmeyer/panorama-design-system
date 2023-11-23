@@ -1,0 +1,11 @@
+{
+  "component": "icon",
+  "properties": {
+    "iconName": {
+      "type": "string",
+      "required": true,
+      "storyDefault": "home",
+      "attribute": "icon-name"
+    }
+  }
+}

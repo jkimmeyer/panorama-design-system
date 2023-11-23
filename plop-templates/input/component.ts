@@ -2,7 +2,7 @@ import { LitElement, css, html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { customElement, property, query } from "lit/decorators.js";
-import "../material-icon/component";
+import "../icon/component";
 import { inputStyles } from "./component.styles";
 
 {{> types }}
@@ -10,14 +10,14 @@ import { inputStyles } from "./component.styles";
 
 declare global {
   interface HTMLElementTagNameMap {
-    "{{kebabCase meta.prefix}}-input": {{titleCase meta.prefix}}Input;
+    "{{kebabCase meta.prefix}}-input": {{properCase meta.prefix}}Input;
   }
 }
 
 export type InputType = "date" | "email" | "datetime-local" | "month" | "number" | "password" | "tel" | "text" | "time" | "search" | "url" | "week";
 
 @customElement("{{meta.prefix}}-input")
-export class {{titleCase meta.prefix }}Input extends LitElement {
+export class {{properCase meta.prefix }}Input extends LitElement {
   @query("input")
   protected _input!: HTMLInputElement;
 
@@ -86,11 +86,11 @@ export class {{titleCase meta.prefix }}Input extends LitElement {
         ?data-icon-after="${!!iconAfter}"
       >
         ${iconBefore
-          ? html`<material-icon
+          ? html`<icon
               class="input--icon"
               data-icon-before
               icon-name="${iconBefore}"
-            ></material-icon>`
+            ></icon>`
           : null}
         <input
           class="input--field"
@@ -106,11 +106,11 @@ export class {{titleCase meta.prefix }}Input extends LitElement {
           {{> dataAttributes}}
         />
         ${iconAfter
-          ? html`<material-icon
+          ? html`<icon
               class="input--icon"
               data-icon-after
               icon-name="${iconAfter}"
-            ></material-icon>`
+            ></icon>`
           : null}
       </div>
     `
