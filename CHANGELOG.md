@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.17](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.16...0.0.17) (2023-11-26)
+
+
+### Features
+
+* Add generated components ([#124](https://github.com/jkimmeyer/panorama-design-system/issues/124)) ([6c3729e](https://github.com/jkimmeyer/panorama-design-system/commit/6c3729ebdc0df28a4c730bf33de53d3200ed8dd8))
+
 ## [0.0.16](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.15...0.0.16) (2023-11-26)
 
 
