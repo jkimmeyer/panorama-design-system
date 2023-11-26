@@ -12,7 +12,7 @@ import {
 
 interface IconProps {
   {{> testProps }}
-  iconName: string,
+  iconName?: string;
 }
 
   const icon = ({
