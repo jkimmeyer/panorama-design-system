@@ -13,7 +13,7 @@ export const inputStyles = css`
 
   .input--field {
     width: 100%;
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--color-black);
     border-radius: var(--space-4);
     padding-block: var(--input-padding-block);
     padding-inline: calc(var(--space-8) * 0.5);
@@ -25,6 +25,13 @@ export const inputStyles = css`
 
     .input[data-icon-after] & {
       padding-right: var(--icon-padding);
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+      outline: none;
+      border-color: var(--color-primary);
     }
   }
 
