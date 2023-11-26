@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.15](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.14...0.0.15) (2023-11-26)
+
+
+### Features
+
+* Final fixes ([#117](https://github.com/jkimmeyer/panorama-design-system/issues/117)) ([e7e2a6e](https://github.com/jkimmeyer/panorama-design-system/commit/e7e2a6eb8d58fd6966c97a77be04d3b3af97eca7))
+
+
+### Miscellaneous
+
+* Add test setup ([#75](https://github.com/jkimmeyer/panorama-design-system/issues/75)) ([82b29df](https://github.com/jkimmeyer/panorama-design-system/commit/82b29dfa3132bfe9d2bb1099fed086ab7cc9bb64))
+
 ## [0.0.14](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.13...0.0.14) (2023-11-26)
 
 
