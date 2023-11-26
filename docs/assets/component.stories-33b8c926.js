@@ -1,4 +1,4 @@
-import{i as y,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from"./class-map-10d9f55a.js";import{n as r,t as B}from"./property-c8c6de82.js";import"./component-ffd803ff.js";const z=y`
+import{i as y,s as $,x as u}from"./lit-element-8d145624.js";import{e as x}from"./class-map-10d9f55a.js";import{n as r,t as B}from"./property-c8c6de82.js";import"./component-ffd803ff.js";const z=y`
   .button {
     --button-height: 48px;
     --button-border: 1px solid;
@@ -42,16 +42,11 @@ import{i as y,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     pointer-events: none;
   }
 
-  .button:not(:disabled):where(:focus) {
-    filter: brightness(1.1);
-  }
-
-  .button:not(:disabled):where(:hover) {
-    filter: brightness(var(--interaction-state-hover));
-  }
-
+  .button:not(:disabled):where(:focus),
+  .button:not(:disabled):where(:hover),
   .button:not(:disabled):where(:active) {
-    filter: brightness(var(--interaction-state-active));
+    color: var(--button-on-interaction-color);
+    background-color: var(--button-interaction-color);
   }
 
   .button[data-icon-only] {
@@ -61,8 +56,8 @@ import{i as y,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
   .button:where([data-theme="primary"]) {
     --button-main-color: var(--color-primary);
     --button-on-main-color: var(--color-on-primary);
-    --button-container-color: var(--color-primary-container);
-    --button-on-container-color: var(--color-primary-on-container);
+    --button-interaction-color: var(--color-primary-container);
+    --button-on-interaction-color: var(--color-primary-on-container);
   }
 
   .button:where([data-appearance="filled"]) {
@@ -80,11 +75,11 @@ import{i as y,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
   .button:where([data-size="medium"]) {
     --button-height: calc(var(--size-factor-medium) * var(--space-12));
   }
-`;var O=Object.defineProperty,S=Object.getOwnPropertyDescriptor,o=(t,a,s,i)=>{for(var n=i>1?void 0:i?S(a,s):a,l=t.length-1,c;l>=0;l--)(c=t[l])&&(n=(i?c(a,s,n):c(n))||n);return i&&n&&O(a,s,n),n},m=(t=>(t.Filled="filled",t.Outline="outline",t))(m||{}),v=(t=>(t.Medium="medium",t))(v||{}),g=(t=>(t.Primary="primary",t))(g||{});let e=class extends ${constructor(){super(...arguments),this.buttonType="button",this.iconOnly=!1,this.iconBefore="",this.fullWidth=!1,this.iconAfter="",this.href="",this.disabled=!1}render(){const{iconOnly:t,iconBefore:a,iconAfter:s,label:i,href:n,fullWidth:l,disabled:c}=this,w=x({"button--text":!0,"sr-only":t}),d=p`
+`;var O=Object.defineProperty,S=Object.getOwnPropertyDescriptor,o=(t,a,c,i)=>{for(var n=i>1?void 0:i?S(a,c):a,l=t.length-1,s;l>=0;l--)(s=t[l])&&(n=(i?s(a,c,n):s(n))||n);return i&&n&&O(a,c,n),n},m=(t=>(t.Filled="filled",t.Outline="outline",t))(m||{}),v=(t=>(t.Medium="medium",t))(v||{}),g=(t=>(t.Primary="primary",t))(g||{});let e=class extends ${constructor(){super(...arguments),this.buttonType="button",this.iconOnly=!1,this.iconBefore="",this.fullWidth=!1,this.iconAfter="",this.href="",this.disabled=!1}render(){const{iconOnly:t,iconBefore:a,iconAfter:c,label:i,href:n,fullWidth:l,disabled:s}=this,w=x({"button--text":!0,"sr-only":t}),d=u`
       <pano-b-icon icon-name="${a}"></pano-b-icon>
       <span class="${w}"> ${i} </span>
-      ${t?null:p`<pano-b-icon icon-name="${s}"></pano-b-icon>`}
-    `;return n?p`
+      ${t?null:u`<pano-b-icon icon-name="${c}"></pano-b-icon>`}
+    `;return n?u`
         <a
           class="button"
           href="${n}"
@@ -96,10 +91,10 @@ import{i as y,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
         >
           ${d}
         </a>
-      `:p`
+      `:u`
         <button
           class="button"
-          ?disabled="${c}"
+          ?disabled="${s}"
           ?data-icon-only="${t}"
           ?data-full-width="${l}"
           data-appearance="${this.appearance}"
@@ -133,7 +128,7 @@ import{i as y,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
         padding: 0;
         white-space: nowrap;
       }
-    `,z];o([r({type:String,reflect:!0})],e.prototype,"appearance",2);o([r({type:String,reflect:!0})],e.prototype,"size",2);o([r({type:String,reflect:!0})],e.prototype,"theme",2);o([r({type:String,reflect:!0})],e.prototype,"label",2);o([r({type:String,reflect:!0})],e.prototype,"buttonType",2);o([r({type:Boolean,reflect:!0,attribute:"icon-only"})],e.prototype,"iconOnly",2);o([r({type:String,reflect:!0,attribute:"icon-before"})],e.prototype,"iconBefore",2);o([r({type:Boolean,reflect:!0,attribute:"full-width"})],e.prototype,"fullWidth",2);o([r({type:String,reflect:!0,attribute:"icon-after"})],e.prototype,"iconAfter",2);o([r({type:String,reflect:!0})],e.prototype,"href",2);o([r({type:Boolean,reflect:!0})],e.prototype,"disabled",2);e=o([B("pano-b-button")],e);const A={title:"Design System - Beispiel B/Components/Button",component:"pano-b-button",argTypes:{appearance:{options:m,control:{type:"select"}},size:{options:v,control:{type:"select"}},theme:{options:g,control:{type:"select"}},label:{type:"string"},buttonType:{type:"string"},iconOnly:{type:"boolean"},iconBefore:{type:"string"},fullWidth:{type:"boolean"},iconAfter:{type:"string"},href:{type:"string"},disabled:{type:"boolean"}}},u={args:{appearance:"filled",size:"medium",theme:"primary",label:"Button",buttonType:"button",iconOnly:!1,iconBefore:"",fullWidth:!1,iconAfter:"",href:"",disabled:!1}};var b,f,h;u.parameters={...u.parameters,docs:{...(b=u.parameters)==null?void 0:b.docs,source:{originalSource:`{
+    `,z];o([r({type:String,reflect:!0})],e.prototype,"appearance",2);o([r({type:String,reflect:!0})],e.prototype,"size",2);o([r({type:String,reflect:!0})],e.prototype,"theme",2);o([r({type:String,reflect:!0})],e.prototype,"label",2);o([r({type:String,reflect:!0})],e.prototype,"buttonType",2);o([r({type:Boolean,reflect:!0,attribute:"icon-only"})],e.prototype,"iconOnly",2);o([r({type:String,reflect:!0,attribute:"icon-before"})],e.prototype,"iconBefore",2);o([r({type:Boolean,reflect:!0,attribute:"full-width"})],e.prototype,"fullWidth",2);o([r({type:String,reflect:!0,attribute:"icon-after"})],e.prototype,"iconAfter",2);o([r({type:String,reflect:!0})],e.prototype,"href",2);o([r({type:Boolean,reflect:!0})],e.prototype,"disabled",2);e=o([B("pano-b-button")],e);const A={title:"Design System - Beispiel B/Components/Button",component:"pano-b-button",argTypes:{appearance:{options:m,control:{type:"select"}},size:{options:v,control:{type:"select"}},theme:{options:g,control:{type:"select"}},label:{type:"string"},buttonType:{type:"string"},iconOnly:{type:"boolean"},iconBefore:{type:"string"},fullWidth:{type:"boolean"},iconAfter:{type:"string"},href:{type:"string"},disabled:{type:"boolean"}}},p={args:{appearance:"filled",size:"medium",theme:"primary",label:"Button",buttonType:"button",iconOnly:!1,iconBefore:"",fullWidth:!1,iconAfter:"",href:"",disabled:!1}};var b,f,h;p.parameters={...p.parameters,docs:{...(b=p.parameters)==null?void 0:b.docs,source:{originalSource:`{
   args: {
     appearance: "filled",
     size: "medium",
@@ -147,5 +142,5 @@ import{i as y,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     href: "",
     disabled: false
   }
-}`,...(h=(f=u.parameters)==null?void 0:f.docs)==null?void 0:h.source}}};const D=["Default"];export{u as Default,D as __namedExportsOrder,A as default};
-//# sourceMappingURL=component.stories-54657595.js.map
+}`,...(h=(f=p.parameters)==null?void 0:f.docs)==null?void 0:h.source}}};const D=["Default"];export{p as Default,D as __namedExportsOrder,A as default};
+//# sourceMappingURL=component.stories-33b8c926.js.map

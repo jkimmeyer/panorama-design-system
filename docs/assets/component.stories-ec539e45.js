@@ -42,16 +42,11 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     pointer-events: none;
   }
 
-  .button:not(:disabled):where(:focus) {
-    filter: brightness(1.1);
-  }
-
-  .button:not(:disabled):where(:hover) {
-    filter: brightness(var(--interaction-state-hover));
-  }
-
+  .button:not(:disabled):where(:focus),
+  .button:not(:disabled):where(:hover),
   .button:not(:disabled):where(:active) {
-    filter: brightness(var(--interaction-state-active));
+    color: var(--button-on-interaction-color);
+    background-color: var(--button-interaction-color);
   }
 
   .button[data-icon-only] {
@@ -61,15 +56,15 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
   .button:where([data-theme="primary"]) {
     --button-main-color: var(--color-primary);
     --button-on-main-color: var(--color-on-primary);
-    --button-container-color: var(--color-primary-container);
-    --button-on-container-color: var(--color-primary-on-container);
+    --button-interaction-color: var(--color-primary-container);
+    --button-on-interaction-color: var(--color-primary-on-container);
   }
 
   .button:where([data-theme="secondary"]) {
     --button-main-color: var(--color-secondary);
     --button-on-main-color: var(--color-on-secondary);
-    --button-container-color: var(--color-secondary-container);
-    --button-on-container-color: var(--color-secondary-on-container);
+    --button-interaction-color: var(--color-secondary-container);
+    --button-on-interaction-color: var(--color-secondary-on-container);
   }
 
   .button:where([data-appearance="filled"]) {
@@ -81,10 +76,10 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
   .button:where([data-size="medium"]) {
     --button-height: calc(var(--size-factor-medium) * var(--space-12));
   }
-`;var S=Object.defineProperty,O=Object.getOwnPropertyDescriptor,o=(t,a,s,i)=>{for(var n=i>1?void 0:i?O(a,s):a,l=t.length-1,c;l>=0;l--)(c=t[l])&&(n=(i?c(a,s,n):c(n))||n);return i&&n&&S(a,s,n),n},m=(t=>(t.Filled="filled",t))(m||{}),v=(t=>(t.Medium="medium",t))(v||{}),g=(t=>(t.Primary="primary",t.Secondary="secondary",t))(g||{});let e=class extends ${constructor(){super(...arguments),this.buttonType="button",this.iconOnly=!1,this.iconBefore="",this.fullWidth=!1,this.iconAfter="",this.href="",this.disabled=!1}render(){const{iconOnly:t,iconBefore:a,iconAfter:s,label:i,href:n,fullWidth:l,disabled:c}=this,w=x({"button--text":!0,"sr-only":t}),d=p`
+`;var S=Object.defineProperty,O=Object.getOwnPropertyDescriptor,o=(t,a,c,i)=>{for(var n=i>1?void 0:i?O(a,c):a,l=t.length-1,s;l>=0;l--)(s=t[l])&&(n=(i?s(a,c,n):s(n))||n);return i&&n&&S(a,c,n),n},m=(t=>(t.Filled="filled",t))(m||{}),v=(t=>(t.Medium="medium",t))(v||{}),g=(t=>(t.Primary="primary",t.Secondary="secondary",t))(g||{});let e=class extends ${constructor(){super(...arguments),this.buttonType="button",this.iconOnly=!1,this.iconBefore="",this.fullWidth=!1,this.iconAfter="",this.href="",this.disabled=!1}render(){const{iconOnly:t,iconBefore:a,iconAfter:c,label:i,href:n,fullWidth:l,disabled:s}=this,w=x({"button--text":!0,"sr-only":t}),d=p`
       <pano-a-icon icon-name="${a}"></pano-a-icon>
       <span class="${w}"> ${i} </span>
-      ${t?null:p`<pano-a-icon icon-name="${s}"></pano-a-icon>`}
+      ${t?null:p`<pano-a-icon icon-name="${c}"></pano-a-icon>`}
     `;return n?p`
         <a
           class="button"
@@ -100,7 +95,7 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
       `:p`
         <button
           class="button"
-          ?disabled="${c}"
+          ?disabled="${s}"
           ?data-icon-only="${t}"
           ?data-full-width="${l}"
           data-appearance="${this.appearance}"
@@ -149,4 +144,4 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     disabled: false
   }
 }`,...(y=(f=u.parameters)==null?void 0:f.docs)==null?void 0:y.source}}};const T=["Default"];export{u as Default,T as __namedExportsOrder,D as default};
-//# sourceMappingURL=component.stories-bc0b2a14.js.map
+//# sourceMappingURL=component.stories-ec539e45.js.map
