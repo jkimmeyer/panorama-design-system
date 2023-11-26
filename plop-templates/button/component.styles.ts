@@ -15,13 +15,13 @@ export const buttonStyles = css`
   border: var(--button-border) var(--button-border-color);
   border-radius: var(--button-border-radius);
   padding-inline: var(--button-inline-padding);
+  font-family: var(--ds-default-font);
+  font-size: var(--ds-default-font-size);
+  line-height: var(--ds-default-line-height);
   text-decoration: none;
   color: var(--button-color);
   background-color: var(--button-background-color);
   cursor: pointer;
-  font-family: var(--ds-default-font);
-  font-size: var(--ds-default-font-size);
-  line-height: var(--ds-default-line-height);
 }
 
 /* Link Styles */
