@@ -44,11 +44,11 @@ export const buttonStyles = css`
 }
 
 .button:not(:disabled):where(:hover) {
-  filter: brightness(1.2);
+  filter: brightness(var(--interaction-state-hover));
 }
 
 .button:not(:disabled):where(:active) {
-  filter: brightness(1.3);
+  filter: brightness(var(--interaction-state-active));
 }
 
 .button[icon-only] {

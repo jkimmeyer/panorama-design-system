@@ -5,14 +5,20 @@ import { classMap } from "lit/directives/class-map.js";
 import "../icon/component";
 import { radioGroupStyles } from "./component.styles";
 
-type RadioGroupOptions = {
+type RadioGroupOption = {
   [key: string]: string;
 };
+
+{{> types }}
 
 @customElement("{{meta.prefix}}-radio-group")
 export class {{properCase meta.prefix}}RadioGroup extends LitElement {
   @query("input")
   protected _radioGroupNode!: HTMLInputElement;
+
+  protected _handleChange() {
+    console.log({ radioButtonValue: this._radioGroupNode.value });
+  }
 
   static styles = [
     css`
@@ -57,9 +63,10 @@ export class {{properCase meta.prefix}}RadioGroup extends LitElement {
     return html`
       <div class="radio-group" role="group" aria-labelledby="a11y-radio-group">
       	<div class="radio-group--heading" id="a11y-radio-group">${label}</div>
-      ${Object.entries(options).map(([optionsKey, optionsValue], index) =>
-        html`
-        <div class="radio">
+      ${options.map((option, index) =>
+        Object.entries(option).map(([optionsKey, optionsValue]) => {
+          return html`
+        <div class="radio" {{> dataAttributes}}>
           <input
             id="radio-${index}"
             class="radio--input | sr-only"
@@ -75,6 +82,7 @@ export class {{properCase meta.prefix}}RadioGroup extends LitElement {
           </label>
         </div>
         `
+        })
       )}
     </div>
     `;

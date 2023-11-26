@@ -12,13 +12,13 @@
       "storyDefault": "Radio Group Label"
     },
     "options": {
-      "customType": "RadioGroupOptions",
-      "type": "Object",
+      "customType": "RadioGroupOption[]",
+      "type": "Array",
       "required": true,
-      "storyDefault": {
-        "option 1": "Option 1",
-        "option 2": "Option 2"
-      }
+      "storyDefault": [
+        {"option 1": "Option 1"},
+        {"option 2": "Option 2"}
+      ]
     },
     "disabled": {
       "type": "boolean",
