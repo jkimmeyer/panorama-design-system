@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run build:components && npm run build:types",
-    "build:components": "npm run generate:components && tsc && vite build",
+    "build:components": "tsc && vite build",
     "build:types": "tsc --project tsconfig.build.json --emitDeclarationOnly --declaration",
     "codestyle:typescript": "tsc --noEmit --composite false",
     "codestyle:eslint": "eslint --max-warnings 0 --ext .js,.ts, .",
