@@ -1,4 +1,4 @@
-import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from"./class-map-10d9f55a.js";import{n,t as w}from"./property-c8c6de82.js";import"./component-24cd48a8.js";const z=h`
+import{i as y,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from"./class-map-10d9f55a.js";import{n as r,t as z}from"./property-c8c6de82.js";import"./component-24cd48a8.js";const B=y`
   .button {
     --button-height: 48px;
     --button-border: 1px solid;
@@ -20,6 +20,11 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     color: var(--button-color);
     background-color: var(--button-background-color);
     cursor: pointer;
+
+    &[data-full-width] {
+      width: 100%;
+      display: flex;
+    }
   }
 
   /* Link Styles */
@@ -49,7 +54,7 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     filter: brightness(var(--interaction-state-active));
   }
 
-  .button[icon-only] {
+  .button[data-icon-only] {
     aspect-ratio: 1;
   }
 
@@ -75,33 +80,35 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
   .button:where([data-size="medium"]) {
     --button-height: calc(var(--size-factor-medium) * var(--space-12));
   }
-`;var B=Object.defineProperty,O=Object.getOwnPropertyDescriptor,o=(t,a,l,i)=>{for(var r=i>1?void 0:i?O(a,l):a,s=t.length-1,c;s>=0;s--)(c=t[s])&&(r=(i?c(a,l,r):c(r))||r);return i&&r&&B(a,l,r),r},m=(t=>(t.Filled="filled",t.Outline="outline",t))(m||{}),v=(t=>(t.Medium="medium",t))(v||{}),g=(t=>(t.Primary="primary",t))(g||{});let e=class extends ${constructor(){super(...arguments),this.buttonType="button",this.iconOnly=!1,this.iconBefore="",this.iconAfter="",this.href="",this.disabled=!1}render(){const{iconOnly:t,iconBefore:a,iconAfter:l,label:i,href:r,disabled:s}=this,c=x({"button--text":!0,"sr-only":t}),b=p`
+`;var O=Object.defineProperty,S=Object.getOwnPropertyDescriptor,o=(t,a,s,i)=>{for(var n=i>1?void 0:i?S(a,s):a,l=t.length-1,c;l>=0;l--)(c=t[l])&&(n=(i?c(a,s,n):c(n))||n);return i&&n&&O(a,s,n),n},m=(t=>(t.Filled="filled",t.Outline="outline",t))(m||{}),v=(t=>(t.Medium="medium",t))(v||{}),g=(t=>(t.Primary="primary",t))(g||{});let e=class extends ${constructor(){super(...arguments),this.buttonType="button",this.iconOnly=!1,this.iconBefore="",this.fullWidth=!1,this.iconAfter="",this.href="",this.disabled=!1}render(){const{iconOnly:t,iconBefore:a,iconAfter:s,label:i,href:n,fullWidth:l,disabled:c}=this,w=x({"button--text":!0,"sr-only":t}),d=p`
       <pano-a-icon icon-name="${a}"></pano-a-icon>
-      <span class="${c}"> ${i} </span>
-      ${t?null:p`<pano-a-icon icon-name="${l}"></pano-a-icon>`}
-    `;return r?p`
+      <span class="${w}"> ${i} </span>
+      ${t?null:p`<pano-a-icon icon-name="${s}"></pano-a-icon>`}
+    `;return n?p`
         <a
           class="button"
-          href="${r}"
-          ?icon-only="${t}"
+          href="${n}"
+          ?data-icon-only="${t}"
+          ?data-full-width="${l}"
           data-appearance="${this.appearance}"
           data-size="${this.size}"
           data-theme="${this.theme}"
         >
-          ${b}
+          ${d}
         </a>
       `:p`
         <button
           class="button"
-          ?disabled="${s}"
-          ?icon-only="${t}"
+          ?disabled="${c}"
+          ?data-icon-only="${t}"
+          ?data-full-width="${l}"
           data-appearance="${this.appearance}"
           data-size="${this.size}"
           data-theme="${this.theme}"
         >
-          ${b}
+          ${d}
         </button>
-      `}};e.styles=[h`
+      `}};e.styles=[y`
       *,
       *::before,
       *::after {
@@ -126,7 +133,7 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
         padding: 0;
         white-space: nowrap;
       }
-    `,z];o([n({type:String,reflect:!0})],e.prototype,"appearance",2);o([n({type:String,reflect:!0})],e.prototype,"size",2);o([n({type:String,reflect:!0})],e.prototype,"theme",2);o([n({type:String,reflect:!0})],e.prototype,"label",2);o([n({type:String,reflect:!0})],e.prototype,"buttonType",2);o([n({type:Boolean,reflect:!0})],e.prototype,"iconOnly",2);o([n({type:String,reflect:!0})],e.prototype,"iconBefore",2);o([n({type:String,reflect:!0})],e.prototype,"iconAfter",2);o([n({type:String,reflect:!0})],e.prototype,"href",2);o([n({type:Boolean,reflect:!0})],e.prototype,"disabled",2);e=o([w("pano-a-button")],e);const T={title:"Design System - Beispiel A/Components/Button",component:"pano-a-button",argTypes:{appearance:{options:m,control:{type:"select"}},size:{options:v,control:{type:"select"}},theme:{options:g,control:{type:"select"}},label:{type:"string"},buttonType:{type:"string"},iconOnly:{type:"boolean"},iconBefore:{type:"string"},iconAfter:{type:"string"},href:{type:"string"},disabled:{type:"boolean"}}},u={args:{appearance:"filled",size:"medium",theme:"primary",label:"Button",buttonType:"button",iconOnly:!1,iconBefore:"",iconAfter:"",href:"",disabled:!1}};var d,f,y;u.parameters={...u.parameters,docs:{...(d=u.parameters)==null?void 0:d.docs,source:{originalSource:`{
+    `,B];o([r({type:String,reflect:!0})],e.prototype,"appearance",2);o([r({type:String,reflect:!0})],e.prototype,"size",2);o([r({type:String,reflect:!0})],e.prototype,"theme",2);o([r({type:String,reflect:!0})],e.prototype,"label",2);o([r({type:String,reflect:!0})],e.prototype,"buttonType",2);o([r({type:Boolean,reflect:!0,attribute:"icon-only"})],e.prototype,"iconOnly",2);o([r({type:String,reflect:!0,attribute:"icon-before"})],e.prototype,"iconBefore",2);o([r({type:Boolean,reflect:!0,attribute:"full-width"})],e.prototype,"fullWidth",2);o([r({type:String,reflect:!0,attribute:"icon-after"})],e.prototype,"iconAfter",2);o([r({type:String,reflect:!0})],e.prototype,"href",2);o([r({type:Boolean,reflect:!0})],e.prototype,"disabled",2);e=o([z("pano-a-button")],e);const W={title:"Design System - Beispiel A/Components/Button",component:"pano-a-button",argTypes:{appearance:{options:m,control:{type:"select"}},size:{options:v,control:{type:"select"}},theme:{options:g,control:{type:"select"}},label:{type:"string"},buttonType:{type:"string"},iconOnly:{type:"boolean"},iconBefore:{type:"string"},fullWidth:{type:"boolean"},iconAfter:{type:"string"},href:{type:"string"},disabled:{type:"boolean"}}},u={args:{appearance:"filled",size:"medium",theme:"primary",label:"Button",buttonType:"button",iconOnly:!1,iconBefore:"",fullWidth:!1,iconAfter:"",href:"",disabled:!1}};var b,f,h;u.parameters={...u.parameters,docs:{...(b=u.parameters)==null?void 0:b.docs,source:{originalSource:`{
   args: {
     appearance: "filled",
     size: "medium",
@@ -135,9 +142,10 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     buttonType: "button",
     iconOnly: false,
     iconBefore: "",
+    fullWidth: false,
     iconAfter: "",
     href: "",
     disabled: false
   }
-}`,...(y=(f=u.parameters)==null?void 0:f.docs)==null?void 0:y.source}}};const D=["Default"];export{u as Default,D as __namedExportsOrder,T as default};
-//# sourceMappingURL=component.stories-21ab908a.js.map
+}`,...(h=(f=u.parameters)==null?void 0:f.docs)==null?void 0:h.source}}};const D=["Default"];export{u as Default,D as __namedExportsOrder,W as default};
+//# sourceMappingURL=component.stories-b498f2a4.js.map

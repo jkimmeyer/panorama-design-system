@@ -1,4 +1,4 @@
-import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from"./class-map-10d9f55a.js";import{n,t as w}from"./property-c8c6de82.js";import"./component-ffd803ff.js";const B=h`
+import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from"./class-map-10d9f55a.js";import{n as r,t as B}from"./property-c8c6de82.js";import"./component-ffd803ff.js";const z=h`
   .button {
     --button-height: 48px;
     --button-border: 1px solid;
@@ -20,6 +20,11 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     color: var(--button-color);
     background-color: var(--button-background-color);
     cursor: pointer;
+
+    &[data-full-width] {
+      width: 100%;
+      display: flex;
+    }
   }
 
   /* Link Styles */
@@ -49,7 +54,7 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     filter: brightness(var(--interaction-state-active));
   }
 
-  .button[icon-only] {
+  .button[data-icon-only] {
     aspect-ratio: 1;
   }
 
@@ -76,31 +81,33 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
   .button:where([data-size="medium"]) {
     --button-height: calc(var(--size-factor-medium) * var(--space-12));
   }
-`;var z=Object.defineProperty,S=Object.getOwnPropertyDescriptor,o=(t,a,s,i)=>{for(var r=i>1?void 0:i?S(a,s):a,c=t.length-1,l;c>=0;c--)(l=t[c])&&(r=(i?l(a,s,r):l(r))||r);return i&&r&&z(a,s,r),r},m=(t=>(t.Filled="filled",t))(m||{}),v=(t=>(t.Medium="medium",t))(v||{}),g=(t=>(t.Primary="primary",t.Secondary="secondary",t))(g||{});let e=class extends ${constructor(){super(...arguments),this.buttonType="button",this.iconOnly=!1,this.iconBefore="",this.iconAfter="",this.href="",this.disabled=!1}render(){const{iconOnly:t,iconBefore:a,iconAfter:s,label:i,href:r,disabled:c}=this,l=x({"button--text":!0,"sr-only":t}),b=p`
+`;var S=Object.defineProperty,O=Object.getOwnPropertyDescriptor,o=(t,a,s,i)=>{for(var n=i>1?void 0:i?O(a,s):a,l=t.length-1,c;l>=0;l--)(c=t[l])&&(n=(i?c(a,s,n):c(n))||n);return i&&n&&S(a,s,n),n},m=(t=>(t.Filled="filled",t))(m||{}),v=(t=>(t.Medium="medium",t))(v||{}),g=(t=>(t.Primary="primary",t.Secondary="secondary",t))(g||{});let e=class extends ${constructor(){super(...arguments),this.buttonType="button",this.iconOnly=!1,this.iconBefore="",this.fullWidth=!1,this.iconAfter="",this.href="",this.disabled=!1}render(){const{iconOnly:t,iconBefore:a,iconAfter:s,label:i,href:n,fullWidth:l,disabled:c}=this,w=x({"button--text":!0,"sr-only":t}),d=p`
       <pano-b-icon icon-name="${a}"></pano-b-icon>
-      <span class="${l}"> ${i} </span>
+      <span class="${w}"> ${i} </span>
       ${t?null:p`<pano-b-icon icon-name="${s}"></pano-b-icon>`}
-    `;return r?p`
+    `;return n?p`
         <a
           class="button"
-          href="${r}"
-          ?icon-only="${t}"
+          href="${n}"
+          ?data-icon-only="${t}"
+          ?data-full-width="${l}"
           data-appearance="${this.appearance}"
           data-size="${this.size}"
           data-theme="${this.theme}"
         >
-          ${b}
+          ${d}
         </a>
       `:p`
         <button
           class="button"
           ?disabled="${c}"
-          ?icon-only="${t}"
+          ?data-icon-only="${t}"
+          ?data-full-width="${l}"
           data-appearance="${this.appearance}"
           data-size="${this.size}"
           data-theme="${this.theme}"
         >
-          ${b}
+          ${d}
         </button>
       `}};e.styles=[h`
       *,
@@ -127,7 +134,7 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
         padding: 0;
         white-space: nowrap;
       }
-    `,B];o([n({type:String,reflect:!0})],e.prototype,"appearance",2);o([n({type:String,reflect:!0})],e.prototype,"size",2);o([n({type:String,reflect:!0})],e.prototype,"theme",2);o([n({type:String,reflect:!0})],e.prototype,"label",2);o([n({type:String,reflect:!0})],e.prototype,"buttonType",2);o([n({type:Boolean,reflect:!0})],e.prototype,"iconOnly",2);o([n({type:String,reflect:!0})],e.prototype,"iconBefore",2);o([n({type:String,reflect:!0})],e.prototype,"iconAfter",2);o([n({type:String,reflect:!0})],e.prototype,"href",2);o([n({type:Boolean,reflect:!0})],e.prototype,"disabled",2);e=o([w("pano-b-button")],e);const D={title:"Design System - Beispiel B/Components/Button",component:"pano-b-button",argTypes:{appearance:{options:m,control:{type:"select"}},size:{options:v,control:{type:"select"}},theme:{options:g,control:{type:"select"}},label:{type:"string"},buttonType:{type:"string"},iconOnly:{type:"boolean"},iconBefore:{type:"string"},iconAfter:{type:"string"},href:{type:"string"},disabled:{type:"boolean"}}},u={args:{appearance:"filled",size:"medium",theme:"primary",label:"Button",buttonType:"button",iconOnly:!1,iconBefore:"",iconAfter:"",href:"",disabled:!1}};var d,f,y;u.parameters={...u.parameters,docs:{...(d=u.parameters)==null?void 0:d.docs,source:{originalSource:`{
+    `,z];o([r({type:String,reflect:!0})],e.prototype,"appearance",2);o([r({type:String,reflect:!0})],e.prototype,"size",2);o([r({type:String,reflect:!0})],e.prototype,"theme",2);o([r({type:String,reflect:!0})],e.prototype,"label",2);o([r({type:String,reflect:!0})],e.prototype,"buttonType",2);o([r({type:Boolean,reflect:!0,attribute:"icon-only"})],e.prototype,"iconOnly",2);o([r({type:String,reflect:!0,attribute:"icon-before"})],e.prototype,"iconBefore",2);o([r({type:Boolean,reflect:!0,attribute:"full-width"})],e.prototype,"fullWidth",2);o([r({type:String,reflect:!0,attribute:"icon-after"})],e.prototype,"iconAfter",2);o([r({type:String,reflect:!0})],e.prototype,"href",2);o([r({type:Boolean,reflect:!0})],e.prototype,"disabled",2);e=o([B("pano-b-button")],e);const D={title:"Design System - Beispiel B/Components/Button",component:"pano-b-button",argTypes:{appearance:{options:m,control:{type:"select"}},size:{options:v,control:{type:"select"}},theme:{options:g,control:{type:"select"}},label:{type:"string"},buttonType:{type:"string"},iconOnly:{type:"boolean"},iconBefore:{type:"string"},fullWidth:{type:"boolean"},iconAfter:{type:"string"},href:{type:"string"},disabled:{type:"boolean"}}},u={args:{appearance:"filled",size:"medium",theme:"primary",label:"Button",buttonType:"button",iconOnly:!1,iconBefore:"",fullWidth:!1,iconAfter:"",href:"",disabled:!1}};var b,f,y;u.parameters={...u.parameters,docs:{...(b=u.parameters)==null?void 0:b.docs,source:{originalSource:`{
   args: {
     appearance: "filled",
     size: "medium",
@@ -136,9 +143,10 @@ import{i as h,s as $,x as p}from"./lit-element-8d145624.js";import{e as x}from".
     buttonType: "button",
     iconOnly: false,
     iconBefore: "",
+    fullWidth: false,
     iconAfter: "",
     href: "",
     disabled: false
   }
 }`,...(y=(f=u.parameters)==null?void 0:f.docs)==null?void 0:y.source}}};const T=["Default"];export{u as Default,T as __namedExportsOrder,D as default};
-//# sourceMappingURL=component.stories-030be5f8.js.map
+//# sourceMappingURL=component.stories-78121a2e.js.map
