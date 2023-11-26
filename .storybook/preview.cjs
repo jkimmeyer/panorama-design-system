@@ -16,7 +16,6 @@ export const parameters = {
 export default {
   decorators: [
     (story, category) => {
-      console.log(category.componentId);
       if (category.componentId.includes("beispiel-b")) {
         return html` <div data-theme-b>${story()}</div>`;
       }
