@@ -71,29 +71,46 @@ export const radioGroupStyles = css`
     background-color: var(--color-white);
   }
 
-  .radio--input:checked + .radio--label::before {
-    border-color: var(--color-primary);
+  .radio--input:disabled {
+    cursor: default;
+
+    & + .radio--label {
+      cursor: default;
+      color: var(--color-disabled);
+    }
+
+    & + .radio--label::before {
+      color: var(--color-disabled);
+      border-color: var(--color-disabled);
+    }
   }
 
-  .radio--input:hover + .radio--label::before {
-    background-color: var(--color-primary-container);
-    filter: brightness(var(--interaction-state-hover, 1.2));
-  }
 
-  .radio--input:active + .radio--label::before {
-    background-color: var(--color-primary-container);
-    filter: brightness(var(--interaction-state-active, 1.4));
-  }
+  .radio--input:enabled {
+    &:checked + .radio--label::before {
+      border-color: var(--color-primary);
+    }
 
-  .radio--input:checked + .radio--label > .radio--icon {
-    display: inline-flex;
-  }
+    &:hover + .radio--label::before {
+      background-color: var(--color-primary-container);
+      filter: brightness(var(--interaction-state-hover, 1.2));
+    }
 
-  .radio--input:checked:hover + .radio--label > .radio--icon {
-    color: var(--color-primary-on-container);
-  }
+    &:active + .radio--label::before {
+      background-color: var(--color-primary-container);
+      filter: brightness(var(--interaction-state-active, 1.4));
+    }
 
-  .radio--input:checked:active + .radio--label > .radio--icon {
-    color: var(--color-primary-on-container);
-  }
+    &:checked + .radio--label > .radio--icon {
+      display: inline-flex;
+    }
+
+    &:checked:hover + .radio--label > .radio--icon {
+      color: var(--color-primary-on-container);
+    }
+
+    &:checked:active + .radio--label > .radio--icon {
+      color: var(--color-primary-on-container);
+    }
+}
 `

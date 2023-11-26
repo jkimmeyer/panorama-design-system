@@ -55,14 +55,14 @@ export class {{properCase meta.prefix}}RadioGroup extends LitElement {
       _handleChange: handleChange,
     } = this;
 
-    const labelClasses = classMap({
-      [`radio--label`]: true,
+    const radioGroupHeadingClasses = classMap({
+      [`radio-group--heading`]: true,
       [`sr-only`]: hiddenLabel,
     });
 
     return html`
       <div class="radio-group" role="group" aria-labelledby="a11y-radio-group">
-      	<div class="radio-group--heading" id="a11y-radio-group">${label}</div>
+      	<div class="${radioGroupHeadingClasses}" id="a11y-radio-group">${label}</div>
       ${options.map((option, index) =>
         Object.entries(option).map(([optionsKey, optionsValue]) => {
           return html`
@@ -76,7 +76,7 @@ export class {{properCase meta.prefix}}RadioGroup extends LitElement {
             type="radio"
             @change="${handleChange}"
           />
-          <label class="${labelClasses}" for="radio-${index}">
+          <label class="radio--label" for="radio-${index}">
             <{{meta.prefix}}-icon class="radio--icon" icon-name="check"></{{meta.prefix}}-icon>
             <div>${optionsValue}</div>
           </label>

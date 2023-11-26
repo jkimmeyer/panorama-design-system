@@ -64,12 +64,26 @@ export const checkboxStyles = css`
     border-color: var(--color-primary);
   }
 
-  .checkbox--input:hover + .checkbox--label::before {
+  .checkbox--input:disabled {
+    cursor: default;
+
+    & + .checkbox--label {
+      cursor: default;
+      color: var(--color-disabled);
+    }
+
+    & + .checkbox--label::before {
+      color: var(--color-disabled);
+      border-color: var(--color-disabled);
+    }
+  }
+
+  .checkbox--input:not(:disabled):hover + .checkbox--label::before {
     background-color: var(--color-primary-container);
     filter: brightness(var(--interaction-state-hover, 1.2));
   }
 
-  .checkbox--input:active + .checkbox--label::before {
+  .checkbox--input:not(:disabled):active + .checkbox--label::before {
     background-color: var(--color-primary-container);
     filter: brightness(var(--interaction-state-active, 1.4));
   }

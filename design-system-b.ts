@@ -7,7 +7,6 @@ import { DesignSystem, ColorPurpose } from "./src/types";
 
 export enum ColorTheme {
   Primary = "primary",
-  Secondary = "secondary",
 }
 
 export const ButtonAppearances = [
@@ -16,6 +15,12 @@ export const ButtonAppearances = [
     color: ColorPurpose.OnMain,
     "border-color": ColorPurpose.Transparent,
     "background-color": ColorPurpose.Main,
+  },
+  {
+    name: "outline",
+    color: ColorPurpose.Main,
+    "border-color": ColorPurpose.Main,
+    "background-color": ColorPurpose.Transparent,
   },
 ];
 
@@ -28,20 +33,23 @@ export const designSystemB: DesignSystem = {
       variants: {
         appearances: ButtonAppearances,
         sizes: ["medium"],
-        themes: [ColorTheme.Primary, ColorTheme.Secondary],
+        themes: [ColorTheme.Primary],
       },
       properties: {
         ...buttonConfig.properties,
       },
     },
     checkbox: {
+      variants: {
+        sizes: ["small"],
+      },
       properties: {
         ...checkboxConfig.properties,
       },
     },
     input: {
       variants: {
-        sizes: ["small", "medium"],
+        sizes: ["medium"],
       },
       properties: {
         ...inputConfig.properties,
