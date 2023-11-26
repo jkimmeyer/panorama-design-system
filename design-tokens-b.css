@@ -23,7 +23,7 @@
 
   /* Color Palette */
   --pano-black-1: hsla(0, 0%, 100%, 1);
-  --pano-black-2: hsla(0, 0%, 80%, 1);
+  --pano-black-2: hsla(0, 0%, 60%, 1);
   --pano-black-3: hsla(0, 0%, 40%, 1);
   --pano-black-4: hsla(0, 0%, 20%, 1);
   --pano-black-5: hsla(0, 0%, 0%, 1);
@@ -42,7 +42,7 @@
   /* Color */
   --color-primary: var(--pano-black-5);
   --color-on-primary: var(--pano-white);
-  --color-primary-container: var(--pano-black-3);
+  --color-primary-container: var(--pano-black-2);
   --color-primary-on-container: var(--pano-black);
 
   --color-secondary: var(--pano-royal-blue-5);
