@@ -1,5 +1,13 @@
-# The Meta Design System
+# Panorama Design system
+Implementation of the master thesis from Johannes Kimmeyer. The 
 
-This repository provides a meta model that can be used to provide a customized design system by simply configuring and adopting your design system to the shared meta model. For the ease of use you can simply adjust a `.ts`-Configuration File while using a corresponding Design-Token Configuration.
+## Setup
+```bash
+$ npm i
+$ npm run generate:components
+$ npm run storybook
+```
 
-Please dive deep into the different concepts defined by us, as the understanding is mandatory to adopt your design system to work with our meta model.
+## CI 
+A new package will be published, when the release pr's are merged to `main`. 
+The CI will automatically deploy the website to GitHub Pages. The CI also runs test checking the code style, the tests and the types of the application.
