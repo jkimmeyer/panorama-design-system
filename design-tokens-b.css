@@ -12,6 +12,11 @@
   --space-24: 3rem;
   --space-32: 4rem;
 
+  /* Size Factors */
+  --size-factor-small: 0.75;
+  --size-factor-medium: 1;
+  --size-factor-large: 1.25;
+
   /* Color Palette */
   --pano-black-1: hsla(0, 0%, 100%, 1);
   --pano-black-2: hsla(0, 0%, 80%, 1);
