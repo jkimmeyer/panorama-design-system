@@ -1,56 +1,54 @@
-import { describe, it, expect } from "vitest";
+import { describe, it } from "vitest";
 import { screen } from "shadow-dom-testing-library";
-import { fixture, html } from "@open-wc/testing";
+import { fixture, expect, html } from "@open-wc/testing";
 
 import "./component";
+{{#if variants}}
+import {
+{{#each variants}}
+  {{properCase ../name}}{{ singularize (titleCase @key) }},
+{{/each}}
+} from "./component";
+{{/if}}
+
+interface ButtonProps {
+  {{> testProps}}
+  disabled?: boolean;
+}
+
+const button = ({
+  {{> testDefaults}}
+  disabled,
+}: ButtonProps) =>
+  html`<{{meta.prefix}}-button
+    label="Hello, world!"
+    {{> testAttributes}}
+    ?disabled="${disabled}"
+    button-type="button"
+  ></{{meta.prefix}}-button>`;
 
 describe("Button", () => {
   it("renders", async () => {
-    await fixture(
-      html`<pano-button
-        label="Hello, world!"
-        appearance="filled"
-        theme="primary"
-        size="medium"
-        button-type="button"
-      ></pano-button>`,
-    );
+    await fixture(button({}));
     const component = await screen.findByShadowRole("button");
 
-    expect(component).toBeInTheDocument();
+    expect(component).to.exist;
   });
 
-  it("emits an event on click", async () => {
-    await fixture(
-      html`<pano-button
-        label="button"
-        appearance="filled"
-        theme="primary"
-        size="medium"
-        button-type="button"
-      ></pano-button>`,
-    );
-
-    const component = await screen.findByShadowRole("button");
-    expect(component).toBeInTheDocument();
-  });
+  {{> variantTests role="button"}}
 
   describe("when disabled", () => {
     it("is disabled", async () => {
-      await fixture(
-        html`<pano-button
-          label="button"
-          appearance="filled"
-          theme="primary"
-          size="medium"
-          button-type="button"
-          disabled
-        ></pano-button>`,
-      );
+      await fixture(button({ disabled: true }));
 
       const component = await screen.findByShadowRole("button");
-      expect(component).toBeInTheDocument();
-      expect(component).toBeDisabled();
+      expect(component).to.have.attribute("disabled");
     });
+  });
+
+  it("is accessible", async () => {
+    const component = await fixture(button({}));
+
+    await expect(component).to.be.accessible();
   });
 });
