@@ -15,13 +15,13 @@ export const buttonStyles = css`
   border: var(--button-border) var(--button-border-color);
   border-radius: var(--button-border-radius);
   padding-inline: var(--button-inline-padding);
+  font-family: var(--ds-default-font);
+  font-size: var(--ds-default-font-size);
+  line-height: var(--ds-default-line-height);
   text-decoration: none;
   color: var(--button-color);
   background-color: var(--button-background-color);
   cursor: pointer;
-  font-family: var(--ds-default-font);
-  font-size: var(--ds-default-font-size);
-  line-height: var(--ds-default-line-height);
 }
 
 /* Link Styles */
@@ -44,11 +44,11 @@ export const buttonStyles = css`
 }
 
 .button:not(:disabled):where(:hover) {
-  filter: brightness(1.2);
+  filter: brightness(var(--interaction-state-hover));
 }
 
 .button:not(:disabled):where(:active) {
-  filter: brightness(1.3);
+  filter: brightness(var(--interaction-state-active));
 }
 
 .button[icon-only] {
@@ -77,7 +77,7 @@ export const buttonStyles = css`
 
 {{#each variants.sizes}}
 .button:where([data-size="{{this}}"]) {
-  --button-height: calc(var(--space-{{this}}) * 1.5);
+  --button-height: calc(var(--size-factor-{{this}}) * var(--space-12));
 }
 
 {{/each}}

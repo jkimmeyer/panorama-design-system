@@ -1,6 +1,5 @@
 [data-theme-a] {
   /* Sizes */
-
   --space-1: 0.125rem;
   --space-2: 0.25rem;
   --space-4: 0.5rem;
@@ -12,6 +11,15 @@
   --space-20: 2.5rem;
   --space-24: 3rem;
   --space-32: 4rem;
+
+  /* Size Factors */
+  --size-factor-small: 0.75;
+  --size-factor-medium: 1;
+  --size-factor-large: 1.25;
+
+  /* Interaction States */
+  --interaction-state-hover: 1.2;
+  --interaction-state-active: 1.4;
 
   /* Color Palette */
   --pano-purple-1: hsla(248, 67%, 95%, 1);
@@ -28,7 +36,7 @@
   /* Color */
   --color-primary: var(--pano-purple-3);
   --color-on-primary: var(--pano-white);
-  --color-primary-container: var(--pano-purple-1);
+  --color-primary-container: var(--pano-purple-2);
   --color-primary-on-container: var(--pano-black);
 
   --color-disabled: var(--pano-gray-2);
@@ -36,10 +44,13 @@
   --color-disabled-container: var(--pano-gray-1);
   --color-disabled-on-container: var(--pano-gray-2);
 
+  --color-black: var(--pano-black);
+  --color-white: var(--pano-white);
+
   /* Other */
   --ds-border-radius: var(--space-2);
 
-  --ds-default-font: "PT Sans Pro", sans-serif;
+  --ds-default-font: "Average Sans", sans-serif;
   --ds-default-font-size: 1rem;
   --ds-default-line-height: 1.5rem;
 }

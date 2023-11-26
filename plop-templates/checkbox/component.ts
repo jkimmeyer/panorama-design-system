@@ -61,21 +61,23 @@ export class {{properCase meta.prefix}}Checkbox extends LitElement {
     });
 
     return html`
-      <input
-        id="checkbox"
-        class="checkbox--input | sr-only"
-        .disabled="${disabled}"
-        .checked="${checked}"
-        aria-checked="${indeterminate ? "mixed" : checked}"
-        name="${name}"
-        value="${value}"
-        type="checkbox"
-        @change="${handleChange}"
-      />
-      <label class="${labelClasses}" for="checkbox">
-        <{{meta.prefix}}-icon class="checkbox--icon" icon-name="check"></{{meta.prefix}}-icon>
-        <div>${label}</div>
-      </label>
+      <div class="checkbox" {{> dataAttributes}}>
+        <input
+          id="checkbox"
+          class="checkbox--input | sr-only"
+          .disabled="${disabled}"
+          .checked="${checked}"
+          aria-checked="${indeterminate ? "mixed" : checked}"
+          name="${name}"
+          value="${value}"
+          type="checkbox"
+          @change="${handleChange}"
+        />
+        <label class="${labelClasses}" for="checkbox">
+          <{{meta.prefix}}-icon class="checkbox--icon" icon-name="check"></{{meta.prefix}}-icon>
+          <div>${label}</div>
+        </label>
+    </div>
     `;
   }
 }

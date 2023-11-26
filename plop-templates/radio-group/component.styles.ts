@@ -1,19 +1,36 @@
 import { css } from "lit"
 
 export const radioGroupStyles = css`
+  :host {
+    --radio-button-size: var(--space-10);
+    font-family: var(--ds-default-font);
+  }
+
   .radio-group {
-    display: flex;
+    --_radio-button-size: var(--radio-button-size);
+
+    display: inline-flex;
     flex-direction: column;
     gap: var(--space-4);
+
+    {{#each variants.sizes}}
+    &[data-size="{{this}}"] {
+      --_radio-button-size: calc(var(--size-factor-{{this}}) * var(--radio-button-size));
+    }
+    {{/each}}
   }
 
   .radio-group--heading {
-    font-size: var(--ds-default-font-size);
-    font-family: var(--ds-default-font);
+    font-size: var(--_radio-button-size);
   }
 
   .radio {
     position: relative;
+    outline-offset: 2px;
+
+    &:focus-within {
+      outline: 2px solid var(--color-primary);
+    }
   }
 
   .radio--label {
@@ -22,7 +39,10 @@ export const radioGroupStyles = css`
     gap: var(--space-4);
     position: relative;
     padding-inline-start: calc(var(--space-8) * 2);
-    color: var(--color-primary-700);
+    font-size: calc(var(--radio-label-font, var(--radio-button-size)) * 0.8);
+    line-height: 1.25;
+    font-family: var(--ds-default-font);
+    color: var(--color-black);
     cursor: pointer;
   }
 
@@ -31,14 +51,15 @@ export const radioGroupStyles = css`
     position: absolute;
     top: 50%;
     left: 0;
+    font-size: var(--radio-button-size);
+    line-height: 1;
+    color: var(--color-primary);
     transform: translateY(-50%);
   }
 
-  .radio--label::before,
-  .radio--label::after {
+  .radio--label::before {
     content: "";
     position: absolute;
-    z-index: var(--zLayer-default, 1);
   }
 
   .radio--label::before {
@@ -54,12 +75,25 @@ export const radioGroupStyles = css`
     border-color: var(--color-primary);
   }
 
-  .radio--input:focus + .radio--label::before,
   .radio--input:hover + .radio--label::before {
-    border-color: var(--color-secondary);
+    background-color: var(--color-primary-container);
+    filter: brightness(var(--interaction-state-hover, 1.2));
+  }
+
+  .radio--input:active + .radio--label::before {
+    background-color: var(--color-primary-container);
+    filter: brightness(var(--interaction-state-active, 1.4));
   }
 
   .radio--input:checked + .radio--label > .radio--icon {
     display: inline-flex;
+  }
+
+  .radio--input:checked:hover + .radio--label > .radio--icon {
+    color: var(--color-primary-on-container);
+  }
+
+  .radio--input:checked:active + .radio--label > .radio--icon {
+    color: var(--color-primary-on-container);
   }
 `

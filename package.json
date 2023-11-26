@@ -24,7 +24,7 @@
     "build:types": "tsc --project tsconfig.build.json --emitDeclarationOnly --declaration",
     "codestyle:typescript": "tsc --noEmit --composite false",
     "codestyle:eslint": "eslint --max-warnings 0 --ext .js,.ts, .",
-    "codestyle:eslint:fix": "eslint --max-warnings 0 --ext .js,.ts, --fix .",
+    "codestyle:eslint:fix": "eslint --ext .js,.ts, --fix .",
     "codestyle:prettier": "prettier --check .",
     "codestyle:prettier:fix": "prettier --write .",
     "codestyle:stylelint": "stylelint 'src/**/component.(css|ts)'",
