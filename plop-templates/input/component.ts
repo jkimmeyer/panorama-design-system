@@ -39,6 +39,7 @@ export class {{properCase meta.prefix }}Input extends LitElement {
         margin: 0;
         padding: 0;
         font: inherit;
+        outline: none;
       }
 
       .sr-only {

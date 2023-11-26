@@ -13,15 +13,23 @@
     },
     "iconOnly": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "attribute": "icon-only"
     },
     "iconBefore": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "attribute": "icon-before"
+    },
+    "fullWidth": {
+      "type": "boolean",
+      "default": false,
+      "attribute": "full-width"
     },
     "iconAfter": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "attribute": "icon-after"
     },
     "href": {
       "type": "string",
