@@ -71,6 +71,6 @@
     "stylelint-use-logical-spec": "^5.0.0",
     "ts-lit-plugin": "^2.0.0",
     "typescript": "^5.0.0",
-    "vite": "^4.2.0"
+    "vite": "^5.0.0"
   }
 }
