@@ -4,8 +4,8 @@ Implementation of the master thesis from Johannes Kimmeyer.
 
 # Deployment
 
-[Demo Storybook](https://jkimmeyer.github.io/panorama-design-system)
-[Demo Anwendung](https://jkimmeyer.github.io/panorama-demo)
+* [Demo Storybook](https://jkimmeyer.github.io/panorama-design-system)
+* [Demo Anwendung](https://jkimmeyer.github.io/panorama-demo)
 
 ## Setup
 
