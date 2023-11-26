@@ -44,16 +44,11 @@ export const buttonStyles = css`
   pointer-events: none;
 }
 
-.button:not(:disabled):where(:focus) {
-  filter: brightness(1.1);
-}
-
-.button:not(:disabled):where(:hover) {
-  filter: brightness(var(--interaction-state-hover));
-}
-
+.button:not(:disabled):where(:focus),
+.button:not(:disabled):where(:hover),
 .button:not(:disabled):where(:active) {
-  filter: brightness(var(--interaction-state-active));
+  color: var(--button-on-interaction-color);
+  background-color: var(--button-interaction-color);
 }
 
 .button[data-icon-only] {
@@ -65,8 +60,8 @@ export const buttonStyles = css`
 .button:where([data-theme="{{this}}"]) {
   --button-main-color: var(--color-{{this}});
   --button-on-main-color: var(--color-on-{{this}});
-  --button-container-color: var(--color-{{this}}-container);
-  --button-on-container-color: var(--color-{{this}}-on-container);
+  --button-interaction-color: var(--color-{{this}}-container);
+  --button-on-interaction-color: var(--color-{{this}}-on-container);
 }
 
 {{/each}}

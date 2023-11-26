@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
-      - run: npm run generate:components
+      # - run: npm run generate:components
       - run: npm run codestyle:typescript
       - run: npm run codestyle:eslint
         if: success() || failure()
