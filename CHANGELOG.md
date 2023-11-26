@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.18](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.17...0.0.18) (2023-11-26)
+
+
+### Miscellaneous
+
+* Update README.md ([#128](https://github.com/jkimmeyer/panorama-design-system/issues/128)) ([392b030](https://github.com/jkimmeyer/panorama-design-system/commit/392b030d1303ac1f4dfd893ff8531bb5da1f4d79))
+
 ## [0.0.17](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.16...0.0.17) (2023-11-26)
 
 
