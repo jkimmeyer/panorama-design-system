@@ -55,6 +55,7 @@ export class {{properCase meta.prefix}}Button extends LitElement {
       iconAfter,
       label,
       href,
+      fullWidth,
       disabled
     } = this;
 
@@ -73,13 +74,13 @@ export class {{properCase meta.prefix}}Button extends LitElement {
 
     if(href) {
       return html`
-        <a class="button" href="${href}" ?icon-only="${iconOnly}" {{> dataAttributes}}>
+        <a class="button" href="${href}" ?data-icon-only="${iconOnly}" ?data-full-width="${fullWidth}" {{> dataAttributes}}>
           ${innerHtml}
         </a>
       `;
     } else {
       return html`
-        <button class="button" ?disabled="${disabled}" ?icon-only="${iconOnly}" {{> dataAttributes}}>
+        <button class="button" ?disabled="${disabled}" ?data-icon-only="${iconOnly}" ?data-full-width="${fullWidth}" {{> dataAttributes}}>
           ${innerHtml}
         </button>
       `;

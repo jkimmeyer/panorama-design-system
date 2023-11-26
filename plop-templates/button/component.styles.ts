@@ -22,6 +22,11 @@ export const buttonStyles = css`
   color: var(--button-color);
   background-color: var(--button-background-color);
   cursor: pointer;
+
+  &[data-full-width] {
+    width: 100%;
+    display: flex;
+  }
 }
 
 /* Link Styles */
@@ -51,7 +56,7 @@ export const buttonStyles = css`
   filter: brightness(var(--interaction-state-active));
 }
 
-.button[icon-only] {
+.button[data-icon-only] {
   aspect-ratio: 1;
 }
 
