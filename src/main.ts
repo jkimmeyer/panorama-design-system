@@ -1,4 +1,14 @@
+// Components
 // Styles
 import "../design-tokens-a.css";
 import "../design-tokens-b.css";
-// Components
+import "./components/A/button/component";
+import "./components/A/checkbox/component";
+import "./components/A/icon/component";
+import "./components/A/input/component";
+import "./components/A/radio-group/component";
+import "./components/B/button/component";
+import "./components/B/checkbox/component";
+import "./components/B/icon/component";
+import "./components/B/input/component";
+import "./components/B/radio-group/component";
