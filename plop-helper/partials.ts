@@ -165,9 +165,11 @@ export const storybookControls = ({ properties }: Props) => {
 
   Object.entries(properties).forEach(([key, value]) => {
     const { type, customType } = value;
+    const controlType =
+      type === "Object" || type === "Array" ? "control" : "type";
 
     const prepend = `${key}: {`;
-    const options = `  type: "${type ?? customType}"`;
+    const options = `  ${controlType}: "${type ?? customType}"`;
     const append = "},";
 
     propertyArgs.push([prepend, options, append].join("\n"));
