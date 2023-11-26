@@ -93,6 +93,10 @@ export const checkboxStyles = css`
     display: inline-flex;
   }
 
+  .checkbox--input[aria-checked="mixed"] + .checkbox--label > .checkbox--icon {
+    display: inline-flex;
+  }
+
   .checkbox--input:checked:hover + .checkbox--label > .checkbox--icon {
     color: var(--color-primary-on-container);
   }

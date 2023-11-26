@@ -5,7 +5,7 @@ import { classMap } from "lit/directives/class-map.js";
 import "../icon/component";
 import { radioGroupStyles } from "./component.styles";
 
-type RadioGroupOption = {
+export type RadioGroupOption = {
   [key: string]: string;
 };
 

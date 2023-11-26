@@ -15,8 +15,12 @@ import {
   dataAttributes,
   storybookControls,
   storybookArgs,
+  storybookVariantControls,
+  testAttributes,
+  testDefaults,
+  testProps,
+  variantTests,
 } from "./plop-helper";
-import { storybookVariantControls } from "./plop-helper/partials";
 
 const COMPONENTS_A = Object.keys(designSystemA.components);
 const COMPONENTS_B = Object.keys(designSystemB.components);
@@ -42,6 +46,14 @@ export default function (plop: NodePlopAPI) {
   plop.setPartial("storybookVariantControls", storybookVariantControls);
   // @ts-ignore
   plop.setPartial("storybookArgs", storybookArgs);
+  // @ts-ignore
+  plop.setPartial("testProps", testProps);
+  // @ts-ignore
+  plop.setPartial("testDefaults", testDefaults);
+  // @ts-ignore
+  plop.setPartial("testAttributes", testAttributes);
+  // @ts-ignore
+  plop.setPartial("variantTests", variantTests);
   /* eslint-enable @typescript-eslint/ban-ts-comment */
 
   plop.setHelper("singularize", singularize);

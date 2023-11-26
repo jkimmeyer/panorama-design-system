@@ -16,6 +16,8 @@ jobs:
         if: success() || failure()
       - run: npm run codestyle:prettier
         if: success() || failure()
+      - run: npm run test
+        if: success() || failure()
 
   # test:
   #   runs-on: ubuntu-latest
