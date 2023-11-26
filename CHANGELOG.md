@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.14](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.13...0.0.14) (2023-11-26)
+
+
+### Features
+
+* Minor Improvements ([#116](https://github.com/jkimmeyer/panorama-design-system/issues/116)) ([42052ef](https://github.com/jkimmeyer/panorama-design-system/commit/42052efd77b8914fc12460c84fb0005b0bc128d7))
+* Provide two design systems for demo purposes ([#114](https://github.com/jkimmeyer/panorama-design-system/issues/114)) ([f4b575e](https://github.com/jkimmeyer/panorama-design-system/commit/f4b575ee2ae39918048885a47d27ff9d937cde2b))
+* Replace material icon with icon and use central story ([#113](https://github.com/jkimmeyer/panorama-design-system/issues/113)) ([27faf86](https://github.com/jkimmeyer/panorama-design-system/commit/27faf8642391ec656392e1e3716d4a48393f2587))
+
 ## [0.0.13](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.12...0.0.13) (2023-11-21)
 
 
