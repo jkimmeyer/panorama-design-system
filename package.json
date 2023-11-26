@@ -38,6 +38,7 @@
     "generate:components": "plop component a all && plop component b all && npm run codestyle:fix"
   },
   "dependencies": {
+    "ajv": "^8.12.0",
     "iconify-icon": "^1.0.8",
     "lit": "^3.0.0",
     "stylelint-config-standard": "^34.0.0"
