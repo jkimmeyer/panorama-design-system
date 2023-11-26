@@ -69,8 +69,13 @@ export const buttonStyles = css`
 {{#each variants.appearances}}
 .button:where([data-appearance="{{kebabCase this.name}}"]) {
   --button-color: {{applyColor "button" this "color"}};
-  --button-border-color: {{applyColor "button" this "border-color"}};
   --button-background-color: {{applyColor "button" this "background-color"}};
+
+  &:not(:disabled):focus,
+  &:not(:disabled):hover,
+  &:not(:disabled):active {
+    --button-border-color: {{applyColor "button" this "border-color"}};
+  }
 }
 
 {{/each}}
