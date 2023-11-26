@@ -2,8 +2,8 @@
 Implementation of the master thesis from Johannes Kimmeyer.
 
 # Deployment
-Demo Storybook [https://jkimmeyer.github.io/panorama-design-system]
-Demo Anwendung [https://jkimmeyer.github.io/panorama-demo]
+[Demo Storybook](https://jkimmeyer.github.io/panorama-design-system)
+[Demo Anwendung](https://jkimmeyer.github.io/panorama-demo)
 
 ## Setup
 ```bash
@@ -11,6 +11,9 @@ $ npm i
 $ npm run generate:components
 $ npm run storybook
 ```
+
+## Components
+The component templates can be found in `plop-templates`. The corresponding partials can be found in `plop-helpers/partials.ts`.
 
 ## CI 
 The CI also runs test checking the code style, the tests and the types of the application.
