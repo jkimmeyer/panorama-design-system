@@ -17,6 +17,10 @@
   --size-factor-medium: 1;
   --size-factor-large: 1.25;
 
+  /* Interaction States */
+  --interaction-state-hover: 1.2;
+  --interaction-state-active: 1.4;
+
   /* Color Palette */
   --pano-black-1: hsla(0, 0%, 100%, 1);
   --pano-black-2: hsla(0, 0%, 80%, 1);
@@ -39,7 +43,7 @@
   --color-primary: var(--pano-black-5);
   --color-on-primary: var(--pano-white);
   --color-primary-container: var(--pano-black-3);
-  --color-primary-on-container: var(--pano-black-1);
+  --color-primary-on-container: var(--pano-black);
 
   --color-secondary: var(--pano-royal-blue-5);
   --color-on-secondary: var(--pano-white);
@@ -51,10 +55,13 @@
   --color-disabled-container: var(--pano-gray-1);
   --color-disabled-on-container: var(--pano-gray-2);
 
+  --color-black: var(--pano-black);
+  --color-white: var(--pano-white);
+
   /* Other */
   --ds-border-radius: var(--space-10);
 
-  --ds-default-font: "PT Sans Pro", sans-serif;
+  --ds-default-font: "Barlow Condensed", sans-serif;
   --ds-default-font-size: 1rem;
   --ds-default-line-height: 1.5rem;
 }
