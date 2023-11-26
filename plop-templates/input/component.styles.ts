@@ -30,7 +30,7 @@ export const inputStyles = css`
 
   {{#each variants.sizes}}
   .input--field:where([data-size="{{this}}"]) {
-    --input-padding-block: calc(var(--space-{{this}}) * 0.5);
+    --input-padding-block: calc(var(--size-factor-{{this}}) * var(--space-8));
   }
 
   {{/each}}

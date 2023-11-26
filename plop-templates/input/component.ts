@@ -86,11 +86,11 @@ export class {{properCase meta.prefix }}Input extends LitElement {
         ?data-icon-after="${!!iconAfter}"
       >
         ${iconBefore
-          ? html`<icon
+          ? html`<{{meta.prefix}}-icon
               class="input--icon"
               data-icon-before
               icon-name="${iconBefore}"
-            ></icon>`
+            ></{{meta.prefix}}-icon>`
           : null}
         <input
           class="input--field"
@@ -106,11 +106,11 @@ export class {{properCase meta.prefix }}Input extends LitElement {
           {{> dataAttributes}}
         />
         ${iconAfter
-          ? html`<icon
+          ? html`<{{meta.prefix}}-icon
               class="input--icon"
               data-icon-after
               icon-name="${iconAfter}"
-            ></icon>`
+            ></{{meta.prefix}}-icon>`
           : null}
       </div>
     `

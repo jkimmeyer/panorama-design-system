@@ -77,7 +77,7 @@ export const buttonStyles = css`
 
 {{#each variants.sizes}}
 .button:where([data-size="{{this}}"]) {
-  --button-height: calc(var(--space-{{this}}) * 1.5);
+  --button-height: calc(var(--size-factor-{{this}}) * var(--space-12));
 }
 
 {{/each}}
