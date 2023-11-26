@@ -201,3 +201,82 @@ export const storybookVariantControls = ({ name, variants }: Props) => {
     })
     .join("\n");
 };
+
+export const testProps = ({ variants = {}, name }: Props) => {
+  return Object.keys(variants)
+    .map((variant: string) => {
+      const singularizedAttribute = singularize(variant);
+
+      return `${singularizedAttribute}?: ${pascalCase(
+        [name, singularizedAttribute].join(" "),
+      )};`;
+    })
+    .join("\n");
+};
+
+export const testDefaults = ({ variants = {}, name }: Props) => {
+  return Object.keys(variants)
+    .map((variant: string) => {
+      const singularizedAttribute = singularize(variant);
+
+      let typeData = variants[variant];
+
+      if (isAppearanceArray(typeData)) {
+        typeData = typeData.map((value: Appearance) => value.name);
+      }
+
+      return `${singularizedAttribute} = ${pascalCase(
+        [name, singularizedAttribute].join(" "),
+      )}.${pascalCase(typeData[0])},`;
+    })
+    .join("\n");
+};
+
+export const testAttributes = ({ variants = {} }: Props) => {
+  return Object.keys(variants)
+    .map((variant: string) => {
+      const singularizedAttribute = singularize(variant);
+
+      return `${singularizedAttribute}="$\{${singularizedAttribute}}"`;
+    })
+    .join("\n");
+};
+
+export const variantTests = ({
+  variants = {},
+  name,
+  role = name,
+  parent = false,
+}: Props & { role: string; parent: boolean }) => {
+  return Object.keys(variants)
+    .map((variant: string) => {
+      const singularizedAttribute = singularize(variant);
+      const attributeType = mergeToTitleCase([name, singularizedAttribute]);
+      let typeData = variants[variant];
+
+      if (isAppearanceArray(typeData)) {
+        typeData = typeData.map((value: Appearance) => value.name);
+      }
+
+      const typeDefinition = `describe("with ${singularizedAttribute}", () => {`;
+      const itDefinition = `  it("applies a data-attribute", async () => {`;
+      const fixtureDefinition = `    await fixture(${name}({ ${singularizedAttribute}: ${attributeType}.${pascalCase(
+        typeData[0],
+      )} }));`;
+      const componentDefinition = `    const component = await screen.findByShadowRole("${role}");`;
+      const expectDefinition = `  expect(component${
+        parent ? ".parentElement" : ""
+      }).to.have.attribute("data-${singularizedAttribute}", "${typeData[0]}");`;
+      const closing = "  });\n});\n";
+
+      return [
+        typeDefinition,
+        itDefinition,
+        fixtureDefinition,
+        componentDefinition,
+        expectDefinition,
+        closing,
+      ].join("\n");
+    })
+    .join("\n");
+};

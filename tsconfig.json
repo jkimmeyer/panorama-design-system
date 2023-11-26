@@ -18,7 +18,8 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": false,
     "skipLibCheck": true,
-    "plugins": [{ "name": "ts-lit-plugin" }]
+    "plugins": [{ "name": "ts-lit-plugin" }],
+    "types": ["node", "@testing-library/dom"]
   },
   "include": [
     "src/**/*.ts",
@@ -28,7 +29,9 @@
     "stylelint.config.cjs",
     "plopfile.ts",
     "design-system.ts",
-    "postcss.config.cjs"
+    "postcss.config.cjs",
+    "vitest.config.ts",
+    "vitest.setup.ts"
   ],
   "exclude": ["plop-templates/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
