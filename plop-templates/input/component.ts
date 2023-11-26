@@ -42,6 +42,12 @@ export class {{properCase meta.prefix }}Input extends LitElement {
         outline: none;
       }
 
+      .required {
+        &::after {
+          content: "*";
+        }
+      }
+
       .sr-only {
         clip: rect(0, 0, 0, 0);
         overflow: hidden;
@@ -71,11 +77,13 @@ export class {{properCase meta.prefix }}Input extends LitElement {
       iconAfter,
       pattern,
       placeholder,
+      required,
       _handleInput: handleInput,
     } = this;
 
     const labelClasses = classMap({
       [`input--label`]: true,
+      [`required`]: required,
       [`sr-only`]: hiddenLabel,
     });
 
@@ -98,7 +106,8 @@ export class {{properCase meta.prefix }}Input extends LitElement {
           .disabled="${disabled}"
           id="input"
           ?disabled="${disabled}"
-          ?read-only="${readOnly}"
+          ?readonly="${readOnly}"
+          ?required="${required}"
           pattern="${ifDefined(pattern)}"
           placeholder="${ifDefined(placeholder)}"
           value="${ifDefined(value)}"

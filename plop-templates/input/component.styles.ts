@@ -27,11 +27,21 @@ export const inputStyles = css`
       padding-right: var(--icon-padding);
     }
 
-    &:focus,
-    &:hover,
-    &:active {
+    &:enabled:not(:read-only):where(:focus, :hover, :active) {
       outline: none;
       border-color: var(--color-primary);
+    }
+
+    &:read-only {
+      cursor: default;
+      color: var(--color-on-read-only-container);
+      border-color: var(--color-read-only);
+    }
+
+    &:disabled {
+      cursor: default;
+      color: var(--color-on-disabled-container);
+      border-color: var(--color-disabled)
     }
   }
 
