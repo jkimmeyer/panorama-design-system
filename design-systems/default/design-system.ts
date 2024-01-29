@@ -1,6 +1,6 @@
-import buttonConfig from "./plop-templates/button/component.json";
-import inputConfig from "./plop-templates/input/component.json";
-import checkboxConfig from "./plop-templates/checkbox/component.json";
+import buttonConfig from "../../plop-templates/button/component.json";
+import inputConfig from "../../plop-templates/input/component.json";
+import checkboxConfig from "../../plop-templates/checkbox/component.json";
 
 export enum ColorTheme {
   Primary = "primary",
