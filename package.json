@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@crutchcorn/plop": "^4.1.0-alpha.1",
-    "@open-wc/testing": "^3.2.1",
+    "@open-wc/testing": "^4.0.0",
     "@storybook/addon-actions": "^7.5.3",
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/addon-links": "^7.5.3",
