@@ -7,25 +7,25 @@ const meta: Meta = {
   component: "hsd-checkbox",
   argTypes: {
     checked: {
-      type: "boolean"
+      type: "boolean",
     },
     disabled: {
-      type: "boolean"
+      type: "boolean",
     },
     hiddenLabel: {
-      type: "boolean"
+      type: "boolean",
     },
     indeterminate: {
-      type: "boolean"
+      type: "boolean",
     },
     label: {
-      type: "string"
+      type: "string",
     },
     name: {
-      type: "string"
+      type: "string",
     },
     value: {
-      type: "string"
+      type: "string",
     },
   },
 };
@@ -41,5 +41,5 @@ export const Default: StoryObj = {
     label: "Checkbox Label",
     name: undefined,
     value: undefined,
-  }
+  },
 };

@@ -3,21 +3,19 @@ import { screen } from "shadow-dom-testing-library";
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "./component";
-import {
-  InputSize,
-} from "./component";
+import { InputSize } from "./component";
 
 interface InputProps {
-  size?: InputSize;  disabled?: boolean;
+  size?: InputSize;
+  disabled?: boolean;
 }
 
-const input = ({
-  size = InputSize.Small,  disabled,
-}: InputProps) =>
+const input = ({ size = InputSize.Small, disabled }: InputProps) =>
   html`<zw-input
     label="Text Input"
     ?disabled="${disabled}"
-    size="${size}"  ></zw-input>`;
+    size="${size}"
+  ></zw-input>`;
 
 describe("Input", () => {
   it("renders", async () => {
@@ -37,7 +35,7 @@ describe("Input", () => {
     it("applies a data-attribute", async () => {
       await fixture(input({ size: InputSize.Small }));
       const component = await screen.findByShadowRole("textbox");
-    expect(component).to.have.attribute("data-size", "small");
+      expect(component).to.have.attribute("data-size", "small");
     });
   });
 

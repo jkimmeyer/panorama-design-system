@@ -7,19 +7,19 @@ const meta: Meta = {
   component: "zw-radio-group",
   argTypes: {
     name: {
-      type: "string"
+      type: "string",
     },
     label: {
-      type: "string"
+      type: "string",
     },
     options: {
-      control: "Array"
+      control: "Array",
     },
     disabled: {
-      type: "boolean"
+      type: "boolean",
     },
     hiddenLabel: {
-      type: "boolean"
+      type: "boolean",
     },
   },
 };
@@ -30,8 +30,8 @@ export const Default: StoryObj = {
   args: {
     name: "radio-group-1",
     label: "Radio Group Label",
-    options: [{"option 1":"Option 1"},{"option 2":"Option 2"}],
+    options: [{ "option 1": "Option 1" }, { "option 2": "Option 2" }],
     disabled: false,
     hiddenLabel: false,
-  }
+  },
 };

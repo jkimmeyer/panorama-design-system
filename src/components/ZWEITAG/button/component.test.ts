@@ -3,28 +3,27 @@ import { screen } from "shadow-dom-testing-library";
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "./component";
-import {
-  ButtonAppearance,
-  ButtonSize,
-  ButtonTheme,
-} from "./component";
+import { ButtonAppearance, ButtonSize, ButtonTheme } from "./component";
 
 interface ButtonProps {
   appearance?: ButtonAppearance;
   size?: ButtonSize;
-  theme?: ButtonTheme;  disabled?: boolean;
+  theme?: ButtonTheme;
+  disabled?: boolean;
 }
 
 const button = ({
   appearance = ButtonAppearance.Filled,
   size = ButtonSize.Small,
-  theme = ButtonTheme.Primary,  disabled,
+  theme = ButtonTheme.Primary,
+  disabled,
 }: ButtonProps) =>
   html`<zw-button
     label="Hello, world!"
     appearance="${appearance}"
     size="${size}"
-    theme="${theme}"    ?disabled="${disabled}"
+    theme="${theme}"
+    ?disabled="${disabled}"
     button-type="button"
   ></zw-button>`;
 
@@ -40,23 +39,23 @@ describe("Button", () => {
     it("applies a data-attribute", async () => {
       await fixture(button({ appearance: ButtonAppearance.Filled }));
       const component = await screen.findByShadowRole("button");
-    expect(component).to.have.attribute("data-appearance", "filled");
+      expect(component).to.have.attribute("data-appearance", "filled");
     });
   });
-  
+
   describe("with size", () => {
     it("applies a data-attribute", async () => {
       await fixture(button({ size: ButtonSize.Small }));
       const component = await screen.findByShadowRole("button");
-    expect(component).to.have.attribute("data-size", "small");
+      expect(component).to.have.attribute("data-size", "small");
     });
   });
-  
+
   describe("with theme", () => {
     it("applies a data-attribute", async () => {
       await fixture(button({ theme: ButtonTheme.Primary }));
       const component = await screen.findByShadowRole("button");
-    expect(component).to.have.attribute("data-theme", "primary");
+      expect(component).to.have.attribute("data-theme", "primary");
     });
   });
 

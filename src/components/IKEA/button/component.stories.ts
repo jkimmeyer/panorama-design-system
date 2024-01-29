@@ -1,9 +1,5 @@
 import type { StoryObj, Meta } from "@storybook/web-components";
-import {
-  ButtonAppearance,
-  ButtonSize,
-  ButtonTheme,
-} from "./component";
+import { ButtonAppearance, ButtonSize, ButtonTheme } from "./component";
 
 import "./component";
 
@@ -13,38 +9,39 @@ const meta: Meta = {
   argTypes: {
     appearance: {
       options: ButtonAppearance,
-      control: { type: "select" }
+      control: { type: "select" },
     },
     size: {
       options: ButtonSize,
-      control: { type: "select" }
+      control: { type: "select" },
     },
     theme: {
       options: ButtonTheme,
-      control: { type: "select" }
-    },    label: {
-      type: "string"
+      control: { type: "select" },
+    },
+    label: {
+      type: "string",
     },
     buttonType: {
-      type: "string"
+      type: "string",
     },
     iconOnly: {
-      type: "boolean"
+      type: "boolean",
     },
     iconBefore: {
-      type: "string"
+      type: "string",
     },
     fullWidth: {
-      type: "boolean"
+      type: "boolean",
     },
     iconAfter: {
-      type: "string"
+      type: "string",
     },
     href: {
-      type: "string"
+      type: "string",
     },
     disabled: {
-      type: "boolean"
+      type: "boolean",
     },
   },
 };
@@ -64,5 +61,5 @@ export const Default: StoryObj = {
     iconAfter: "",
     href: "",
     disabled: false,
-  }
+  },
 };
