@@ -1,6 +1,6 @@
 import { singularize } from ".";
 import { pascalCase, paramCase } from "change-case";
-import { Appearance } from "../design-system";
+import { Appearance } from "../design-systems/default/design-system";
 
 interface Property {
   attribute?: string;

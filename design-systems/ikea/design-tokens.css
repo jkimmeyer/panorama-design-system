@@ -1,0 +1,78 @@
+[data-theme-ikea] {
+  /* Sizes */
+  --space-1: 0.125rem;
+  --space-2: 0.25rem;
+  --space-4: 0.5rem;
+  --space-6: 0.75rem;
+  --space-8: 1rem;
+  --space-10: 1.25rem;
+  --space-12: 1.5rem;
+  --space-16: 2rem;
+  --space-20: 2.5rem;
+  --space-24: 3rem;
+  --space-32: 4rem;
+
+  /* Size Factors */
+  --size-factor-small: 0.75;
+  --size-factor-medium: 1;
+  --size-factor-large: 1.25;
+
+  /* Interaction States */
+  --interaction-state-hover: 1.05;
+  --interaction-state-active: 1.1;
+
+  /* Color Palette */
+  --ikea-blue-1: hsla(210, 100%, 95%, 1);
+  --ikea-blue-2: hsla(210, 100%, 64%, 1);
+  --ikea-blue-3: hsla(210, 100%, 34%, 1);
+  --ikea-blue-4: hsla(210, 100%, 14%, 1);
+  --ikea-blue-5: hsla(210, 100%, 0%, 1);
+
+  /* Color Palette */
+  --ikea-yellow-1: hsla(46, 92%, 98%, 1);
+  --ikea-yellow-2: hsla(46, 92%, 82%, 1);
+  --ikea-yellow-3: hsla(46, 92%, 62%, 1);
+  --ikea-yellow-4: hsla(46, 92%, 22%, 1);
+  --ikea-yellow-5: hsla(46, 92%, 0%, 1);
+
+  --ikea-black: hsla(0, 0%, 4%, 1);
+  --ikea-gray-1: hsla(0, 0%, 20%, 1);
+  --ikea-gray-2: hsla(0, 0%, 30%, 1);
+  --ikea-gray-3: hsla(0, 0%, 40%, 1);
+  --ikea-gray-4: hsla(0, 0%, 50%, 1);
+  --ikea-gray-5: hsla(0, 0%, 60%, 1);
+  --ikea-gray-6: hsla(0, 0%, 70%, 1);
+  --ikea-gray-7: hsla(0, 0%, 80%, 1);
+  --ikea-white: hsla(0, 0%, 96%, 1);
+
+  /* Color */
+  --color-primary: var(--ikea-blue-3);
+  --color-on-primary: var(--ikea-yellow-3);
+  --color-primary-container: var(--ikea-blue-2);
+  --color-primary-on-container: var(--ikea-yellow-2);
+
+  --color-secondary: var(--ikea-yellow-3);
+  --color-on-secondary: var(--ikea-blue-3);
+  --color-secondary-container: var(--ikea-yellow-2);
+  --color-secondary-on-container: var(--ikea-blue-2);
+
+  --color-disabled: var(--ikea-gray-6);
+  --color-on-disabled: var(--ikea-gray-3);
+  --color-disabled-container: var(--ikea-gray-5);
+  --color-disabled-on-container: var(--ikea-gray-3);
+
+  --color-read-only: var(--ikea-gray-7);
+  --color-on-read-only: var(--ikea-gray-3);
+  --color-read-only-container: var(--ikea-gray-7);
+  --color-read-only-on-container: var(--ikea-gray-3);
+
+  --color-black: var(--ikea-black);
+  --color-white: var(--ikea-white);
+
+  /* Other */
+  --ds-border-radius: var(--space-2);
+
+  --ds-default-font: "Ikea Sans", sans-serif;
+  --ds-default-font-size: 1rem;
+  --ds-default-line-height: 1.5rem;
+}

@@ -28,7 +28,7 @@
     "vite.config.ts",
     "stylelint.config.cjs",
     "plopfile.ts",
-    "design-system.ts",
+    "design-systems/**/*",
     "postcss.config.cjs",
     "vitest.config.ts",
     "vitest.setup.ts"

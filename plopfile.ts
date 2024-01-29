@@ -3,8 +3,11 @@ import {
   ModifyActionConfig,
   NodePlopAPI,
 } from "@crutchcorn/plop";
-import { designSystemA } from "./design-system-a";
-import { designSystemB } from "./design-system-b";
+import { designSystemA } from "./design-systems/a/design-system";
+import { designSystemB } from "./design-systems/b/design-system";
+import { designSystemIkea } from "./design-systems/ikea/design-system";
+import { designSystemZweitag } from "./design-systems/zweitag/design-system";
+import { designSystemHsd } from "./design-systems/hsd/design-system";
 
 import {
   appendImports,
@@ -22,8 +25,48 @@ import {
   variantTests,
 } from "./plop-helper";
 
+const getComponents = (designSystem: DesignSystemsType) => {
+  switch (designSystem) {
+    case "A":
+      return Object.keys(designSystemA.components);
+    case "B":
+      return Object.keys(designSystemB.components);
+    case "IKEA":
+      return Object.keys(designSystemIkea.components);
+    case "ZWEITAG":
+      return Object.keys(designSystemZweitag.components);
+    case "HSD":
+      return Object.keys(designSystemHsd.components);
+    default:
+      return [];
+  }
+};
+
+const getDesignSystem = (designSystem: DesignSystemsType) => {
+  switch (designSystem) {
+    case "A":
+      return designSystemA;
+    case "B":
+      return designSystemB;
+    case "IKEA":
+      return designSystemIkea;
+    case "ZWEITAG":
+      return designSystemZweitag;
+    case "HSD":
+      return designSystemHsd;
+    default:
+      return {};
+  }
+};
+
+const DESIGN_SYSTEMS = ["A", "B", "IKEA", "ZWEITAG", "HSD"];
+type DesignSystemsType = (typeof DESIGN_SYSTEMS)[number];
+
 const COMPONENTS_A = Object.keys(designSystemA.components);
 const COMPONENTS_B = Object.keys(designSystemB.components);
+const COMPONENTS_IKEA = Object.keys(designSystemIkea.components);
+const COMPONENTS_ZWEITAG = Object.keys(designSystemZweitag.components);
+const COMPONENTS_HSD = Object.keys(designSystemHsd.components);
 
 interface Data {
   component: string;
@@ -65,13 +108,20 @@ export default function (plop: NodePlopAPI) {
     prompts: [
       {
         type: "list",
-        choices: ["A", "B"],
+        choices: DESIGN_SYSTEMS,
         message: "Choose a design system",
         name: "designSystem",
       },
       {
         type: "list",
-        choices: ["all", ...COMPONENTS_A, ...COMPONENTS_B],
+        choices: [
+          "all",
+          ...COMPONENTS_A,
+          ...COMPONENTS_B,
+          ...COMPONENTS_IKEA,
+          ...COMPONENTS_ZWEITAG,
+          ...COMPONENTS_HSD,
+        ],
         name: "component",
         message: "Please select the component you want to create",
       },
@@ -79,13 +129,12 @@ export default function (plop: NodePlopAPI) {
     // eslint-disable-next-line
     // @ts-ignore
     actions: (data: Data) => {
-      const COMPONENTS =
-        data.designSystem === "A" ? COMPONENTS_A : COMPONENTS_B;
+      const COMPONENTS = getComponents(data.designSystem);
+      const DESIGN_SYSTEM = getDesignSystem(data.designSystem);
+
       const addActions: AddActionConfig[] = [];
       const modifyActions: ModifyActionConfig[] = [];
       let components;
-      const DESIGN_SYSTEM =
-        data.designSystem === "A" ? designSystemA : designSystemB;
 
       if (data.component === "all") components = [...COMPONENTS];
       else components = [data?.component];
