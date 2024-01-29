@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.20](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.19...0.0.20) (2024-01-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency @open-wc/testing to v3.2.2 ([#120](https://github.com/jkimmeyer/panorama-design-system/issues/120)) ([d76f1fe](https://github.com/jkimmeyer/panorama-design-system/commit/d76f1fecc9550f8fcfcf130be74960a559bd6964))
+
 ## [0.0.19](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.18...0.0.19) (2023-11-26)
 
 
