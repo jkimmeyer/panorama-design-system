@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.21](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.20...0.0.21) (2024-01-29)
+
+
+### Miscellaneous
+
+* Fix publishing ([#143](https://github.com/jkimmeyer/panorama-design-system/issues/143)) ([8140d67](https://github.com/jkimmeyer/panorama-design-system/commit/8140d67567eadab7366248942e0234569847cc82))
+
 ## [0.0.20](https://github.com/jkimmeyer/panorama-design-system/compare/0.0.19...0.0.20) (2024-01-29)
 
 
