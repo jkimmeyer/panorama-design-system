@@ -1,7 +1,5 @@
 import type { StoryObj, Meta } from "@storybook/web-components";
-import {
-  InputSize,
-} from "./component";
+import { InputSize } from "./component";
 
 import "./component";
 
@@ -11,39 +9,40 @@ const meta: Meta = {
   argTypes: {
     size: {
       options: InputSize,
-      control: { type: "select" }
-    },    disabled: {
-      type: "boolean"
+      control: { type: "select" },
+    },
+    disabled: {
+      type: "boolean",
     },
     hiddenLabel: {
-      type: "boolean"
+      type: "boolean",
     },
     inputType: {
-      type: "string"
+      type: "string",
     },
     label: {
-      type: "string"
+      type: "string",
     },
     readOnly: {
-      type: "boolean"
+      type: "boolean",
     },
     required: {
-      type: "boolean"
+      type: "boolean",
     },
     pattern: {
-      type: "string"
+      type: "string",
     },
     placeholder: {
-      type: "string"
+      type: "string",
     },
     value: {
-      type: "string"
+      type: "string",
     },
     iconBefore: {
-      type: "string"
+      type: "string",
     },
     iconAfter: {
-      type: "string"
+      type: "string",
     },
   },
 };
@@ -59,5 +58,5 @@ export const Default: StoryObj = {
     label: "Input Label",
     readOnly: false,
     required: false,
-  }
+  },
 };

@@ -7,7 +7,7 @@ const meta: Meta = {
   component: "hsd-icon",
   argTypes: {
     iconName: {
-      type: "string"
+      type: "string",
     },
   },
 };
@@ -17,5 +17,5 @@ export default meta;
 export const Default: StoryObj = {
   args: {
     iconName: "home",
-  }
+  },
 };

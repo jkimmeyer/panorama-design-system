@@ -41,7 +41,7 @@ export const inputStyles = css`
     &:disabled {
       cursor: default;
       color: var(--color-on-disabled-container);
-      border-color: var(--color-disabled)
+      border-color: var(--color-disabled);
     }
   }
 
@@ -52,8 +52,6 @@ export const inputStyles = css`
   .input--field:where([data-size="medium"]) {
     --input-padding-block: calc(var(--size-factor-medium) * var(--space-4));
   }
-
-
 
   .input {
     display: flex;

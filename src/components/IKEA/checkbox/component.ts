@@ -5,7 +5,6 @@ import { classMap } from "lit/directives/class-map.js";
 import "../icon/component";
 import { checkboxStyles } from "./component.styles";
 
-
 @customElement("ikea-checkbox")
 export class IkeaCheckbox extends LitElement {
   @query("input")
@@ -41,26 +40,25 @@ export class IkeaCheckbox extends LitElement {
   }
 
   @property({ type: Boolean, reflect: true })
-  checked: boolean  = false;
-  
+  checked: boolean = false;
+
   @property({ type: Boolean, reflect: true })
-  disabled: boolean  = false;
-  
+  disabled: boolean = false;
+
   @property({ type: Boolean, reflect: true, attribute: "hidden-label" })
-  hiddenLabel: boolean  = false;
-  
+  hiddenLabel: boolean = false;
+
   @property({ type: Boolean, reflect: true })
-  indeterminate: boolean  = false;
-  
+  indeterminate: boolean = false;
+
   @property({ type: String, reflect: true })
   label!: string;
-  
+
   @property({ type: String, reflect: true })
   name!: string;
-  
+
   @property({ type: String, reflect: true })
   value!: string;
-  
 
   render() {
     const {
@@ -80,7 +78,7 @@ export class IkeaCheckbox extends LitElement {
     });
 
     return html`
-      <div class="checkbox" >
+      <div class="checkbox">
         <input
           id="checkbox"
           class="checkbox--input | sr-only"
@@ -93,10 +91,13 @@ export class IkeaCheckbox extends LitElement {
           @change="${handleChange}"
         />
         <label class="${labelClasses}" for="checkbox">
-          <ikea-icon class="checkbox--icon" icon-name="${indeterminate ? "remove" : "check"}"></ikea-icon>
+          <ikea-icon
+            class="checkbox--icon"
+            icon-name="${indeterminate ? "remove" : "check"}"
+          ></ikea-icon>
           <div>${label}</div>
         </label>
-    </div>
+      </div>
     `;
   }
 }

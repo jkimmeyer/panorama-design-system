@@ -9,7 +9,6 @@ export type RadioGroupOption = {
   [key: string]: string;
 };
 
-
 @customElement("ikea-radio-group")
 export class IkeaRadioGroup extends LitElement {
   @query("input")
@@ -44,19 +43,18 @@ export class IkeaRadioGroup extends LitElement {
 
   @property({ type: String, reflect: true })
   name!: string;
-  
+
   @property({ type: String, reflect: true })
   label!: string;
-  
+
   @property({ type: Array, reflect: true })
   options!: RadioGroupOption[];
-  
+
   @property({ type: Boolean, reflect: true })
-  disabled: boolean  = false;
-  
+  disabled: boolean = false;
+
   @property({ type: Boolean, reflect: true })
-  hiddenLabel: boolean  = false;
-  
+  hiddenLabel: boolean = false;
 
   render() {
     const {
@@ -75,29 +73,31 @@ export class IkeaRadioGroup extends LitElement {
 
     return html`
       <div class="radio-group" role="group" aria-labelledby="a11y-radio-group">
-      	<div class="${radioGroupHeadingClasses}" id="a11y-radio-group">${label}</div>
-      ${options.map((option, index) =>
-        Object.entries(option).map(([optionsKey, optionsValue]) => {
-          return html`
-        <div class="radio" >
-          <input
-            id="radio-${index}"
-            class="radio--input | sr-only"
-            .disabled="${disabled}"
-            name="${name}"
-            value="${optionsKey}"
-            type="radio"
-            @change="${handleChange}"
-          />
-          <label class="radio--label" for="radio-${index}">
-            <ikea-icon class="radio--icon" icon-name="check"></ikea-icon>
-            <div>${optionsValue}</div>
-          </label>
+        <div class="${radioGroupHeadingClasses}" id="a11y-radio-group">
+          ${label}
         </div>
-        `
-        })
-      )}
-    </div>
+        ${options.map((option, index) =>
+          Object.entries(option).map(([optionsKey, optionsValue]) => {
+            return html`
+              <div class="radio">
+                <input
+                  id="radio-${index}"
+                  class="radio--input | sr-only"
+                  .disabled="${disabled}"
+                  name="${name}"
+                  value="${optionsKey}"
+                  type="radio"
+                  @change="${handleChange}"
+                />
+                <label class="radio--label" for="radio-${index}">
+                  <ikea-icon class="radio--icon" icon-name="check"></ikea-icon>
+                  <div>${optionsValue}</div>
+                </label>
+              </div>
+            `;
+          }),
+        )}
+      </div>
     `;
   }
 }

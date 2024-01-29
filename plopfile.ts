@@ -38,7 +38,7 @@ const getComponents = (designSystem: DesignSystemsType) => {
     case "HSD":
       return Object.keys(designSystemHsd.components);
     default:
-      return [];
+      throw new Error("Design system not found");
   }
 };
 
@@ -55,7 +55,7 @@ const getDesignSystem = (designSystem: DesignSystemsType) => {
     case "HSD":
       return designSystemHsd;
     default:
-      return {};
+      throw new Error("Design system not found");
   }
 };
 

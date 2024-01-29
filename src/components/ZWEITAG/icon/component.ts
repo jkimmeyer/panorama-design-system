@@ -26,7 +26,6 @@ export class ZwIcon extends LitElement {
 
   @property({ type: String, reflect: true, attribute: "icon-name" })
   iconName!: string;
-  
 
   render() {
     const { iconName } = this;

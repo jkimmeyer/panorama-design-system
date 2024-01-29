@@ -3,9 +3,7 @@ import { screen } from "shadow-dom-testing-library";
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "./component";
-import {
-RadioGroupOption
-} from "./component";
+import { RadioGroupOption } from "./component";
 
 interface RadioGroupProps {
   options?: RadioGroupOption[];
@@ -30,7 +28,6 @@ describe("RadioGroup", () => {
     expect(component).to.exist;
   });
 
-
   it("renders all options", async () => {
     await fixture(radioGroup({}));
 
@@ -41,7 +38,7 @@ describe("RadioGroup", () => {
     expect(options).to.have.length(2);
     expect(option1).to.exist;
     expect(option2).to.exist;
-  })
+  });
 
   it("is accessible", async () => {
     const component = await fixture(radioGroup({}));
@@ -59,7 +56,6 @@ describe("RadioGroup", () => {
     expect(component).to.be.checked;
     expect(radioButtons[1]).not.to.be.checked;
   });
-
 
   describe("when disabled", () => {
     it("is disabled", async () => {

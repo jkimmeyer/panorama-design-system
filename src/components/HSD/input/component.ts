@@ -8,7 +8,7 @@ import { inputStyles } from "./component.styles";
 export enum InputSize {
   Small = "small",
   Medium = "medium",
-  Large = "large"
+  Large = "large",
 }
 
 declare global {
@@ -17,7 +17,19 @@ declare global {
   }
 }
 
-export type InputType = "date" | "email" | "datetime-local" | "month" | "number" | "password" | "tel" | "text" | "time" | "search" | "url" | "week";
+export type InputType =
+  | "date"
+  | "email"
+  | "datetime-local"
+  | "month"
+  | "number"
+  | "password"
+  | "tel"
+  | "text"
+  | "time"
+  | "search"
+  | "url"
+  | "week";
 
 @customElement("hsd-input")
 export class HsdInput extends LitElement {
@@ -39,10 +51,10 @@ export class HsdInput extends LitElement {
       }
 
       input {
+        outline: none;
         margin: 0;
         padding: 0;
         font: inherit;
-        outline: none;
       }
 
       .required {
@@ -68,40 +80,39 @@ export class HsdInput extends LitElement {
 
   @property({ type: String, reflect: true })
   size!: InputSize;
-  
+
   @property({ type: Boolean, reflect: true })
-  disabled: boolean  = false;
-  
+  disabled: boolean = false;
+
   @property({ type: Boolean, reflect: true })
-  hiddenLabel: boolean  = false;
-  
+  hiddenLabel: boolean = false;
+
   @property({ type: String, reflect: true, attribute: "input-type" })
   inputType: InputType = "text";
-  
+
   @property({ type: String, reflect: true })
   label!: string;
-  
+
   @property({ type: Boolean, reflect: true, attribute: "read-only" })
-  readOnly: boolean  = false;
-  
+  readOnly: boolean = false;
+
   @property({ type: Boolean, reflect: true })
-  required: boolean  = false;
-  
+  required: boolean = false;
+
   @property({ type: String, reflect: true })
   pattern: string | undefined = undefined;
-  
+
   @property({ type: String, reflect: true })
   placeholder: string | undefined = undefined;
-  
+
   @property({ type: String, reflect: true })
   value: string | undefined = undefined;
-  
+
   @property({ type: String, reflect: true, attribute: "icon-before" })
   iconBefore: string | undefined = undefined;
-  
+
   @property({ type: String, reflect: true, attribute: "icon-after" })
   iconAfter: string | undefined = undefined;
-  
 
   render() {
     const {
@@ -126,7 +137,7 @@ export class HsdInput extends LitElement {
     });
 
     return html`
-     <label class="${labelClasses}" for="input">${label}</label>
+      <label class="${labelClasses}" for="input">${label}</label>
       <div
         class="input"
         ?data-icon-before="${!!iconBefore}"
@@ -151,7 +162,8 @@ export class HsdInput extends LitElement {
           value="${ifDefined(value)}"
           type="${inputType}"
           @input="${handleInput}"
-          data-size="${this.size}"        />
+          data-size="${this.size}"
+        />
         ${iconAfter
           ? html`<hsd-icon
               class="input--icon"
@@ -160,6 +172,6 @@ export class HsdInput extends LitElement {
             ></hsd-icon>`
           : null}
       </div>
-    `
+    `;
   }
 }

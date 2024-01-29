@@ -5,19 +5,19 @@ import "../icon/component";
 import { buttonStyles } from "./component.styles";
 
 export enum ButtonAppearance {
-  Filled = "filled"
+  Filled = "filled",
 }
 
 export enum ButtonSize {
   Small = "small",
   Medium = "medium",
-  Large = "large"
+  Large = "large",
 }
 
 export enum ButtonTheme {
   Primary = "primary",
   Secondary = "secondary",
-  Highlight = "highlight"
+  Highlight = "highlight",
 }
 
 declare global {
@@ -38,7 +38,8 @@ export class ZwButton extends LitElement {
         box-sizing: border-box;
       }
 
-      a, button {
+      a,
+      button {
         margin: 0;
         padding: 0;
         font: inherit;
@@ -61,37 +62,36 @@ export class ZwButton extends LitElement {
 
   @property({ type: String, reflect: true })
   appearance!: ButtonAppearance;
-  
+
   @property({ type: String, reflect: true })
   size!: ButtonSize;
-  
+
   @property({ type: String, reflect: true })
   theme!: ButtonTheme;
-  
+
   @property({ type: String, reflect: true })
   label!: string;
-  
+
   @property({ type: String, reflect: true })
   buttonType: ButtonType = "button";
-  
+
   @property({ type: Boolean, reflect: true, attribute: "icon-only" })
-  iconOnly: boolean  = false;
-  
+  iconOnly: boolean = false;
+
   @property({ type: String, reflect: true, attribute: "icon-before" })
   iconBefore = "";
-  
+
   @property({ type: Boolean, reflect: true, attribute: "full-width" })
-  fullWidth: boolean  = false;
-  
+  fullWidth: boolean = false;
+
   @property({ type: String, reflect: true, attribute: "icon-after" })
   iconAfter = "";
-  
+
   @property({ type: String, reflect: true })
   href = "";
-  
+
   @property({ type: Boolean, reflect: true })
-  disabled: boolean  = false;
-  
+  disabled: boolean = false;
 
   render() {
     const {
@@ -101,31 +101,45 @@ export class ZwButton extends LitElement {
       label,
       href,
       fullWidth,
-      disabled
+      disabled,
     } = this;
 
     const labelClasses = classMap({
       "button--text": true,
       "sr-only": iconOnly,
-    })
+    });
 
     const innerHtml = html`
       <zw-icon icon-name="${iconBefore}"></zw-icon>
-      <span class="${labelClasses}">
-        ${label}
-      </span>
-      ${ iconOnly ? null : html`<zw-icon icon-name="${iconAfter}"></zw-icon>`}
-    `
+      <span class="${labelClasses}"> ${label} </span>
+      ${iconOnly ? null : html`<zw-icon icon-name="${iconAfter}"></zw-icon>`}
+    `;
 
-    if(href) {
+    if (href) {
       return html`
-        <a class="button" href="${href}" ?data-icon-only="${iconOnly}" ?data-full-width="${fullWidth}" data-appearance="${this.appearance}" data-size="${this.size}" data-theme="${this.theme}">
+        <a
+          class="button"
+          href="${href}"
+          ?data-icon-only="${iconOnly}"
+          ?data-full-width="${fullWidth}"
+          data-appearance="${this.appearance}"
+          data-size="${this.size}"
+          data-theme="${this.theme}"
+        >
           ${innerHtml}
         </a>
       `;
     } else {
       return html`
-        <button class="button" ?disabled="${disabled}" ?data-icon-only="${iconOnly}" ?data-full-width="${fullWidth}" data-appearance="${this.appearance}" data-size="${this.size}" data-theme="${this.theme}">
+        <button
+          class="button"
+          ?disabled="${disabled}"
+          ?data-icon-only="${iconOnly}"
+          ?data-full-width="${fullWidth}"
+          data-appearance="${this.appearance}"
+          data-size="${this.size}"
+          data-theme="${this.theme}"
+        >
           ${innerHtml}
         </button>
       `;

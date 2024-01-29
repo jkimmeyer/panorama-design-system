@@ -1,4 +1,4 @@
-import { css } from "lit"
+import { css } from "lit";
 
 export const radioGroupStyles = css`
   :host {
@@ -12,7 +12,6 @@ export const radioGroupStyles = css`
     display: inline-flex;
     flex-direction: column;
     gap: var(--space-4);
-
   }
 
   .radio-group--heading {
@@ -80,7 +79,6 @@ export const radioGroupStyles = css`
     }
   }
 
-
   .radio--input:enabled {
     &:checked + .radio--label::before {
       border-color: var(--color-primary);
@@ -107,5 +105,5 @@ export const radioGroupStyles = css`
     &:checked:active + .radio--label > .radio--icon {
       color: var(--color-primary-on-container);
     }
-}
-`
+  }
+`;

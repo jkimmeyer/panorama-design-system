@@ -1,4 +1,4 @@
-import { css } from "lit"
+import { css } from "lit";
 
 export const checkboxStyles = css`
   :host {
@@ -16,7 +16,6 @@ export const checkboxStyles = css`
     &:focus-within {
       outline: 2px solid var(--color-primary);
     }
-
   }
 
   .checkbox--label {
@@ -38,7 +37,7 @@ export const checkboxStyles = css`
     left: 0;
     transform: translateY(-50%);
     font-size: var(--_checkbox-size);
-    color: var(--color-primary)
+    color: var(--color-primary);
   }
 
   .checkbox--label::before {
@@ -99,4 +98,4 @@ export const checkboxStyles = css`
   .checkbox--input:checked:active + .checkbox--label > .checkbox--icon {
     color: var(--color-primary-on-container);
   }
-`
+`;

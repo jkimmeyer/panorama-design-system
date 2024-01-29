@@ -7,12 +7,8 @@ interface IconProps {
   iconName?: string;
 }
 
-  const icon = ({
-    iconName = "home"
-}: IconProps) =>
-  html`<ikea-icon
-    iconName="${iconName}"
-  ></ikea-icon>`;
+const icon = ({ iconName = "home" }: IconProps) =>
+  html`<ikea-icon iconName="${iconName}"></ikea-icon>`;
 
 describe("Icon", () => {
   it("renders", async () => {
@@ -20,7 +16,6 @@ describe("Icon", () => {
 
     expect(component).to.exist;
   });
-
 
   it("is accessible", async () => {
     const component = await fixture(icon({}));

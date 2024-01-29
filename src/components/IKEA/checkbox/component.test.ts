@@ -8,9 +8,7 @@ interface CheckboxProps {
   disabled?: boolean;
 }
 
-const checkbox = ({
-  disabled,
-}: CheckboxProps) =>
+const checkbox = ({ disabled }: CheckboxProps) =>
   html`<ikea-checkbox
     label="Hello, world!"
     ?disabled="${disabled}"
@@ -39,7 +37,6 @@ describe("Checkbox", () => {
 
     expect(component).to.be.checked;
   });
-
 
   describe("when disabled", () => {
     it("is disabled", async () => {
